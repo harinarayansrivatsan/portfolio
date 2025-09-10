@@ -1,0 +1,148 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Implementing strict 4-color palette: White, Gray, Black, Aggie Maroon */
+  --background: #ffffff; /* White background */
+  --foreground: #000000; /* Black text */
+  --card: #f5f5f5; /* Light gray card background */
+  --card-foreground: #000000; /* Black text on cards */
+  --popover: #ffffff; /* White popover background */
+  --popover-foreground: #000000; /* Black text on popovers */
+  --primary: #500000; /* Aggie Maroon primary */
+  --primary-foreground: #ffffff; /* White text on primary */
+  --secondary: #6b7280; /* Gray secondary */
+  --secondary-foreground: #ffffff; /* White text on secondary */
+  --muted: #f5f5f5; /* Light gray muted background */
+  --muted-foreground: #6b7280; /* Gray muted text */
+  --accent: #500000; /* Aggie Maroon accent */
+  --accent-foreground: #ffffff; /* White text on accent */
+  --destructive: #500000; /* Aggie Maroon for destructive actions */
+  --destructive-foreground: #ffffff; /* White text on destructive */
+  --border: #e5e7eb; /* Light gray borders */
+  --input: #f5f5f5; /* Light gray input backgrounds */
+  --ring: rgba(80, 0, 0, 0.5); /* Aggie Maroon focus rings */
+  --chart-1: #500000; /* Aggie Maroon chart color */
+  --chart-2: #6b7280; /* Gray chart color */
+  --chart-3: #000000; /* Black chart color */
+  --chart-4: #f5f5f5; /* Light gray chart color */
+  --chart-5: #ffffff; /* White chart color */
+  --radius: 0.75rem; /* Rounded corners */
+  --sidebar: #ffffff; /* White sidebar */
+  --sidebar-foreground: #000000; /* Black sidebar text */
+  --sidebar-primary: #500000; /* Aggie Maroon sidebar primary */
+  --sidebar-primary-foreground: #ffffff; /* White text on sidebar primary */
+  --sidebar-accent: #500000; /* Aggie Maroon sidebar accent */
+  --sidebar-accent-foreground: #ffffff; /* White text on sidebar accent */
+  --sidebar-border: #e5e7eb; /* Light gray sidebar borders */
+  --sidebar-ring: rgba(80, 0, 0, 0.5); /* Aggie Maroon sidebar focus rings */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    /* Removed background gradients to maintain pure white background */
+  }
+
+  /* Updated section styling for 4-color palette */
+  .section-container {
+    @apply h-screen flex flex-col justify-center relative overflow-hidden;
+  }
+
+  .content-wrapper {
+    @apply container mx-auto px-6 max-w-6xl relative z-10;
+  }
+
+  .section-title {
+    @apply text-5xl font-bold text-foreground mb-16 tracking-tight;
+  }
+
+  /* Updated card styling for 4-color palette */
+  .glass-card {
+    @apply bg-card backdrop-blur-xl border border-border rounded-xl p-8 shadow-lg;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Updated button styling for 4-color palette */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold;
+    @apply relative overflow-hidden transition-all duration-300;
+    box-shadow: 0 4px 15px rgba(80, 0, 0, 0.3);
+  }
+
+  .btn-primary:hover {
+    @apply scale-105;
+    box-shadow: 0 8px 25px rgba(80, 0, 0, 0.4);
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground px-8 py-4 rounded-xl font-semibold;
+    @apply relative overflow-hidden transition-all duration-300;
+    box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
+  }
+
+  .btn-secondary:hover {
+    @apply scale-105;
+    box-shadow: 0 8px 25px rgba(107, 114, 128, 0.4);
+  }
+
+  .btn-outline {
+    @apply border-2 border-accent text-accent px-8 py-4 rounded-xl font-semibold;
+    @apply bg-transparent backdrop-blur-sm transition-all duration-300;
+  }
+
+  .btn-outline:hover {
+    @apply bg-accent text-accent-foreground scale-105;
+  }
+}
