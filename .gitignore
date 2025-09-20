@@ -1,14 +1,13 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
-/node_modules
+node_modules
 
 # next.js
-/.next/
-/out/
+.next
+out
 
 # production
-/build
+build
+dist
 
 # debug
 npm-debug.log*
@@ -24,4 +23,19 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+
+# OS generated files
+.DS_Store
+
+# IDE and Editor files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Claude Code specific
+.claude
+CLAUDE.md
+
+# package lock file (using npm)
+package-lock.json

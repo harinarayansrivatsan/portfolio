@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Open_Sans, Montserrat, JetBrains_Mono } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 const openSans = Open_Sans({
@@ -25,9 +26,11 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Hari Narayan Srivatsan - AI Software Engineer",
+  title: "Hari Narayan Srivatsan",
   description: "AI Software Engineer | MS in MIS at Texas A&M University | Specializing in AI/ML Solutions",
-    generator: 'v0.app'
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>",
+  },
 }
 
 export default function RootLayout({
@@ -36,8 +39,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${openSans.variable} ${montserrat.variable} ${jetbrainsMono.variable} antialiased`}>
-      <body className="font-sans bg-white">{children}</body>
+    <html lang="en" className={`${openSans.variable} ${montserrat.variable} ${jetbrainsMono.variable} antialiased h-full`} suppressHydrationWarning>
+      <body className="font-sans bg-background text-foreground h-full m-0 p-0">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
