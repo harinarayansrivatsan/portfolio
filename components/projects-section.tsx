@@ -14,7 +14,7 @@ export function ProjectsSection() {
           subtitle="Innovative solutions that make a difference"
         />
 
-      <div className="card-grid card-grid-2 mt-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4 w-full max-w-6xl mx-auto">
         <Card className="glass-card group h-full flex flex-col overflow-hidden">
           <CardHeader className="pb-6">
             <div className="aspect-[16/9] bg-gradient-to-br from-muted to-muted/50 rounded-xl mb-4 overflow-hidden relative">
