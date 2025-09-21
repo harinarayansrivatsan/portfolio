@@ -1,10 +1,5 @@
 "use client"
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
 
@@ -90,37 +85,22 @@ export function JourneySection() {
                       <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-10`} />
 
                       {/* High Quality Company Image */}
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <button className="w-full h-48 relative overflow-hidden cursor-pointer transition-transform hover:scale-105 group bg-white p-0 border-0">
-                            <img
-                              src={item.image}
-                              alt={item.company}
-                              className="w-full h-full object-contain block"
-                              style={{
-                                imageRendering: 'crisp-edges',
-                                objectPosition: 'center',
-                                display: 'block',
-                                margin: 0,
-                                padding: 0,
-                                transform: 'scale(1.5)',
-                                transformOrigin: 'center'
-                              }}
-                            />
-                            <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-5 group-hover:opacity-15 transition-opacity`} />
-                          </button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-2 border shadow-xl">
-                          <div className="text-center">
-                            <img
-                              src={item.image}
-                              alt={item.company}
-                              className="rounded-lg max-w-xs max-h-64 object-contain mx-auto"
-                            />
-                            <p className="mt-2 text-sm font-medium">{item.company}</p>
-                          </div>
-                        </PopoverContent>
-                      </Popover>
+                      <div className="w-full h-48 relative overflow-hidden bg-white">
+                        <img
+                          src={item.image}
+                          alt={item.company}
+                          className="w-full h-full object-contain block"
+                          style={{
+                            imageRendering: 'crisp-edges',
+                            objectPosition: 'center',
+                            display: 'block',
+                            margin: 0,
+                            padding: 0,
+                            transform: 'scale(1.5)',
+                            transformOrigin: 'center'
+                          }}
+                        />
+                      </div>
 
                     {/* Content */}
                     <div className="px-5 pb-5 pt-3 flex-1 flex flex-col">
