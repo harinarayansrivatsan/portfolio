@@ -7,16 +7,6 @@ import { Button } from "./ui/button"
 export function ContactSection() {
   const contactMethods = [
     {
-      title: "Email",
-      subtitle: "Professional Communication",
-      description: "Best for formal inquiries, job opportunities, and detailed discussions about projects or collaborations. Currently open to full-time opportunities starting January 2026.",
-      contact: "harinarayan.professional@gmail.com",
-      href: "mailto:harinarayan.professional@gmail.com",
-      icon: "📧",
-      color: "from-red-800 to-red-900",
-      availability: "Response within 24 hours"
-    },
-    {
       title: "LinkedIn",
       subtitle: "Professional Networking",
       description: "Connect for networking, industry insights, quick updates, and professional relationship building. Open to relocation for the right opportunity.",
@@ -25,6 +15,16 @@ export function ContactSection() {
       icon: "💼",
       color: "from-red-700 to-red-800",
       availability: "Active daily"
+    },
+    {
+      title: "Email",
+      subtitle: "Professional Communication",
+      description: "Best for formal inquiries, job opportunities, and detailed discussions about projects or collaborations. Currently open to full-time opportunities starting January 2026.",
+      contact: "harinarayan.professional@gmail.com",
+      href: "mailto:harinarayan.professional@gmail.com",
+      icon: "📧",
+      color: "from-red-800 to-red-900",
+      availability: "Response within 24 hours"
     }
   ]
 
