@@ -4,7 +4,7 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="text-center">
           <p className="text-xs sm:text-sm opacity-90">
-            © {new Date().getFullYear()} Hari Narayan Srivatsan. Built with passion and precision. 🚀
+            © {new Date().getFullYear()} Hari Narayan Srivatsan. Built with passion and precision 🚀
           </p>
         </div>
       </div>

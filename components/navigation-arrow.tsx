@@ -22,9 +22,9 @@ export function NavigationArrow({
   }
 
   const sizeClasses = {
-    sm: 'h-8 w-8 sm:h-10 sm:w-10',
-    md: 'h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14',
-    lg: 'h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16'
+    sm: 'h-8 w-8 sm:h-9 sm:w-9',
+    md: 'h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12',
+    lg: 'h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14'
   }
 
   const iconSizes = {
@@ -34,9 +34,11 @@ export function NavigationArrow({
   }
 
   if (variant === 'floating') {
+    // Position arrows in the margin area to completely avoid content overlap
+    // Content uses clamp(0.75rem, 2vw, 2rem) padding, so arrows stay outside this
     const positionClass = direction === 'next'
-      ? "fixed top-1/2 right-4 sm:right-6 lg:right-8 z-50 transform -translate-y-1/2"
-      : "fixed top-1/2 left-4 sm:left-6 lg:left-8 z-50 transform -translate-y-1/2"
+      ? "fixed top-1/2 right-2 sm:right-3 md:right-4 lg:right-6 xl:right-8 z-50 transform -translate-y-1/2"
+      : "fixed top-1/2 left-2 sm:left-3 md:left-4 lg:left-6 xl:left-8 z-50 transform -translate-y-1/2"
 
     const icon = direction === 'next'
       ? <ArrowRight className={`${iconSizes[size]} transition-transform duration-300 group-hover:translate-x-0.5`} />
@@ -46,7 +48,7 @@ export function NavigationArrow({
       <div className={positionClass}>
         <button
           onClick={handleClick}
-          className={`${sizeClasses[size]} bg-primary hover:bg-primary-light text-primary-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group flex items-center justify-center backdrop-blur-sm border border-primary-dark/20`}
+          className={`${sizeClasses[size]} bg-primary/80 hover:bg-primary text-primary-foreground rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 group flex items-center justify-center backdrop-blur-sm border border-primary-dark/20 sm:bg-primary/90 lg:bg-primary`}
           aria-label={`Navigate to ${label}`}
         >
           {icon}
@@ -57,7 +59,7 @@ export function NavigationArrow({
 
   if (variant === 'bottom-center') {
     return (
-      <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2 z-50 sm:bottom-20 lg:bottom-24">
+      <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-50 sm:bottom-24 lg:bottom-28">
         <button
           onClick={handleClick}
           className="bg-white/90 hover:bg-primary hover:text-primary-foreground text-primary border border-primary/30 rounded-full px-3 py-2 sm:px-4 sm:py-2.5 lg:px-5 lg:py-3 shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-md group flex items-center gap-2"
@@ -107,7 +109,7 @@ export function SectionScroll({ targetSection, label = "Next Section" }: Section
   }
 
   return (
-    <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2 z-40 sm:bottom-20 lg:bottom-24">
+    <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-40 sm:bottom-24 lg:bottom-28">
       <button
         onClick={scrollToSection}
         className="bg-white/80 hover:bg-primary/10 text-primary border border-primary/20 rounded-full p-2 sm:p-3 lg:p-4 shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm group animate-bounce hover:animate-none"

@@ -6,7 +6,8 @@ import { Button } from "./ui/button"
 export function HeroSection() {
   return (
     <SectionLayout id="home">
-      <div className="w-full max-w-4xl mx-auto" style={{paddingTop: "clamp(1.5rem, 4vh, 2rem)"}}>
+      <div className="section-content">
+        <div className="w-full max-w-6xl mx-auto">
           <div className="text-center space-y-4 sm:space-y-5 lg:space-y-6">
           <div className="relative animate-slide-in">
             <div className="mx-auto bg-gradient-to-br from-white to-gray-50 border-4 border-primary/10 rounded-full overflow-hidden shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(80,0,0,0.25)] transition-all duration-500 hover:scale-105 group"
@@ -40,11 +41,11 @@ export function HeroSection() {
 
             <div className="w-full max-w-none px-2 sm:px-4 space-y-2 sm:space-y-3">
               <h2 className="text-heading-2 font-sans text-primary font-semibold text-center">
-                MS in MIS Student at Texas A&M (Class of 2026)
+                MS in MIS student at Texas A&M University (Class of 2026)
               </h2>
 
-              <p className="text-body font-sans text-muted-foreground w-full max-w-2xl mx-auto px-3 py-2 bg-muted/20 rounded-lg text-center">
-                "Bridging AI innovation with business strategy: building intelligent systems that drive meaningful impact"
+              <p className="text-body font-sans text-muted-foreground w-full max-w-3xl mx-auto px-3 py-2 bg-muted/20 rounded-lg text-center">
+                "Bridging innovation with business strategy through AI: building secure intelligent systems that drive impact"
               </p>
             </div>
           </div>
@@ -52,9 +53,8 @@ export function HeroSection() {
           <div className="w-full px-2 sm:px-4 animate-slide-in">
             <div className="glass-card max-w-2xl mx-auto">
               <p className="text-body text-foreground leading-relaxed text-center">
-                Graduate student with expertise in developing secure systems and technology applications. Currently
-                pursuing MS in MIS at Texas A&M University (GPA: 3.85/4.00) while gaining hands-on experience in
-                enterprise solutions and product development.
+                With expertise in building secure applications to drive digital transformation, I'm currently gaining hands-on experience in
+                building AI products through internships, campus employment, volunteering and coursework.
               </p>
             </div>
           </div>
@@ -80,7 +80,7 @@ export function HeroSection() {
           </div>
           </div>
         </div>
-
+      </div>
     </SectionLayout>
   )
 }

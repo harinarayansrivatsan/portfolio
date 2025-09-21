@@ -1,98 +1,112 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
 
 export function ProjectsSection() {
+  const projects = [
+    {
+      title: "Competency Tracker",
+      description: "Customizable web portal providing teachers with real-time, data-driven insights on student skills & academic progress through a star-based scoring system.",
+      image: "/images/competency-tracker.png",
+      imageAlt: "Competency Tracker Dashboard",
+      badges: ["AWS Serverless", "React", "Python", "Data Analytics"],
+      featured: true,
+      impact: "Deployed at Plymouth State University",
+      timeframe: "2025"
+    },
+    {
+      title: "Instructor Connect",
+      description: "Onboarding portal for pedagogical training of instructors via chat sessions with AI personas of real students. Managed system roll out via a Randomized Controlled Trial on 250+ daily users.",
+      image: "/images/instructor-connect.png",
+      imageAlt: "Instructor Connect - AI-powered instructor training platform",
+      badges: ["AI/ML", "RAG", "Product Launch", "Systems Design"],
+      featured: false,
+      impact: "Deployed at Agastya International Foundation",
+      timeframe: "2024"
+    }
+  ]
+
   return (
     <SectionLayout id="projects">
-      <div style={{paddingTop: "clamp(1.5rem, 4vh, 2rem)"}}>
+      <div className="section-content">
         <SectionHeader
-          title="Projects"
-          subtitle="Innovative solutions that make a difference"
+          title="What I've built"
+          subtitle="Innovative solutions currently driving impact at real organizations"
         />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4 w-full max-w-6xl mx-auto">
-        <Card className="glass-card group h-full flex flex-col overflow-hidden">
-          <CardHeader className="pb-6">
-            <div className="aspect-[16/9] bg-gradient-to-br from-muted to-muted/50 rounded-xl mb-4 overflow-hidden relative">
-              <img
-                src="/images/competency-tracker.png"
-                alt="Competency Tracker Dashboard"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-caption font-semibold">
-                Featured
-              </div>
-            </div>
-            <CardTitle className="text-heading-2 text-primary group-hover:text-primary-light transition-colors duration-300">
-              Competency Tracker
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col flex-grow pt-0">
-            <p className="text-body text-foreground mb-3 flex-grow leading-relaxed">
-              Customizable web portal deployed at Plymouth State University NH, providing teachers with real-time, data-driven insights on student skills & academic progress through a star-based scoring system.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-colors">
-                AWS Serverless
-              </Badge>
-              <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-colors">
-                React
-              </Badge>
-              <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-colors">
-                Python
-              </Badge>
-              <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-colors">
-                Data Analytics
-              </Badge>
-            </div>
-          </CardContent>
-        </Card>
+        {/* Grid Layout - Narrower cards for better content rendering */}
+        <div className="w-full mx-auto px-4 sm:px-8 lg:px-16 xl:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 justify-items-center max-w-4xl mx-auto">
+            {projects.map((project, index) => (
+              <div key={index} className="relative w-96">
+                {/* Card - Uniform size with fixed sections */}
+                <div className="relative w-full min-h-[520px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
+                  {/* Background Gradient - Aggie Maroon */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 opacity-50" />
 
-        <Card className="glass-card group h-full flex flex-col overflow-hidden">
-          <CardHeader className="pb-6">
-            <div className="aspect-[16/9] bg-gradient-to-br from-muted to-muted/50 rounded-xl mb-4 overflow-hidden relative">
-              <img
-                src="/images/instructor-connect.png"
-                alt="Instructor Connect - AI-powered instructor training platform"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-4 right-4 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-caption font-semibold">
-                AI Powered
+
+                  {/* Project Image Section - Zoomed in */}
+                  <div className="w-full h-52 relative overflow-hidden bg-white flex-shrink-0">
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt}
+                      className="w-full h-full object-cover"
+                      style={project.title === "Competency Tracker" ? { objectPosition: '50% 25%' } : {}}
+                    />
+                  </div>
+
+                  {/* Content - Reduced spacing between text and pills */}
+                  <div className="px-4 pb-4 pt-3 flex-1 flex flex-col">
+                    {/* Timeframe - Fixed height */}
+                    <div className="text-center mb-1 h-6 flex items-center justify-center">
+                      <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium text-primary bg-primary/10 border border-primary/20">
+                        {project.timeframe}
+                      </div>
+                    </div>
+
+                    {/* Title - Fixed height */}
+                    <div className="text-center mb-2 h-8 flex items-center justify-center">
+                      <h3 className="text-base font-bold text-primary leading-tight">
+                        {project.title}
+                      </h3>
+                    </div>
+
+                    {/* Impact Statement - Highlighted pill */}
+                    <div className="mb-2 h-8 flex items-center justify-center">
+                      <div className="inline-flex items-center px-3 py-1.5 bg-primary text-primary-foreground rounded-full text-xs font-bold shadow-md hover:shadow-lg transition-all duration-200 border-2 border-primary-light">
+                        ✅ {project.impact}
+                      </div>
+                    </div>
+
+                    {/* Description - Fixed height with overflow handling */}
+                    <div className="text-center mb-2 h-16 flex items-start justify-center">
+                      <p className="text-xs text-foreground/80 leading-relaxed text-center line-clamp-4">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Technology Badges - Fixed position at bottom */}
+                    <div className="grid grid-cols-2 gap-1.5 mt-auto h-20">
+                      {project.badges.map((badge, i) => (
+                        <div
+                          key={i}
+                          className="px-2 py-1.5 bg-primary/10 text-primary border border-primary/20 rounded-lg text-xs font-medium text-center cursor-pointer transition-all duration-200 hover:bg-red-800 hover:text-white hover:scale-105 hover:shadow-lg hover:border-red-800 flex items-center justify-center"
+                        >
+                          {badge}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bottom Accent - Aggie Maroon */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary to-primary-light" />
+                </div>
               </div>
-            </div>
-            <CardTitle className="text-heading-2 text-primary group-hover:text-primary-light transition-colors duration-300">
-              Instructor Connect
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col flex-grow pt-0">
-            <p className="text-body text-foreground mb-3 flex-grow leading-relaxed">
-              AI-powered portal enabling instructors to practice teaching through chat sessions with AI student
-              personas. Built for a non-profit serving 10,000+ students & rolled out via an RCT involving 250+ daily
-              users.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-colors">
-                AI/ML
-              </Badge>
-              <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-colors">
-                RAG
-              </Badge>
-              <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-colors">
-                Product Development
-              </Badge>
-              <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-colors">
-                System Design
-              </Badge>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </SectionLayout>
   )

@@ -1,102 +1,90 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { NavigationArrow } from "./navigation-arrow"
 import { SectionLayout } from "./layout/section-layout"
+import { SectionHeader } from "./ui/section-header"
 
 export function LeadershipSection() {
   const leadershipRoles = [
     {
       title: "President",
-      organization: "Business Information Technology Students @ TAMU",
+      subtitle: "Business Information Technology Students @ TAMU",
       timeframe: "2024 - Present",
-      achievement:
+      description:
         "Partnered with 3+ local businesses in College Station TX and sourced candidates for technology transformation & web development volunteering opportunities",
       metric: "Active partnerships with 3+ local businesses",
-      icon: () => (
-        <svg className="text-white" style={{ width: "clamp(1.25rem, 3vw, 1.5rem)", height: "clamp(1.25rem, 3vw, 1.5rem)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-          />
-        </svg>
-      ),
+      icon: "👥",
+      color: "from-red-800 to-red-900",
     },
     {
       title: "Co-Founder",
-      organization: "ACM Student Chapter - SASTRA University",
+      subtitle: "ACM Student Chapter - SASTRA University",
       timeframe: "2018 - 2020",
-      achievement:
+      description:
         "Co-founded ACM student chapter at SASTRA University, hosted online coding competitions, conducted in-person workshops and conducted classes on programming concepts",
       metric: "200+ students participated in events",
-      icon: () => (
-        <svg className="text-white" style={{ width: "clamp(1.25rem, 3vw, 1.5rem)", height: "clamp(1.25rem, 3vw, 1.5rem)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-          />
-        </svg>
-      ),
+      icon: "🚀",
+      color: "from-red-700 to-red-800",
     },
   ]
 
   return (
     <SectionLayout id="leadership">
       <div className="section-content">
-        <div className="text-center mb-4 lg:mb-6">
-          <h2 className="section-title bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">Leadership Positions</h2>
-          <p className="section-subtitle">Building communities and driving initiatives forward</p>
-        </div>
+        <SectionHeader
+          title="Positions I've held"
+          subtitle="Building communities and driving initiatives forward"
+        />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 justify-items-center max-w-6xl mx-auto">
           {leadershipRoles.map((item, index) => (
-            <Card key={index} className="glass-card group h-full flex flex-col">
-              <CardHeader className="pb-4">
-                <div className="flex items-center gap-3 sm:gap-4 mb-2">
-                  <div
-                    className="flex-shrink-0 bg-primary rounded-lg flex items-center justify-center"
-                    style={{ width: "clamp(2.5rem, 5vw, 3rem)", height: "clamp(2.5rem, 5vw, 3rem)" }}
-                  >
-                    {item.icon()}
+            <div key={index} className="relative w-80">
+              {/* Card - Matching Journey/Skills Design */}
+              <div className="relative w-full min-h-[400px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
+                {/* Background Gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-10`} />
+
+                {/* Icon Section */}
+                <div className="w-full h-24 relative overflow-hidden flex items-center justify-center bg-white">
+                  <div className="text-5xl leading-none flex items-center justify-center w-full h-full">{item.icon}</div>
+                </div>
+
+                {/* Content */}
+                <div className="px-5 pb-5 pt-3 flex-1 flex flex-col">
+                  {/* Header Section */}
+                  <div className="text-center mb-4">
+                    <h3 className="text-base font-bold text-primary mb-2 leading-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm font-semibold text-muted-foreground mb-1">
+                      {item.subtitle}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {item.timeframe}
+                    </p>
                   </div>
-                  <CardTitle className="text-heading-3 text-primary">{item.title}</CardTitle>
-                </div>
-                <h4 className="text-heading-4 text-foreground mb-2">{item.organization}</h4>
-                <p className="text-body-sm text-muted-foreground flex items-center">
-                  <svg
-                    className="mr-2 text-muted-foreground"
-                    style={{ width: "clamp(1rem, 2vw, 1.25rem)", height: "clamp(1rem, 2vw, 1.25rem)" }}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                  {item.timeframe}
-                </p>
-              </CardHeader>
-              <CardContent className="flex flex-col flex-grow">
-                <p className="text-body-lg text-muted-foreground mb-4 flex-grow leading-relaxed">{item.achievement}</p>
-                <div className="bg-primary/5 rounded-md px-3 py-2 border-l-4 border-primary">
-                  <p className="fluid-text-sm font-medium text-primary">
-                    {item.metric}
+
+                  {/* Description */}
+                  <p className="text-xs text-foreground/80 leading-relaxed text-center mb-4 flex-1">
+                    {item.description}
                   </p>
+
+                  {/* Metric Badge */}
+                  <div className="bg-primary/10 rounded-lg px-3 py-2 border border-primary/20 text-center cursor-pointer transition-all duration-200 hover:bg-red-800 hover:scale-105 hover:shadow-lg hover:border-red-800 group">
+                    <p className="text-xs font-medium text-primary group-hover:text-white">
+                      {item.metric}
+                    </p>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+
+                {/* Bottom Accent */}
+                <div className={`absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r ${item.color}`} />
+              </div>
+            </div>
           ))}
         </div>
 
-        <NavigationArrow targetPath="/interests" ariaLabel="Navigate to Interests page" />
+        <NavigationArrow targetPath="/interests" label="Navigate to Interests page" />
       </div>
     </SectionLayout>
   )

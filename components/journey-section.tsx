@@ -1,12 +1,12 @@
 "use client"
 
-
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { SectionLayout } from "./layout/section-layout"
+import { SectionHeader } from "./ui/section-header"
 
 export function JourneySection() {
 
@@ -14,26 +14,26 @@ export function JourneySection() {
     {
       year: "2020 - 2021",
       type: "Internship",
-      title: "Software Engineer",
+      title: "Software Engineer (Automation)",
       company: "Hewlett Packard",
       location: "Bengaluru, India",
       timeframe: "2020 - 2021",
-      description: "Gained hands-on experience in enterprise software development and learned industry best practices.",
+      description: "Achieved 70% reduction in IT support tickets in 6 months. Gained hands-on experience in enterprise software development and Robotic Process Automation.",
       image: "/images/hewlett-packard.png",
-      achievements: ["ServiceNow", "REST APIs", "Google Cloud", "UiPath"],
+      achievements: ["IT Automation", "Enterprise Software", "Team Collaboration", "Ticket Resolution"],
       color: "from-blue-600 to-blue-800",
       milestone: "HP Internship"
     },
     {
       year: "2021 - 2024",
-      type: "Full-Time",
-      title: "Software Engineer (Security)",
+      type: "Full-Time Employment",
+      title: "Software Engineer (Consulting)",
       company: "Deloitte US-India",
       location: "Chennai, India",
       timeframe: "June 2021 – July 2024",
-      description: "Built secure LLM guardrails system protecting 300+ users from AI attacks. Enhanced performance by 30% through optimized scanning processes.",
+      description: "Built secure LLM guardrails system protecting 300+ users from adversarial attacks. Enhanced system performance by 30% through prompt engineering and API design.",
       image: "/images/deloitte.png",
-      achievements: ["Oracle Consulting", "AWS", "Cloud Security", "LLM Guardrails"],
+      achievements: ["Consulting", "Software Engineering", "Cloud Security", "AI Security"],
       color: "from-green-600 to-green-800",
       milestone: "Deloitte Engineer"
     },
@@ -53,30 +53,29 @@ export function JourneySection() {
     {
       year: "2025 (Summer)",
       type: "Internship",
-      title: "Software Engineer Intern",
+      title: "Software Engineer (Security)",
       company: "Alcon R&D – Product Security",
       location: "Lake Forest, CA",
       timeframe: "May 2025 – August 2025",
       description: "Built AI-driven Q&A portal serving 300+ users with RAG chat interface. Designed medical image tamper detection workflow using Hailo AI accelerators.",
       image: "/images/alcon.png",
-      achievements: ["Medical Devices", "Edge AI", "Enterprise Software", "AI Engineering"],
+      achievements: ["Team collaboration", "AI Innovation", "Enterprise Software", "Product Ownership"],
       color: "from-blue-500 to-blue-700",
       milestone: "Alcon R&D"
     },
   ]
 
-
   return (
     <SectionLayout id="journey">
       <div className="section-content">
-        <div className="text-center mb-4 lg:mb-6">
-          <h2 className="section-title bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">My Professional Journey</h2>
-          <p className="section-subtitle">A timeline of my career milestones</p>
-        </div>
+        <SectionHeader
+          title="My Professional Journey"
+          subtitle="A timeline of my career milestones"
+        />
 
         {/* Timeline Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 justify-items-center">
-          {timelineItems.map((item, index) => (
+          {timelineItems.reverse().map((item, index) => (
             <div key={index} className="relative">
                     {/* Duration on Top */}
                     <div className="text-center mb-4">
@@ -86,7 +85,7 @@ export function JourneySection() {
                     </div>
 
                     {/* Card */}
-                    <div className="relative w-80 min-h-[480px] rounded-3xl overflow-hidden bg-background border border-border/50 transition-all duration-300 hover:shadow-lg shadow-sm flex flex-col">
+                    <div className="relative w-80 min-h-[480px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
                       {/* Background Gradient */}
                       <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-10`} />
 
@@ -121,7 +120,9 @@ export function JourneySection() {
                             <p className="mt-2 text-sm font-medium">{item.company}</p>
                           </div>
                         </PopoverContent>
-                      </Popover>                    {/* Content */}
+                      </Popover>
+
+                    {/* Content */}
                     <div className="px-5 pb-5 pt-3 flex-1 flex flex-col">
                       <div className="text-center mb-3">
                         <div className="flex items-center justify-center gap-2 mb-2">
@@ -158,7 +159,7 @@ export function JourneySection() {
                         {item.achievements.map((achievement, i) => (
                           <div
                             key={i}
-                            className="px-2 py-1 bg-muted rounded-lg text-[11px] font-medium text-muted-foreground text-center border border-border"
+                            className="px-2 py-1 bg-muted rounded-lg text-[11px] font-medium text-muted-foreground text-center border border-border cursor-pointer transition-all duration-200 hover:bg-red-800 hover:text-white hover:scale-105 hover:shadow-lg hover:border-red-800"
                           >
                             {achievement}
                           </div>
