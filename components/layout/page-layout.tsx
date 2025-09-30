@@ -43,11 +43,15 @@ export function PageLayout({ children, className = "" }: PageLayoutProps) {
       previous: { path: '/leadership', label: 'Back to Leadership' }
     },
     '/recommendations': {
-      next: { path: '/contact', label: 'Get in Touch' },
+      next: { path: '/resume', label: 'View Resume' },
       previous: { path: '/interests', label: 'Back to Interests' }
     },
-    '/contact': {
+    '/resume': {
+      next: { path: '/contact', label: 'Get in Touch' },
       previous: { path: '/recommendations', label: 'Back to Recommendations' }
+    },
+    '/contact': {
+      previous: { path: '/resume', label: 'Back to Resume' }
     }
   }
 

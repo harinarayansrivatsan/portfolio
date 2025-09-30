@@ -25,6 +25,7 @@ export function Header() {
     { href: "/leadership", label: "Leadership" },
     { href: "/interests", label: "Interests" },
     { href: "/recommendations", label: "Recommendations" },
+    { href: "/resume", label: "Resume" },
     { href: "/contact", label: "Contact" },
   ]
 

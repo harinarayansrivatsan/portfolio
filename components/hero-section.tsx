@@ -59,9 +59,18 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="flex flex-row gap-4 justify-center items-center animate-slide-in px-2 w-full">
+          <div className="flex flex-row flex-wrap gap-3 sm:gap-4 justify-center items-center animate-slide-in px-2 w-full">
             <Button
               variant="primary"
+              size="lg"
+              className="min-w-[140px] sm:min-w-[160px] group"
+              onClick={() => window.location.href = '/resume'}
+            >
+              View My Resume
+            </Button>
+
+            <Button
+              variant="outline"
               size="lg"
               className="min-w-[140px] sm:min-w-[160px] group"
               onClick={() => window.location.href = '/projects'}
