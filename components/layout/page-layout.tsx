@@ -39,15 +39,15 @@ export function PageLayout({ children, className = "" }: PageLayoutProps) {
       previous: { path: '/skills', label: 'Back to Skills' }
     },
     '/interests': {
-      next: { path: '/testimonials', label: 'View Testimonials' },
+      next: { path: '/recommendations', label: 'View Recommendations' },
       previous: { path: '/leadership', label: 'Back to Leadership' }
     },
-    '/testimonials': {
+    '/recommendations': {
       next: { path: '/contact', label: 'Get in Touch' },
       previous: { path: '/interests', label: 'Back to Interests' }
     },
     '/contact': {
-      previous: { path: '/testimonials', label: 'Back to Testimonials' }
+      previous: { path: '/recommendations', label: 'Back to Recommendations' }
     }
   }
 

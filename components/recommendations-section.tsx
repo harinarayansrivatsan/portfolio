@@ -3,8 +3,8 @@
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
 
-export function TestimonialsSection() {
-  const testimonials = [
+export function RecommendationsSection() {
+  const recommendations = [
     {
       name: "Thomas Jackson",
       title: "Director at Alcon",
@@ -41,25 +41,25 @@ export function TestimonialsSection() {
   ]
 
   return (
-    <SectionLayout id="testimonials">
+    <SectionLayout id="recommendations">
       <div className="section-content">
         <SectionHeader
-          title="Testimonials"
+          title="Recommendations"
           subtitle="What my colleagues and mentors say about working with me"
         />
 
-        {/* Testimonials Grid */}
+        {/* Recommendations Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center px-4">
-          {testimonials.map((testimonial, index) => (
+          {recommendations.map((recommendation, index) => (
             <div key={index} className="relative w-full max-w-80 mx-auto">
               {/* Card */}
               <div className="relative min-h-[480px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
                 {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.color} opacity-10`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${recommendation.color} opacity-10`} />
 
                 {/* Icon Section */}
                 <div className="w-full h-24 relative overflow-hidden flex items-center justify-center bg-white">
-                  <div className="text-5xl leading-none flex items-center justify-center w-full h-full">{testimonial.icon}</div>
+                  <div className="text-5xl leading-none flex items-center justify-center w-full h-full">{recommendation.icon}</div>
                 </div>
 
                 {/* Content */}
@@ -67,32 +67,32 @@ export function TestimonialsSection() {
                   {/* Header */}
                   <div className="text-center mb-3">
                     <h3 className="text-base font-bold text-primary mb-2 leading-tight">
-                      {testimonial.name}
+                      {recommendation.name}
                     </h3>
                     <p className="text-sm font-semibold text-muted-foreground mb-1">
-                      {testimonial.title}
+                      {recommendation.title}
                     </p>
                     <p className="text-xs text-muted-foreground mb-2">
-                      {testimonial.role}
+                      {recommendation.role}
                     </p>
-                    <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${testimonial.color} shadow-lg mb-2`}>
-                      {testimonial.relationship}
+                    <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${recommendation.color} shadow-lg mb-2`}>
+                      {recommendation.relationship}
                     </div>
                     <p className="text-[11px] text-muted-foreground italic">
-                      {testimonial.date}
+                      {recommendation.date}
                     </p>
                   </div>
 
-                  {/* Testimonial Content */}
-                  <div className="flex-1">
-                    <p className="text-xs text-foreground/80 leading-relaxed text-center">
-                      {testimonial.content}
+                  {/* Recommendation Content */}
+                  <div className="flex-1 overflow-y-auto">
+                    <p className="text-xs text-foreground/80 leading-relaxed text-center line-clamp-[12]">
+                      {recommendation.content}
                     </p>
                   </div>
                 </div>
 
                 {/* Bottom Accent */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r ${testimonial.color}`} />
+                <div className={`absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r ${recommendation.color}`} />
               </div>
             </div>
           ))}
