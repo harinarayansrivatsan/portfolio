@@ -85,7 +85,7 @@ export function RecommendationsSection() {
 
                   {/* Recommendation Content */}
                   <div className="flex-1 overflow-y-auto">
-                    <p className="text-xs text-foreground/80 leading-relaxed text-center line-clamp-[12]">
+                    <p className="text-xs text-foreground/80 leading-relaxed text-center">
                       {recommendation.content}
                     </p>
                   </div>
