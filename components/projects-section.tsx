@@ -39,7 +39,7 @@ export function ProjectsSection() {
         <div className="w-full mx-auto px-4 sm:px-8 lg:px-16 xl:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 justify-items-center max-w-4xl mx-auto">
             {projects.map((project, index) => (
-              <div key={index} className="relative w-96">
+              <div key={index} className="relative w-full max-w-96">
                 {/* Card - Uniform size with fixed sections */}
                 <div className="relative w-full min-h-[520px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
                   {/* Background Gradient - Aggie Maroon */}

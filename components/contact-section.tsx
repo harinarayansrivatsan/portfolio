@@ -38,7 +38,7 @@ export function ContactSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 justify-items-center max-w-4xl mx-auto">
           {contactMethods.map((method, index) => (
-            <div key={index} className="relative w-80">
+            <div key={index} className="relative w-full max-w-80">
               {/* Card - Matching Other Sections Design */}
               <a
                 href={method.href}

@@ -71,7 +71,7 @@ export function JourneySection() {
         {/* Timeline Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 justify-items-center">
           {timelineItems.reverse().map((item, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative w-full max-w-80">
                     {/* Duration on Top */}
                     <div className="text-center mb-4">
                       <div className="text-sm font-bold text-foreground">
@@ -80,7 +80,7 @@ export function JourneySection() {
                     </div>
 
                     {/* Card */}
-                    <div className="relative w-80 min-h-[480px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
+                    <div className="relative w-full min-h-[480px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
                       {/* Background Gradient */}
                       <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-10`} />
 

@@ -38,7 +38,7 @@ export function LeadershipSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 justify-items-center max-w-6xl mx-auto">
           {leadershipRoles.map((item, index) => (
-            <div key={index} className="relative w-80">
+            <div key={index} className="relative w-full max-w-80">
               {/* Card - Matching Journey/Skills Design */}
               <div className="relative w-full min-h-[400px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
                 {/* Background Gradient */}
