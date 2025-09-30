@@ -10,16 +10,16 @@ export function HeroSection() {
         <div className="w-full max-w-6xl mx-auto">
           <div className="text-center space-y-4 sm:space-y-5 lg:space-y-6">
           <div className="relative animate-slide-in">
-            <div className="mx-auto bg-gradient-to-br from-white to-gray-50 border-4 border-primary/10 rounded-full overflow-hidden shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(80,0,0,0.25)] transition-all duration-500 hover:scale-105 group"
+            <div className="mx-auto bg-gradient-to-br from-white to-gray-50 border-4 border-primary/10 rounded-full overflow-hidden shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(80,0,0,0.25)] transition-all duration-300 hover:scale-[1.03] group"
                  style={{
                    width: "clamp(8rem, 18vw, 12rem)",
                    height: "clamp(8rem, 18vw, 12rem)"
                  }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
               <img
                 src="/images/professional-headshot.jpg"
                 alt="Hari Narayan Srivatsan"
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
                 style={{
                   imageRendering: 'crisp-edges',
                   WebkitBackfaceVisibility: 'hidden',
@@ -30,7 +30,7 @@ export function HeroSection() {
                 loading="eager"
                 decoding="sync"
               />
-              <div className="absolute inset-0 ring-4 ring-primary/20 ring-offset-4 ring-offset-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 ring-4 ring-primary/20 ring-offset-4 ring-offset-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </div>
 

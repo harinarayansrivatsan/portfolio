@@ -71,7 +71,11 @@ export function JourneySection() {
         {/* Timeline Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 justify-items-center">
           {timelineItems.reverse().map((item, index) => (
-            <div key={index} className="relative w-full max-w-80">
+            <div
+              key={index}
+              className="relative w-full max-w-80 animate-fade-in-up"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
                     {/* Duration on Top */}
                     <div className="text-center mb-4">
                       <div className="text-sm font-bold text-foreground">

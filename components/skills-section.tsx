@@ -49,7 +49,11 @@ export function SkillsSection() {
         <div className="w-full mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch max-w-none mx-auto">
             {skillCategories.map((category, index) => (
-              <div key={index} className="w-full max-w-80 mx-auto md:mx-0">
+              <div
+                key={index}
+                className="w-full max-w-80 mx-auto md:mx-0 animate-fade-in-up"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
                 {/* Card - Aggie Maroon Theme with Subtle Hover Effect */}
                 <div className="relative w-full min-h-[320px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
                   {/* Background Gradient - Aggie Maroon with Enhanced Hover */}

@@ -21,20 +21,22 @@ export function SectionHeader({
   return (
     <div className={cn("text-center mb-4 lg:mb-6", className)}>
       <h1 className={cn(
-        "section-title bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent",
+        "section-title bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent animate-fade-in-up",
         titleClassName
       )}>
         {title}
       </h1>
 
       {subtitle && (
-        <p className={cn("section-subtitle", subtitleClassName)}>
+        <p className={cn("section-subtitle animate-fade-in-up", subtitleClassName)}
+           style={{ animationDelay: '100ms' }}>
           {subtitle}
         </p>
       )}
 
       {description && (
-        <div className="mt-4 max-w-3xl mx-auto">
+        <div className="mt-4 max-w-3xl mx-auto animate-fade-in-up"
+             style={{ animationDelay: '200ms' }}>
           {description}
         </div>
       )}

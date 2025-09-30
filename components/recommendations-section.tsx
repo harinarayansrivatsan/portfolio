@@ -51,7 +51,11 @@ export function RecommendationsSection() {
         {/* Recommendations Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center px-4">
           {recommendations.map((recommendation, index) => (
-            <div key={index} className="relative w-full max-w-80 mx-auto">
+            <div
+              key={index}
+              className="relative w-full max-w-80 mx-auto animate-fade-in-up"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
               {/* Card */}
               <div className="relative min-h-[480px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
                 {/* Background Gradient */}
