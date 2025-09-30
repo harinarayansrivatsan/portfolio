@@ -6,15 +6,15 @@ import { SectionHeader } from "./ui/section-header"
 export function SkillsSection() {
   const skillCategories = [
     {
-      title: "Programming & Data",
+      title: "Programming",
       icon: "💻",
       skills: ["Python", "C++", "SQL", "JavaScript"],
       description: "Core programming languages and data management technologies for building robust applications and handling complex data structures."
     },
     {
-      title: "AI & Machine Learning",
+      title: "AI Tools",
       icon: "🤖",
-      skills: ["Claude Code", "ChatGPT", "Vercel", "Perplexity Comet"],
+      skills: ["Claude Code", "Cursor", "Deep Research", "Perplexity Comet"],
       description: "Advanced AI tools and machine learning techniques for developing intelligent systems and natural language processing applications."
     },
     {
@@ -24,15 +24,15 @@ export function SkillsSection() {
       description: "Cloud infrastructure, containerization, and automated deployment pipelines for scalable and reliable software delivery."
     },
     {
-      title: "Frameworks",
+      title: "Web Frameworks",
       icon: "🌐",
-      skills: ["FastAPI", "LangChain", "React", "Next.js"],
+      skills: ["FastAPI", "LangChain", "React", "Streamlit"],
       description: "Modern web frameworks and development tools for creating high-performance APIs and responsive user interfaces."
     },
     {
       title: "Certifications",
       icon: "🏆",
-      skills: ["AWS Solutions Architect", "CCSK", "PSPO", "ISC2 CC"],
+      skills: ["AWS Solutions Architect", "CCSK v4", "PSPO-1", "ISC2 CC"],
       description: "Professional certifications demonstrating expertise in cloud architecture, security, and agile product management methodologies."
     },
   ]
@@ -49,7 +49,7 @@ export function SkillsSection() {
         <div className="w-full mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch max-w-none mx-auto">
             {skillCategories.map((category, index) => (
-              <div key={index} className="w-80 mx-auto md:mx-0">
+              <div key={index} className="w-full max-w-80 mx-auto md:mx-0">
                 {/* Card - Aggie Maroon Theme with Subtle Hover Effect */}
                 <div className="relative w-full min-h-[320px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
                   {/* Background Gradient - Aggie Maroon with Enhanced Hover */}
