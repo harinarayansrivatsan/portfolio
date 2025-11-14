@@ -39,3 +39,6 @@ CLAUDE.md
 
 # package lock file (using npm)
 package-lock.json
+
+# Resume docx
+public/resume/resume.docx
