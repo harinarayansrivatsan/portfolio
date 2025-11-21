@@ -1,7 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useRouter, usePathname } from "next/navigation"
+import { NAV_ITEMS, ANIMATION_DELAYS } from "@/lib/constants"
+
+const SCROLL_THRESHOLD = 50
 
 export function Header() {
   const router = useRouter()
@@ -11,28 +14,16 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > SCROLL_THRESHOLD)
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/journey", label: "Journey" },
-    { href: "/projects", label: "Projects" },
-    { href: "/skills", label: "Skills" },
-    { href: "/leadership", label: "Leadership" },
-    { href: "/interests", label: "Interests" },
-    { href: "/recommendations", label: "Recommendations" },
-    { href: "/resume", label: "Resume" },
-    { href: "/contact", label: "Contact" },
-  ]
-
-  const handleNavClick = (href: string) => {
+  const handleNavClick = useCallback((href: string) => {
     router.push(href)
     setIsMobileMenuOpen(false)
-  }
+  }, [router])
 
   return (
     <header
@@ -56,7 +47,7 @@ export function Header() {
           </div>
 
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
-            {navItems.map((item) => {
+            {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href
               return (
                 <button
@@ -98,7 +89,7 @@ export function Header() {
         >
           <nav className="bg-white/95 backdrop-blur-xl border border-border/50 rounded-2xl shadow-xl">
             <div className="flex flex-col py-4">
-              {navItems.map((item, index) => {
+              {NAV_ITEMS.map((item, index) => {
                 const isActive = pathname === item.href
                 return (
                   <button
@@ -110,7 +101,7 @@ export function Header() {
                         : "text-foreground hover:text-primary hover:bg-muted/80 hover:scale-105"
                     }`}
                     style={{
-                      animationDelay: `${index * 50}ms`
+                      animationDelay: `${index * ANIMATION_DELAYS.FAST}ms`
                     }}
                   >
                     {item.label}
