@@ -2,16 +2,16 @@
 
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
+import { ANIMATION_DELAYS, GRADIENTS } from "@/lib/constants"
 
-export function InterestsSection() {
-  const interests = [
+const INTERESTS = [
     {
       title: "Health & Wellness",
       description: "Maintaining physical and mental well-being through disciplined fitness routines and mindfulness practices",
       focus: "Balanced lifestyle approach",
       activities: ["Strength Training", "Endurance Running", "Mindfulness", "Outdoor Activities"],
       icon: "💪",
-      color: "from-red-800 to-red-900",
+      color: GRADIENTS.RED_DARK,
     },
     {
       title: "Cultural Exploration",
@@ -19,7 +19,7 @@ export function InterestsSection() {
       focus: "Global perspective building",
       activities: ["Cultural Immersion", "Culinary Arts", "Travel Photography", "Language Learning"],
       icon: "🌍",
-      color: "from-red-800 to-red-900",
+      color: GRADIENTS.RED_DARK,
     },
     {
       title: "Continuous Learning",
@@ -27,7 +27,7 @@ export function InterestsSection() {
       focus: "Lifelong education commitment",
       activities: ["Industry Research", "Professional Development", "Thought Leadership", "Skill Certification"],
       icon: "📚",
-      color: "from-red-700 to-red-800",
+      color: GRADIENTS.RED_MEDIUM,
     },
     {
       title: "Technology Innovation",
@@ -35,10 +35,11 @@ export function InterestsSection() {
       focus: "Future-focused development",
       activities: ["Vibe Coding", "Open Source", "Cloud Solutions", "Security Research"],
       icon: "🚀",
-      color: "from-red-700 to-red-800",
+      color: GRADIENTS.RED_MEDIUM,
     },
-  ]
+  ] as const
 
+export function InterestsSection() {
   return (
     <SectionLayout id="interests">
       <div className="section-content">
@@ -48,11 +49,11 @@ export function InterestsSection() {
         />
 
         <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch max-w-none mx-auto px-4">
-          {interests.map((interest, index) => (
+          {INTERESTS.map((interest, index) => (
             <div
               key={index}
               className="w-full max-w-80 mx-auto md:mx-0 animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
             >
               {/* Card - Matching Other Sections Design */}
               <div className="relative w-full min-h-[480px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
