@@ -2,9 +2,9 @@
 
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
+import { ANIMATION_DELAYS } from "@/lib/constants"
 
-export function SkillsSection() {
-  const skillCategories = [
+const SKILL_CATEGORIES = [
     {
       title: "Programming",
       icon: "💻",
@@ -35,8 +35,9 @@ export function SkillsSection() {
       skills: ["AWS Solutions Architect", "CCSK v4", "PSPO-1", "ISC2 CC"],
       description: "Professional certifications demonstrating expertise in cloud architecture, security, and agile product management methodologies."
     },
-  ]
+  ] as const
 
+export function SkillsSection() {
   return (
     <SectionLayout id="skills">
       <div className="section-content">
@@ -48,11 +49,11 @@ export function SkillsSection() {
         {/* Grid Layout - Optimized for Navigation and Viewport */}
         <div className="w-full mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch max-w-none mx-auto">
-            {skillCategories.map((category, index) => (
+            {SKILL_CATEGORIES.map((category, index) => (
               <div
                 key={index}
                 className="w-full max-w-80 mx-auto md:mx-0 animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
               >
                 {/* Card - Aggie Maroon Theme with Subtle Hover Effect */}
                 <div className="relative w-full min-h-[320px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
