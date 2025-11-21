@@ -3,33 +3,34 @@
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
 import { Button } from "./ui/button"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
+import { ANIMATION_DELAYS } from "@/lib/constants"
+
+const RESUME_PATH = "/resume/Hari Narayan Srivatsan_TAMU_Resume.pdf"
+const MOBILE_BREAKPOINT = 768
 
 export function ResumeSection() {
   const [isMobile, setIsMobile] = useState(false)
-  const resumePath = "/resume/Hari Narayan Srivatsan_TAMU_Resume.pdf"
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
     }
     checkMobile()
-    window.addEventListener('resize', checkMobile)
+    window.addEventListener('resize', checkMobile, { passive: true })
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const handleDownload = () => {
+  const handleDownload = useCallback(() => {
     const link = document.createElement('a')
-    link.href = resumePath
+    link.href = RESUME_PATH
     link.download = 'Hari_Narayan_Srivatsan_Resume.pdf'
-    document.body.appendChild(link)
     link.click()
-    document.body.removeChild(link)
-  }
+  }, [])
 
-  const handleOpenNew = () => {
-    window.open(resumePath, '_blank')
-  }
+  const handleOpenNew = useCallback(() => {
+    window.open(RESUME_PATH, '_blank', 'noopener,noreferrer')
+  }, [])
 
   return (
     <SectionLayout id="resume">
@@ -39,7 +40,7 @@ export function ResumeSection() {
         />
 
         {/* Info Pills - Flex Row */}
-        <div className="flex flex-wrap gap-3 items-center justify-center mb-8 px-4 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+        <div className="flex flex-wrap gap-3 items-center justify-center mb-8 px-4 animate-fade-in-up" style={{ animationDelay: `${ANIMATION_DELAYS.NORMAL}ms` }}>
           {/* Availability Info */}
           <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg">
             <span className="text-xs sm:text-sm font-semibold text-primary whitespace-nowrap">
@@ -68,7 +69,7 @@ export function ResumeSection() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap gap-3 sm:gap-4 justify-center mb-8 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+        <div className="flex flex-wrap gap-3 sm:gap-4 justify-center mb-8 animate-fade-in-up" style={{ animationDelay: `${ANIMATION_DELAYS.SLOW}ms` }}>
           <Button
             onClick={handleDownload}
             variant="primary"
@@ -115,7 +116,7 @@ export function ResumeSection() {
         </div>
 
         {/* Resume Preview */}
-        <div className="w-full mx-auto px-4 sm:px-8 lg:px-16 xl:px-20 animate-fade-in-up" style={{ animationDelay: '250ms' }}>
+        <div className="w-full mx-auto px-4 sm:px-8 lg:px-16 xl:px-20 animate-fade-in-up" style={{ animationDelay: `${ANIMATION_DELAYS.SLOW + 50}ms` }}>
           <div className="max-w-5xl mx-auto">
             {isMobile ? (
               // Mobile: Show download card matching the portfolio card style
@@ -162,10 +163,9 @@ export function ResumeSection() {
               <div className="relative w-full rounded-3xl overflow-hidden bg-white border border-border/50 shadow-sm">
                 <div className="relative w-full" style={{ height: 'calc(100vh - 400px)', minHeight: '600px' }}>
                   <iframe
-                    src={resumePath}
-                    className="w-full h-full"
+                    src={RESUME_PATH}
+                    className="w-full h-full border-0"
                     title="Resume Preview"
-                    style={{ border: 'none' }}
                   />
                 </div>
               </div>
