@@ -2,10 +2,9 @@
 
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
+import { ANIMATION_DELAYS, GRADIENTS } from "@/lib/constants"
 
-export function JourneySection() {
-
-  const timelineItems = [
+const TIMELINE_ITEMS = [
     {
       year: "2020 - 2021",
       type: "Internship",
@@ -16,7 +15,7 @@ export function JourneySection() {
       description: "Achieved 70% reduction in IT support tickets in 6 months. Gained hands-on experience in enterprise software development and Robotic Process Automation.",
       image: "/images/hewlett-packard.png",
       achievements: ["IT Automation", "Enterprise Software", "Team Collaboration", "Ticket Resolution"],
-      color: "from-blue-600 to-blue-800",
+      color: GRADIENTS.BLUE_DARK,
       milestone: "HP Internship"
     },
     {
@@ -29,7 +28,7 @@ export function JourneySection() {
       description: "Built secure LLM guardrails system protecting 300+ users from adversarial attacks. Enhanced system efficiency by 30% through prompt engineering and API design.",
       image: "/images/deloitte.png",
       achievements: ["Consulting", "Software Engineering", "Cloud Security", "AI Security"],
-      color: "from-green-600 to-green-800",
+      color: GRADIENTS.GREEN,
       milestone: "Deloitte Engineer"
     },
     {
@@ -42,7 +41,7 @@ export function JourneySection() {
       description: "Developed multilingual AI onboarding portal for educational non-profit serving 30M+ students. Reduced cloud costs by 80% through serverless migration.",
       image: "/images/gar.png",
       achievements: ["Product Launch", "RAG", "Marketing Research", "System Design"],
-      color: "from-red-800 to-red-900",
+      color: GRADIENTS.RED_DARK,
       milestone: "Graduate Assistant"
     },
     {
@@ -55,11 +54,12 @@ export function JourneySection() {
       description: "Built AI-driven Q&A portal serving 300+ users with RAG chat interface. Designed medical image tamper detection workflow using Hailo AI accelerators.",
       image: "/images/alcon.png",
       achievements: ["Team collaboration", "AI Innovation", "Enterprise Software", "Product Ownership"],
-      color: "from-blue-500 to-blue-700",
+      color: GRADIENTS.BLUE,
       milestone: "Alcon R&D"
     },
-  ]
+] as const
 
+export function JourneySection() {
   return (
     <SectionLayout id="journey">
       <div className="section-content">
@@ -70,11 +70,11 @@ export function JourneySection() {
 
         {/* Timeline Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 justify-items-center">
-          {timelineItems.reverse().map((item, index) => (
+          {[...TIMELINE_ITEMS].reverse().map((item, index) => (
             <div
               key={index}
               className="relative w-full max-w-80 animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
             >
                     {/* Duration on Top */}
                     <div className="text-center mb-4">
@@ -93,16 +93,8 @@ export function JourneySection() {
                         <img
                           src={item.image}
                           alt={item.company}
-                          className="w-full h-full object-contain block"
-                          style={{
-                            imageRendering: 'crisp-edges',
-                            objectPosition: 'center',
-                            display: 'block',
-                            margin: 0,
-                            padding: 0,
-                            transform: 'scale(1.5)',
-                            transformOrigin: 'center'
-                          }}
+                          className="w-full h-full object-contain block scale-150"
+                          loading="lazy"
                         />
                       </div>
 
