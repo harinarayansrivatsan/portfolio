@@ -2,9 +2,9 @@
 
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
+import { ANIMATION_DELAYS } from "@/lib/constants"
 
-export function ProjectsSection() {
-  const projects = [
+const PROJECTS = [
     {
       title: "Competency Tracker",
       description: "Customizable web portal providing teachers with real-time, data-driven insights on student skills & academic progress through a star-based scoring system.",
@@ -25,8 +25,9 @@ export function ProjectsSection() {
       impact: "Deployed at Agastya International Foundation",
       timeframe: "2024"
     }
-  ]
+] as const
 
+export function ProjectsSection() {
   return (
     <SectionLayout id="projects">
       <div className="section-content">
@@ -38,11 +39,11 @@ export function ProjectsSection() {
         {/* Grid Layout - Narrower cards for better content rendering */}
         <div className="w-full mx-auto px-4 sm:px-8 lg:px-16 xl:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 justify-items-center max-w-4xl mx-auto">
-            {projects.map((project, index) => (
+            {PROJECTS.map((project, index) => (
               <div
                 key={index}
                 className="relative w-full max-w-96 animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
               >
                 {/* Card - Uniform size with fixed sections */}
                 <div className="relative w-full min-h-[520px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
