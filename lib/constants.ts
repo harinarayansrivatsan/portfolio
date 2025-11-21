@@ -1,48 +1,37 @@
-export const CONTACT_INFO = {
-  name: "Hari Narayan Srivatsan",
-  email: "harinarayan.professional@gmail.com",
-  phone: "+1 979 574 6716",
-  linkedin: "https://linkedin.com/in/harinarayansrivatsan",
-  github: "https://github.com/harinarayansrivatsan",
-  location: "College Station, TX",
-} as const
-
-export const EDUCATION = {
-  masters: {
-    degree: "Master of Science in Management Information Systems",
-    school: "Texas A&M University",
-    location: "College Station, TX",
-    graduation: "May 2026",
-    gpa: "3.85/4.00",
-    coursework: ["Cloud Computing", "Systems Design", "Data Management", "Product & Project Management"],
-  },
-  bachelors: {
-    degree: "Bachelor of Technology in Computer Science",
-    school: "SASTRA Deemed University",
-    location: "Thanjavur, India",
-    graduation: "July 2020",
-    coursework: ["Software Engineering", "Data Structures and Algorithms", "Python Programming"],
-  },
-} as const
-
-export const SKILLS = {
-  programming: ["JavaScript", "TypeScript", "Python", "SQL/NoSQL databases", "Object Oriented Design", "Code review"],
-  frameworks: ["LangChain", "FastAPI", "Streamlit", "React"],
-  cloud: ["AWS (Serverless, CloudFormation)", "Docker", "Git", "Linux"],
-  product: ["Agile/Scrum", "User Interviews", "Persona Mapping", "Lucid Chart"],
-  certifications: [
-    "AWS Solutions Architect Associate",
-    "Professional Scrum Product Owner",
-    "Cloud Security Knowledge CCSK",
-  ],
-} as const
-
-export const NAVIGATION_ITEMS = [
-  { id: "home", label: "Home" },
-  { id: "journey", label: "Journey" },
-  { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
-  { id: "extracurriculars", label: "Extracurriculars" },
-  { id: "interests", label: "Interests" },
-  { id: "contact", label: "Contact" },
+// Navigation configuration
+export const NAV_ITEMS = [
+  { href: "/", label: "Home" },
+  { href: "/journey", label: "Journey" },
+  { href: "/projects", label: "Projects" },
+  { href: "/skills", label: "Skills" },
+  { href: "/leadership", label: "Leadership" },
+  { href: "/interests", label: "Interests" },
+  { href: "/recommendations", label: "Recommendations" },
+  { href: "/resume", label: "Resume" },
+  { href: "/contact", label: "Contact" },
 ] as const
+
+// Animation delays
+export const ANIMATION_DELAYS = {
+  FAST: 50,
+  NORMAL: 100,
+  SLOW: 200,
+} as const
+
+// Color gradients
+export const GRADIENTS = {
+  PRIMARY: "from-primary to-primary-light",
+  SECONDARY: "from-secondary to-secondary-light",
+  RED_DARK: "from-red-800 to-red-900",
+  RED_MEDIUM: "from-red-700 to-red-800",
+  BLUE: "from-blue-500 to-blue-700",
+  BLUE_DARK: "from-blue-600 to-blue-800",
+  GREEN: "from-green-600 to-green-800",
+} as const
+
+// Dimensions
+export const DIMENSIONS = {
+  CARD_MIN_HEIGHT: "min-h-[400px]",
+  CARD_MAX_WIDTH: "max-w-80",
+  ICON_HEIGHT: "h-24",
+} as const
