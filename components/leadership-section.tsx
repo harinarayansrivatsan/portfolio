@@ -1,11 +1,10 @@
 "use client"
 
-import { NavigationArrow } from "./navigation-arrow"
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
+import { ANIMATION_DELAYS, GRADIENTS } from "@/lib/constants"
 
-export function LeadershipSection() {
-  const leadershipRoles = [
+const LEADERSHIP_ROLES = [
     {
       title: "President",
       subtitle: "Business Information Technology Students @ TAMU",
@@ -14,7 +13,7 @@ export function LeadershipSection() {
         "Partnered with 3+ local businesses in College Station TX and sourced candidates for technology transformation & web development volunteering opportunities",
       metric: "Active partnerships with 3+ local businesses",
       icon: "👥",
-      color: "from-red-800 to-red-900",
+      color: GRADIENTS.RED_DARK,
     },
     {
       title: "Co-Founder",
@@ -24,10 +23,11 @@ export function LeadershipSection() {
         "Co-founded ACM student chapter at SASTRA University, hosted online coding competitions, conducted in-person workshops and conducted classes on programming concepts",
       metric: "200+ students participated in events",
       icon: "🚀",
-      color: "from-red-700 to-red-800",
+      color: GRADIENTS.RED_MEDIUM,
     },
-  ]
+  ] as const
 
+export function LeadershipSection() {
   return (
     <SectionLayout id="leadership">
       <div className="section-content">
@@ -37,11 +37,11 @@ export function LeadershipSection() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 justify-items-center max-w-6xl mx-auto">
-          {leadershipRoles.map((item, index) => (
+          {LEADERSHIP_ROLES.map((item, index) => (
             <div
               key={index}
               className="relative w-full max-w-80 animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
             >
               {/* Card - Matching Journey/Skills Design */}
               <div className="relative w-full min-h-[400px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
@@ -88,7 +88,7 @@ export function LeadershipSection() {
           ))}
         </div>
 
-        <NavigationArrow targetPath="/interests" label="Navigate to Interests page" />
+
       </div>
     </SectionLayout>
   )
