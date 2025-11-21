@@ -3,9 +3,9 @@
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
 import { Button } from "./ui/button"
+import { ANIMATION_DELAYS, GRADIENTS } from "@/lib/constants"
 
-export function ContactSection() {
-  const contactMethods = [
+const CONTACT_METHODS = [
     {
       title: "LinkedIn",
       subtitle: "Professional Networking",
@@ -13,7 +13,7 @@ export function ContactSection() {
       contact: "linkedin.com/in/harinarayansrivatsan",
       href: "https://linkedin.com/in/harinarayansrivatsan",
       icon: "💼",
-      color: "from-red-700 to-red-800",
+      color: GRADIENTS.RED_MEDIUM,
       availability: "Active daily"
     },
     {
@@ -23,11 +23,12 @@ export function ContactSection() {
       contact: "harinarayan.professional@gmail.com",
       href: "mailto:harinarayan.professional@gmail.com",
       icon: "📧",
-      color: "from-red-800 to-red-900",
+      color: GRADIENTS.RED_DARK,
       availability: "Response within 24 hours"
     }
-  ]
+  ] as const
 
+export function ContactSection() {
   return (
     <SectionLayout id="contact">
       <div className="section-content">
@@ -37,11 +38,11 @@ export function ContactSection() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 justify-items-center max-w-4xl mx-auto">
-          {contactMethods.map((method, index) => (
+          {CONTACT_METHODS.map((method, index) => (
             <div
               key={index}
               className="relative w-full max-w-80 animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
             >
               {/* Card - Matching Other Sections Design */}
               <a
