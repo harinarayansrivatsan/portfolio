@@ -1,7 +1,6 @@
 "use client"
 
 import { HeroSection } from "@/components/hero-section"
-import { AboutSection } from "@/components/about-section"
 import { JourneySection } from "@/components/journey-section"
 import { ProjectsSection } from "@/components/projects-section"
 import { SkillsSection } from "@/components/skills-section"
@@ -19,7 +18,6 @@ export default function HomePage() {
       <Header />
       <main className="w-full">
         <HeroSection />
-        <AboutSection />
         <JourneySection />
         <ProjectsSection />
         <SkillsSection />
