@@ -39,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${openSans.variable} ${montserrat.variable} ${jetbrainsMono.variable} antialiased h-full`} suppressHydrationWarning>
-      <body className="font-sans bg-background text-foreground h-full m-0 p-0">
+    <html lang="en" className={`${openSans.variable} ${montserrat.variable} ${jetbrainsMono.variable} antialiased`} suppressHydrationWarning>
+      <body className="font-sans bg-background text-foreground m-0 p-0">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

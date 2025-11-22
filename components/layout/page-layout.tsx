@@ -3,6 +3,7 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { NavigationArrow } from "@/components/navigation-arrow"
+import { ScrollToTopButton } from "@/components/scroll-to-top-button"
 import { ReactNode } from "react"
 import { usePathname } from "next/navigation"
 
@@ -20,50 +21,45 @@ export function PageLayout({ children, className = "" }: PageLayoutProps) {
     previous?: { path: string; label: string };
   }> = {
     '/': {
-      next: { path: '/journey', label: 'View Journey' }
+      next: { path: '/about', label: 'About Me' }
+    },
+    '/about': {
+      next: { path: '/journey', label: 'View Experience' },
+      previous: { path: '/', label: 'Back to Home' }
     },
     '/journey': {
       next: { path: '/projects', label: 'View Projects' },
-      previous: { path: '/', label: 'Back to Home' }
+      previous: { path: '/about', label: 'Back to About' }
     },
     '/projects': {
       next: { path: '/skills', label: 'View Skills' },
-      previous: { path: '/journey', label: 'Back to Journey' }
+      previous: { path: '/journey', label: 'Back to Experience' }
     },
     '/skills': {
-      next: { path: '/leadership', label: 'View Leadership' },
+      next: { path: '/recommendations', label: 'View Testimonials' },
       previous: { path: '/projects', label: 'Back to Projects' }
     },
-    '/leadership': {
-      next: { path: '/interests', label: 'View Interests' },
+    '/recommendations': {
+      next: { path: '/contact', label: 'Get in Touch' },
       previous: { path: '/skills', label: 'Back to Skills' }
     },
-    '/interests': {
-      next: { path: '/recommendations', label: 'View Recommendations' },
-      previous: { path: '/leadership', label: 'Back to Leadership' }
-    },
-    '/recommendations': {
-      next: { path: '/resume', label: 'View Resume' },
-      previous: { path: '/interests', label: 'Back to Interests' }
-    },
-    '/resume': {
-      next: { path: '/contact', label: 'Get in Touch' },
-      previous: { path: '/recommendations', label: 'Back to Recommendations' }
-    },
     '/contact': {
-      previous: { path: '/resume', label: 'Back to Resume' }
+      previous: { path: '/recommendations', label: 'Back to Testimonials' }
     }
   }
 
   const currentNav = navigationMap[pathname]
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background">
       <Header />
-      <main className={`relative z-10 flex-1 ${className}`}>
+      <main className={`relative z-10 pt-20 ${className}`}>
         {children}
       </main>
       <Footer />
+
+      {/* Scroll to Top / Home Button */}
+      <ScrollToTopButton />
 
       {/* Smart Navigation - Bidirectional arrows */}
       {currentNav?.next && (
