@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
 import { TEXT, COMPONENTS, SPACING, cn, getSectionClasses } from "@/lib/design-system"
@@ -134,14 +135,16 @@ function TimelineCard({ item, isLeft }: { item: typeof TIMELINE_ITEMS[number], i
     )}>
       {/* Company Logo */}
       <div className={cn(
-        "w-full flex items-center justify-center bg-gradient-to-br from-muted/50 to-muted/30 rounded-lg overflow-hidden mb-4",
+        "relative w-full bg-gradient-to-br from-muted/50 to-muted/30 rounded-lg overflow-hidden mb-4",
         CONFIG.imageHeight
       )}>
-        <img
+        <Image
           src={item.image}
-          alt={item.company}
-          className="max-w-full max-h-full object-contain p-4"
-          loading="lazy"
+          alt={`${item.company} logo`}
+          fill
+          className="object-contain p-4"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={false}
         />
       </div>
 
