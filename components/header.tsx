@@ -44,7 +44,7 @@ export function Header() {
 
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -70% 0px",
+      rootMargin: "-50% 0px -30% 0px",
       threshold: 0,
     }
 
@@ -111,13 +111,13 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className={cn("hidden md:flex items-center", SPACING.gap.xs)}>
             {NAV_ITEMS.map((item) => {
-              const isActive = activeSection === item.id
+              const isActive = isHomePage && activeSection === item.id
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
                   className={cn(
-                    "px-3 py-1.5 rounded-lg transition-all duration-200",
+                    "px-3 py-1.5 rounded-full transition-all duration-200",
                     TEXT.nav.link,
                     isActive
                       ? "bg-primary text-white shadow-sm"
@@ -128,19 +128,24 @@ export function Header() {
                 </button>
               )
             })}
-            {EXTERNAL_NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "px-3 py-1.5 rounded-lg transition-all duration-200",
-                  TEXT.nav.link,
-                  "text-muted-foreground hover:text-primary hover:bg-muted/50"
-                )}
-              >
-                {item.label}
-              </a>
-            ))}
+            {EXTERNAL_NAV_ITEMS.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "px-3 py-1.5 rounded-full transition-all duration-200",
+                    TEXT.nav.link,
+                    isActive
+                      ? "bg-primary text-white shadow-sm"
+                      : "text-muted-foreground hover:text-primary hover:bg-muted/50"
+                  )}
+                >
+                  {item.label}
+                </a>
+              )
+            })}
           </nav>
 
           {/* Mobile Menu Button */}
@@ -162,46 +167,48 @@ export function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <div
-          className={cn(
-            "md:hidden overflow-hidden transition-all duration-300",
-            isMobileMenuOpen ? "max-h-[500px] pb-4" : "max-h-0"
-          )}
-        >
-          <nav className={cn("flex flex-col pt-2", SPACING.gap.xs)}>
-            {NAV_ITEMS.map((item) => {
-              const isActive = activeSection === item.id
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={cn(
-                    "px-3 py-2 rounded-lg transition-all duration-200 text-left",
-                    TEXT.nav.link,
-                    isActive
-                      ? "bg-primary text-white"
-                      : "text-muted-foreground hover:text-primary hover:bg-muted/50"
-                  )}
-                >
-                  {item.label}
-                </button>
-              )
-            })}
-            {EXTERNAL_NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "px-3 py-2 rounded-lg transition-all duration-200 text-left",
-                  TEXT.nav.link,
-                  "text-muted-foreground hover:text-primary hover:bg-muted/50"
-                )}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </div>
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full right-4 mt-2 bg-white rounded-lg shadow-xl border border-border/30 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200 min-w-[200px]">
+            <nav className={cn("flex flex-col p-2", SPACING.gap.xs)}>
+              {NAV_ITEMS.map((item) => {
+                const isActive = isHomePage && activeSection === item.id
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleNavClick(item.id)}
+                    className={cn(
+                      "px-4 py-2 rounded-full transition-all duration-200 text-right whitespace-nowrap",
+                      TEXT.nav.link,
+                      isActive
+                        ? "bg-primary text-white"
+                        : "text-muted-foreground hover:text-white hover:bg-primary"
+                    )}
+                  >
+                    {item.label}
+                  </button>
+                )
+              })}
+              {EXTERNAL_NAV_ITEMS.map((item) => {
+                const isActive = pathname === item.href
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      "px-4 py-2 rounded-full transition-all duration-200 text-right whitespace-nowrap",
+                      TEXT.nav.link,
+                      isActive
+                        ? "bg-primary text-white"
+                        : "text-muted-foreground hover:text-white hover:bg-primary"
+                    )}
+                  >
+                    {item.label}
+                  </a>
+                )
+              })}
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   )
