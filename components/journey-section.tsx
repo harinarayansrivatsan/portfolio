@@ -2,152 +2,216 @@
 
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
-import { ANIMATION_DELAYS, GRADIENTS } from "@/lib/constants"
+import { TEXT, COMPONENTS, SPACING, cn, getSectionClasses } from "@/lib/design-system"
+import { SECTION_CONFIGS } from "@/lib/design-tokens"
+import { useScrollFade } from "@/hooks/use-scroll-fade"
+
+const CONFIG = SECTION_CONFIGS.journey
+const classes = getSectionClasses('journey')
 
 const TIMELINE_ITEMS = [
-    {
-      year: "2020 - 2021",
-      type: "Internship",
-      title: "Software Engineer (Automation)",
-      company: "Hewlett Packard",
-      location: "Bengaluru, India",
-      timeframe: "2020 - 2021",
-      description: "Achieved 70% reduction in IT support tickets in 6 months. Gained hands-on experience in enterprise software development and Robotic Process Automation.",
-      image: "/images/hewlett-packard.png",
-      achievements: ["IT Automation", "Enterprise Software", "Team Collaboration", "Ticket Resolution"],
-      color: GRADIENTS.BLUE_DARK,
-      milestone: "HP Internship"
-    },
-    {
-      year: "2021 - 2024",
-      type: "Full-Time Employment",
-      title: "Software Engineer (Consulting)",
-      company: "Deloitte US-India",
-      location: "Chennai, India",
-      timeframe: "June 2021 – July 2024",
-      description: "Built secure LLM guardrails system protecting 300+ users from adversarial attacks. Enhanced system efficiency by 30% through prompt engineering and API design.",
-      image: "/images/deloitte.png",
-      achievements: ["Consulting", "Software Engineering", "Cloud Security", "AI Security"],
-      color: GRADIENTS.GREEN,
-      milestone: "Deloitte Engineer"
-    },
-    {
-      year: "2024 - 2025",
-      type: "Research Assistant",
-      title: "Software Engineer (Research)",
-      company: "Texas A&M University",
-      location: "College Station, TX",
-      timeframe: "September 2024 – May 2025",
-      description: "Developed multilingual AI onboarding portal for educational non-profit serving 30M+ students. Reduced cloud costs by 80% through serverless migration.",
-      image: "/images/gar.png",
-      achievements: ["Product Launch", "RAG", "Marketing Research", "System Design"],
-      color: GRADIENTS.RED_DARK,
-      milestone: "Graduate Assistant"
-    },
-    {
-      year: "2025 (Summer)",
-      type: "Internship",
-      title: "Software Engineer (Security)",
-      company: "Alcon R&D – Product Security",
-      location: "Lake Forest, CA",
-      timeframe: "May 2025 – August 2025",
-      description: "Built AI-driven Q&A portal serving 300+ users with RAG chat interface. Designed medical image tamper detection workflow using Hailo AI accelerators.",
-      image: "/images/alcon.png",
-      achievements: ["Team collaboration", "AI Innovation", "Enterprise Software", "Product Ownership"],
-      color: GRADIENTS.BLUE,
-      milestone: "Alcon R&D"
-    },
+  {
+    year: "2020 - 2021",
+    type: "Internship",
+    title: "Software Engineer (Automation)",
+    company: "Hewlett Packard",
+    location: "Bengaluru, India",
+    timeframe: "2020 - 2021",
+    description: "Achieved 70% reduction in IT support tickets in 6 months. Gained hands-on experience in enterprise software development and Robotic Process Automation.",
+    image: "/images/hewlett-packard.png",
+    achievements: ["IT Automation", "Enterprise Software", "Team Collaboration", "Ticket Resolution"],
+    milestone: "HP Internship"
+  },
+  {
+    year: "2021 - 2024",
+    type: "Full-Time Employment",
+    title: "Software Engineer (Consulting)",
+    company: "Deloitte US-India",
+    location: "Chennai, India",
+    timeframe: "June 2021 – July 2024",
+    description: "Built secure LLM guardrails system protecting 300+ users from adversarial attacks. Enhanced system efficiency by 30% through prompt engineering and API design.",
+    image: "/images/deloitte.png",
+    achievements: ["Consulting", "Software Engineering", "Cloud Security", "AI Security"],
+    milestone: "Deloitte Engineer"
+  },
+  {
+    year: "2024 - 2025",
+    type: "Research Assistant",
+    title: "Software Engineer (Research)",
+    company: "Texas A&M University",
+    location: "College Station, TX",
+    timeframe: "September 2024 – May 2025",
+    description: "Developed multilingual AI onboarding portal for educational non-profit serving 30M+ students. Reduced cloud costs by 80% through serverless migration.",
+    image: "/images/gar.png",
+    achievements: ["Product Launch", "RAG", "Marketing Research", "System Design"],
+    milestone: "Graduate Assistant"
+  },
+  {
+    year: "2025 (Summer)",
+    type: "Internship",
+    title: "Software Engineer (Security)",
+    company: "Alcon R&D – Product Security",
+    location: "Lake Forest, CA",
+    timeframe: "May 2025 – August 2025",
+    description: "Built AI-driven Q&A portal serving 300+ users with RAG chat interface. Designed medical image tamper detection workflow using Hailo AI accelerators.",
+    image: "/images/alcon.png",
+    achievements: ["Team collaboration", "AI Innovation", "Enterprise Software", "Product Ownership"],
+    milestone: "Alcon R&D"
+  },
 ] as const
+
+function TimelineItem({ item, index, isLast }: { item: typeof TIMELINE_ITEMS[number], index: number, isLast: boolean }) {
+  const { ref, isVisible } = useScrollFade({ threshold: 0.3, triggerOnce: true })
+  const isLeft = index % 2 === 0
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "relative flex items-start w-full transition-all duration-700",
+        "mb-12 md:mb-16",
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      )}
+    >
+      {/* Timeline line - Desktop */}
+      {!isLast && (
+        <div className="hidden md:block absolute left-1/2 top-16 w-px h-[calc(100%+4rem)] bg-gradient-to-b from-primary via-secondary/50 to-primary/20 -translate-x-1/2 z-0" />
+      )}
+
+      {/* Timeline line - Mobile */}
+      {!isLast && (
+        <div className="md:hidden absolute left-5 top-16 w-px h-[calc(100%+3rem)] bg-gradient-to-b from-primary via-secondary/50 to-primary/20 z-0" />
+      )}
+
+      {/* Content Layout */}
+      <div className="w-full md:grid md:grid-cols-2 md:gap-8 relative">
+        {/* Left side content (Desktop) */}
+        <div className={cn(
+          "hidden md:flex md:flex-col md:items-start",
+          isLeft ? "" : "md:col-start-2"
+        )}>
+          <TimelineCard item={item} isLeft={isLeft} />
+        </div>
+
+        {/* Center timeline marker */}
+        <div className={cn(
+          "flex items-start md:absolute md:left-1/2 md:-translate-x-1/2 md:top-0",
+          "mb-4 md:mb-0 z-20"
+        )}>
+          <div className="flex flex-col items-center gap-2">
+            {/* Animated dot */}
+            <div className="relative">
+              <div className="absolute inset-0 rounded-full bg-primary/30 animate-ping" />
+              <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary border-4 border-white shadow-lg flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-white" />
+              </div>
+            </div>
+            {/* Year badge */}
+            <div className={cn(
+              "px-3 py-1.5 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-bold whitespace-nowrap shadow-md",
+              TEXT.card.badge
+            )}>
+              {item.year}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile layout */}
+        <div className="md:hidden w-full pl-14">
+          <TimelineCard item={item} isLeft={false} />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function TimelineCard({ item, isLeft }: { item: typeof TIMELINE_ITEMS[number], isLeft: boolean }) {
+  return (
+    <div className={cn(
+      classes.card,
+      "hover:scale-[1.02] max-w-md w-full",
+      "border-l-4 border-l-primary/20 hover:border-l-primary transition-all"
+    )}>
+      {/* Company Logo */}
+      <div className={cn(
+        "w-full flex items-center justify-center bg-gradient-to-br from-muted/50 to-muted/30 rounded-lg overflow-hidden mb-4",
+        CONFIG.imageHeight
+      )}>
+        <img
+          src={item.image}
+          alt={item.company}
+          className="max-w-full max-h-full object-contain p-4"
+          loading="lazy"
+        />
+      </div>
+
+      {/* Header */}
+      <div className="mb-3">
+        <div className={cn("flex items-center flex-wrap mb-2", SPACING.gap.xs)}>
+          <span className="px-2 py-1 bg-gradient-to-r from-primary to-primary-light text-white rounded-md text-xs font-bold">
+            {item.type}
+          </span>
+          <span className="px-2 py-1 bg-secondary/10 text-secondary-light border border-secondary/30 rounded-md text-xs font-semibold">
+            {item.timeframe}
+          </span>
+        </div>
+
+        <h3 className={cn(TEXT.card.title, "text-foreground mb-1 font-bold")}>
+          {item.title}
+        </h3>
+
+        <p className={cn(TEXT.card.subtitle, "text-primary font-bold mb-1")}>
+          {item.company}
+        </p>
+
+        <p className={cn(TEXT.card.meta, "text-muted-foreground flex items-center gap-1")}>
+          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+          </svg>
+          {item.location}
+        </p>
+      </div>
+
+      {/* Description */}
+      <p className={cn(TEXT.card.body, "text-muted-foreground mb-3 leading-relaxed")}>
+        {item.description}
+      </p>
+
+      {/* Achievements */}
+      <div className={cn("flex flex-wrap", SPACING.gap.xs)}>
+        {item.achievements.map((achievement, i) => (
+          <span
+            key={i}
+            className="px-2 py-1 bg-secondary/10 text-secondary border border-secondary/30 rounded-md text-xs font-medium hover:bg-secondary hover:text-white transition-all duration-200 cursor-default"
+          >
+            {achievement}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export function JourneySection() {
   return (
     <SectionLayout id="journey">
-      <div className="section-content">
-        <SectionHeader
-          title="My Professional Journey"
-          subtitle="A timeline of my career milestones"
-        />
+      <div className={classes.wrapper}>
+        <div className="w-full max-w-6xl mx-auto">
+          <SectionHeader
+            title="Professional Journey"
+            subtitle="Career milestones and experiences"
+          />
 
-        {/* Timeline Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 justify-items-center">
-          {[...TIMELINE_ITEMS].reverse().map((item, index) => (
-            <div
-              key={index}
-              className="relative w-full max-w-80 animate-fade-in-up"
-              style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
-            >
-                    {/* Duration on Top */}
-                    <div className="text-center mb-4">
-                      <div className="text-sm font-bold text-foreground">
-                        {item.timeframe}
-                      </div>
-                    </div>
-
-                    {/* Card */}
-                    <div className="relative w-full min-h-[480px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
-                      {/* Background Gradient */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-10`} />
-
-                      {/* High Quality Company Image */}
-                      <div className="w-full h-48 relative overflow-hidden bg-white">
-                        <img
-                          src={item.image}
-                          alt={item.company}
-                          className="w-full h-full object-contain block scale-150"
-                          loading="lazy"
-                        />
-                      </div>
-
-                    {/* Content */}
-                    <div className="px-5 pb-5 pt-3 flex-1 flex flex-col">
-                      <div className="text-center mb-3">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <div className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold text-white bg-gradient-to-r ${item.color} shadow-lg`}>
-                            {item.type}
-                          </div>
-                          {(item.company.includes('Texas A&M') || item.company.includes('Alcon')) && (
-                            <div className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium text-foreground bg-blue-100 border border-blue-200">
-                              🇺🇸 US
-                            </div>
-                          )}
-                          {(item.company.includes('Hewlett Packard') || item.company.includes('Deloitte')) && (
-                            <div className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium text-foreground bg-orange-100 border border-orange-200">
-                              🇮🇳 India
-                            </div>
-                          )}
-                        </div>
-                        <h3 className="text-base font-bold text-foreground mb-1 leading-tight">
-                          {item.title}
-                        </h3>
-                        <p className="text-xs font-semibold text-muted-foreground">
-                          {item.company}
-                        </p>
-                        <p className="text-[11px] text-muted-foreground">
-                          {item.location}
-                        </p>
-                      </div>
-
-                      <p className="text-xs text-foreground/80 leading-relaxed text-center mb-3 flex-1">
-                        {item.description}
-                      </p>
-
-                      <div className="grid grid-cols-2 gap-1.5">
-                        {item.achievements.map((achievement, i) => (
-                          <div
-                            key={i}
-                            className="px-2 py-1 bg-muted rounded-lg text-[11px] font-medium text-muted-foreground text-center border border-border cursor-pointer transition-all duration-200 hover:bg-red-800 hover:text-white hover:scale-105 hover:shadow-lg hover:border-red-800"
-                          >
-                            {achievement}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Bottom Accent */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r ${item.color}`} />
-                  </div>
-            </div>
-          ))}
+          <div className="w-full mt-6 md:mt-8">
+            {[...TIMELINE_ITEMS].reverse().map((item, index) => (
+              <TimelineItem
+                key={index}
+                item={item}
+                index={index}
+                isLast={index === TIMELINE_ITEMS.length - 1}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </SectionLayout>

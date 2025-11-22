@@ -3,93 +3,149 @@
 import { SectionLayout } from "./layout/section-layout"
 import { Button } from "./ui/button"
 import { useCallback } from "react"
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
+import { TEXT, LAYOUT, SPACING, COMPONENTS, cn } from "@/lib/design-system"
+import { SECTION_CONFIGS } from "@/lib/design-tokens"
 
-const PROFILE_IMAGE_SIZE = "clamp(8rem, 18vw, 12rem)"
+const CONFIG = SECTION_CONFIGS.hero
+
+const STATS = [
+  { value: "3+", label: "Years Experience" },
+  { value: "300+", label: "Users Impacted" },
+  { value: "80%", label: "Cost Reduction" },
+]
 
 export function HeroSection() {
-  const handleNavigation = useCallback((path: string) => {
-    window.location.href = path
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  })
+
+  const handleNavigation = useCallback((sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
   }, [])
 
   return (
     <SectionLayout id="home">
-      <div className="section-content">
-        <div className="w-full max-w-6xl mx-auto">
-          <div className="text-center space-y-4 sm:space-y-5 lg:space-y-6">
-          <div className="relative animate-slide-in">
-            <div 
-              className="mx-auto bg-gradient-to-br from-white to-gray-50 border-4 border-primary/10 rounded-full overflow-hidden shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(80,0,0,0.25)] transition-all duration-300 hover:scale-[1.03] group"
-              style={{
-                width: PROFILE_IMAGE_SIZE,
-                height: PROFILE_IMAGE_SIZE
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-              <img
-                src="/images/professional-headshot.jpg"
-                alt="Hari Narayan Srivatsan"
-                className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-110 will-change-transform"
-                loading="eager"
-                decoding="sync"
-              />
-              <div className="absolute inset-0 ring-4 ring-primary/20 ring-offset-4 ring-offset-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
+      <div ref={ref} className={LAYOUT.section.wrapper}>
+        <div className={cn(LAYOUT.container.md, "mx-auto flex flex-col justify-center")}>
 
-          <div className="space-y-3 sm:space-y-4 animate-slide-in">
-            <h1 className="text-display font-heading text-foreground leading-tight px-2">
+          {/* Profile Image */}
+          <motion.div
+            className={cn("relative", CONFIG.spacing.imageToTitle)}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <div className={cn(
+              CONFIG.imageSize.mobile,
+              CONFIG.imageSize.tablet,
+              CONFIG.imageSize.desktop,
+              "mx-auto rounded-full overflow-hidden border-3 border-white shadow-lg relative group"
+            )}>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-secondary to-primary p-[3px]">
+                <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                  <img
+                    src="/images/professional-headshot.jpg"
+                    alt="Hari Narayan Srivatsan"
+                    className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                    loading="eager"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Name & Title */}
+          <motion.div
+            className={cn("text-center space-y-1.5", CONFIG.spacing.titleToSubtitle)}
+            initial={{ opacity: 0, y: 15 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+          >
+            <h1 className={cn(TEXT.hero.title, "text-foreground font-bold")}>
               Hari Narayan Srivatsan
             </h1>
 
-            <div className="w-full max-w-none px-2 sm:px-4 space-y-2 sm:space-y-3">
-              <h2 className="text-heading-2 font-sans text-primary font-semibold text-center">
-                MS in MIS student at Texas A&M University (Class of 2026)
-              </h2>
-
-              <p className="text-body font-sans text-muted-foreground w-full max-w-3xl mx-auto px-3 py-2 bg-muted/20 rounded-lg text-center">
-                "Bridging innovation with business strategy through AI: building secure intelligent systems that drive impact"
+            <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-50 to-amber-50 border-2 border-primary/20 rounded-lg">
+              <p className={cn(TEXT.hero.badge, "text-foreground font-semibold")}>
+                MS in MIS • Texas A&M University • Class of 2026
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="w-full px-2 sm:px-4 animate-slide-in">
-            <div className="glass-card max-w-2xl mx-auto">
-              <p className="text-body text-foreground leading-relaxed text-center">
-                With expertise in building secure applications to drive digital transformation, I'm currently gaining hands-on experience in
-                building AI products through internships, campus employment, volunteering and coursework.
-              </p>
+          {/* Value Proposition */}
+          <motion.div
+            className={cn(LAYOUT.container.md, "mx-auto", CONFIG.spacing.subtitleToDescription)}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+          >
+            <h2 className={cn(TEXT.hero.subtitle, "text-center mb-2 font-bold text-foreground")}>
+              AI Product Engineer & Security Specialist
+            </h2>
+            <p className={cn(TEXT.hero.description, "text-center text-muted-foreground")}>
+              Building secure, scalable AI solutions that drive measurable business impact
+            </p>
+          </motion.div>
+
+          {/* Key Highlights */}
+          <motion.div
+            className={cn("max-w-4xl mx-auto", CONFIG.spacing.descriptionToStats)}
+            initial={{ opacity: 0, y: 15 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+          >
+            <div className={cn(LAYOUT.grid.three, SPACING.gap.sm)}>
+              {STATS.map((stat, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "text-center py-4 px-3 rounded-lg bg-white border-2 border-slate-200",
+                    "transition-all duration-200 hover:border-primary hover:shadow-md hover:-translate-y-1"
+                  )}
+                >
+                  <div className={cn(TEXT.hero.statValue, "text-primary mb-1 font-bold")}>
+                    {stat.value}
+                  </div>
+                  <p className={cn(TEXT.hero.statLabel, "text-slate-600 font-medium")}>
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-row flex-wrap gap-3 sm:gap-4 justify-center items-center animate-slide-in px-2 w-full">
+          {/* Primary CTA */}
+          <motion.div
+            className={cn("flex flex-col sm:flex-row justify-center items-center", SPACING.gap.sm)}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
+          >
             <Button
               variant="primary"
-              size="lg"
-              className="min-w-[140px] sm:min-w-[160px] group"
-              onClick={() => handleNavigation('/resume')}
+              size="default"
+              className="w-full sm:w-auto min-w-[160px]"
+              onClick={() => handleNavigation('contact')}
             >
-              View My Resume
+              Let's Connect
             </Button>
 
             <Button
               variant="outline"
-              size="lg"
-              className="min-w-[140px] sm:min-w-[160px] group"
-              onClick={() => handleNavigation('/projects')}
+              size="default"
+              className="w-full sm:w-auto min-w-[160px]"
+              onClick={() => handleNavigation('projects')}
             >
               View My Work
             </Button>
+          </motion.div>
 
-            <Button
-              variant="outline"
-              size="lg"
-              className="min-w-[140px] sm:min-w-[160px] group"
-              onClick={() => handleNavigation('/contact')}
-            >
-              Contact Me
-            </Button>
-          </div>
-          </div>
         </div>
       </div>
     </SectionLayout>
