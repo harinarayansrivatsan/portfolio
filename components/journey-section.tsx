@@ -129,67 +129,63 @@ function TimelineItem({ item, index, isLast }: { item: typeof TIMELINE_ITEMS[num
 function TimelineCard({ item, isLeft }: { item: typeof TIMELINE_ITEMS[number], isLeft: boolean }) {
   return (
     <div className={cn(
-      classes.card,
-      "hover:scale-[1.02] max-w-md w-full",
-      "border-l-4 border-l-primary/20 hover:border-l-primary transition-all"
+      "group overflow-hidden max-w-[44rem] w-full bg-white rounded-xl shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300"
     )}>
-      {/* Company Logo */}
-      <div className={cn(
-        "relative w-full bg-gradient-to-br from-muted/50 to-muted/30 rounded-lg overflow-hidden mb-4",
-        CONFIG.imageHeight
-      )}>
-        <Image
-          src={item.image}
-          alt={`${item.company} logo`}
-          fill
-          className="object-contain p-4"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          priority={false}
-        />
-      </div>
-
-      {/* Header */}
-      <div className="mb-3">
-        <div className={cn("flex items-center flex-wrap mb-2", SPACING.gap.xs)}>
-          <span className="px-2 py-1 bg-gradient-to-r from-primary to-primary-light text-white rounded-md text-xs font-bold">
-            {item.type}
-          </span>
-          <span className="px-2 py-1 bg-secondary/10 text-secondary-light border border-secondary/30 rounded-md text-xs font-semibold">
-            {item.timeframe}
-          </span>
+      <div className="flex flex-col sm:flex-row">
+        {/* Company Logo - Optimally sized for visibility */}
+        <div className="relative w-full sm:w-[45%] overflow-hidden bg-slate-50 aspect-[4/3] sm:aspect-[5/3]">
+          <Image
+            src={item.image}
+            alt={`${item.company} logo`}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, 45vw"
+            priority={false}
+          />
         </div>
 
-        <h3 className={cn(TEXT.card.title, "text-foreground mb-1 font-bold")}>
-          {item.title}
-        </h3>
+        {/* Content */}
+        <div className="flex-1 p-4 sm:p-5 flex flex-col justify-center">
+          {/* Type Badge */}
+          <div className="mb-2">
+            <span className="inline-block px-2.5 py-1 bg-gradient-to-r from-primary to-secondary text-white rounded-md text-xs font-bold">
+              {item.type}
+            </span>
+          </div>
 
-        <p className={cn(TEXT.card.subtitle, "text-primary font-bold mb-1")}>
-          {item.company}
-        </p>
+          {/* Title & Company */}
+          <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">
+            {item.title}
+          </h3>
 
-        <p className={cn(TEXT.card.meta, "text-muted-foreground flex items-center gap-1")}>
-          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-          </svg>
-          {item.location}
-        </p>
-      </div>
+          <p className="text-sm sm:text-base text-primary font-semibold mb-1">
+            {item.company}
+          </p>
 
-      {/* Description */}
-      <p className={cn(TEXT.card.body, "text-muted-foreground mb-3 leading-relaxed")}>
-        {item.description}
-      </p>
+          <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-1 mb-3">
+            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+            </svg>
+            {item.location} • {item.timeframe}
+          </p>
 
-      {/* Achievements */}
-      <div className={cn("flex flex-wrap", SPACING.gap.xs)}>
-        {item.achievements.map((achievement, i) => (
-          <span
-            key={i}
-            className="px-2 py-1 bg-secondary/10 text-secondary border border-secondary/30 rounded-md text-xs font-medium hover:bg-secondary hover:text-white transition-all duration-200 cursor-default"
-          >
-            {achievement}
-          </span>
-        ))}
+          {/* Description */}
+          <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+            {item.description}
+          </p>
+
+          {/* Achievements - Compact */}
+          <div className="flex flex-wrap gap-1.5">
+            {item.achievements.slice(0, 4).map((achievement, i) => (
+              <span
+                key={i}
+                className="px-2 py-0.5 bg-secondary/10 text-secondary border border-secondary/20 rounded text-xs font-medium"
+              >
+                {achievement}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
