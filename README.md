@@ -15,22 +15,22 @@ A sophisticated, responsive portfolio website showcasing the professional journe
 ### Core Technologies
 - **Framework**: Next.js 15.0.0 with App Router architecture
 - **Language**: TypeScript 5 with strict type checking
-- **Styling**: Tailwind CSS 4.1.9 with extensive custom design system
+- **Styling**: Tailwind CSS 4.1.9 with centralized token-based design system
 - **Package Manager**: npm with optimized dependency management
 
 ### UI Framework & Design
 - **Component Library**: Radix UI primitives (@radix-ui/react-*)
-- **Design System**: Custom implementation following shadcn/ui patterns
+- **Design System**: Custom token-based system with three-layer architecture
 - **Theme Management**: next-themes for seamless light/dark mode switching
 - **Icons**: Lucide React for consistent iconography
-- **Animations**: tailwindcss-animate + tw-animate-css for smooth transitions
+- **Animations**: Framer Motion + React Intersection Observer for scroll animations
 
 ### Typography & Assets
 - **Body Text**: Open Sans (weights: 300-700)
 - **Headings**: Montserrat (weights: 300-900)
 - **Code**: JetBrains Mono (weights: 300-700)
 - **Display Strategy**: Font swapping for optimal loading performance
-- **Color Scheme**: Texas A&M Aggie Maroon (#500000) primary branding
+- **Color Scheme**: Navy Blue (#1e3a8a) primary, Amber (#f59e0b) secondary
 
 ### Enhanced Features
 - **Forms**: React Hook Form with Zod validation
@@ -44,22 +44,61 @@ A sophisticated, responsive portfolio website showcasing the professional journe
 portfolio/
 ├── app/                    # Next.js 13+ App Router
 │   ├── layout.tsx         # Root layout with theme provider
-│   ├── page.tsx           # Home page (hero section)
-│   ├── contact/page.tsx   # Contact information
-│   ├── interests/page.tsx # Personal interests
-│   ├── journey/page.tsx   # Professional timeline
-│   ├── leadership/page.tsx# Leadership experience
-│   ├── projects/page.tsx  # Project portfolio
-│   └── skills/page.tsx    # Technical skills
+│   ├── page.tsx           # Home page (all sections)
+│   ├── resume/page.tsx    # Resume page
+│   └── globals.css        # Global styles
 ├── components/
 │   ├── layout/            # Layout components
 │   ├── ui/               # Reusable UI components
-│   └── [section-name].tsx # Page-specific sections
+│   └── [section-name].tsx # Section components
+├── hooks/                 # Custom React hooks
+│   ├── use-scroll-reveal.ts
+│   └── use-scroll-fade.ts
 ├── lib/
+│   ├── design-tokens.ts  # Design system tokens
+│   ├── design-system.ts  # Tailwind class utilities
+│   ├── constants.ts      # App constants
+│   ├── animations.ts     # Animation configurations
 │   └── utils.ts          # Utility functions
-├── public/images/        # Static assets and photos
-└── styles/              # Global styles and themes
+└── public/images/        # Static assets and photos
 ```
+
+## 🎨 Design System
+
+This portfolio uses a **centralized, token-based design system** that completely separates design from functionality.
+
+### Three-Layer Token System
+
+```
+PRIMITIVES (Raw Values)
+    ↓
+SEMANTIC TOKENS (Meaningful Tokens)
+    ↓
+COMPONENT TOKENS (Component-Specific)
+```
+
+### Key Files
+
+1. **`lib/design-tokens.ts`** - Single source of truth for all design decisions
+   - Primitives: Raw values (colors, spacing, font sizes)
+   - Semantic: Context-aware tokens (text-primary, bg-surface)
+   - Components: Component-specific configurations
+   - Section Configs: Section-specific layouts and sizing
+
+2. **`lib/design-system.ts`** - Tailwind class utilities
+   - TEXT: Typography classes
+   - LAYOUT: Layout and container classes
+   - SPACING: Gap, padding, margin utilities
+   - COMPONENTS: Card, button, badge classes
+   - ANIMATIONS: Transition and hover effects
+
+### Benefits
+
+- ✅ **Centralization**: Single source of truth for all design decisions
+- ✅ **Separation of Concerns**: Design tokens separate from functionality
+- ✅ **Maintainability**: Update once, apply everywhere
+- ✅ **Consistency**: All sections use same design language
+- ✅ **Performance**: Optimized for each section's content
 
 ## 📱 Portfolio Sections
 
@@ -107,10 +146,11 @@ portfolio/
 
 ### Design Excellence
 - **Lightning emoji favicon** (⚡) as brand identifier
-- **Glass card system** with premium visual effects
-- **Gradient color schemes** with CSS custom properties
-- **Micro-interactions** and smooth transitions throughout
-- **Responsive typography** with fluid scaling
+- **Modern card system** with subtle shadows and hover effects
+- **Professional color palette** with Navy Blue and Amber accents
+- **Scroll animations** with Framer Motion and Intersection Observer
+- **Responsive typography** with fluid scaling via CSS clamp()
+- **Token-based design system** for consistent styling
 
 ### Performance & Accessibility
 - **WCAG compliance** with proper contrast and focus states
