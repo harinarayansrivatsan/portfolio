@@ -46,7 +46,7 @@ export function ContactSection() {
             subtitle="Let's connect and explore opportunities"
           />
 
-          <div className="w-full">
+          <div className="w-full px-4 sm:px-0">
             <div className={classes.grid}>
               {CONTACT_METHODS.map((method, index) => (
                 <motion.a
@@ -60,33 +60,33 @@ export function ContactSection() {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
                   <div className={cn(
-                    "bg-white rounded-2xl border-2 border-slate-200 p-6 text-center",
+                    "bg-white rounded-2xl border-2 border-slate-200 p-5 sm:p-6 text-center",
                     "transition-all duration-200 hover:border-primary hover:shadow-lg hover:-translate-y-1"
                   )}>
-                    <div className={cn(COMPONENTS.icon.lg, "mb-4 text-5xl")}>
+                    <div className={cn(COMPONENTS.icon.lg, "mb-3 sm:mb-4 text-4xl sm:text-5xl")}>
                       {method.icon}
                     </div>
 
-                    <h3 className={cn(TEXT.card.title, "text-2xl text-foreground mb-2 font-bold")}>
+                    <h3 className={cn(TEXT.card.title, "text-xl sm:text-2xl text-foreground mb-2 font-bold")}>
                       {method.title}
                     </h3>
 
-                    <p className={cn(TEXT.card.subtitle, "text-primary mb-4 font-semibold")}>
+                    <p className={cn(TEXT.card.subtitle, "text-sm sm:text-base text-primary mb-3 sm:mb-4 font-semibold")}>
                       {method.subtitle}
                     </p>
 
-                    <p className={cn(TEXT.card.body, "text-slate-600 mb-4 leading-relaxed")}>
+                    <p className={cn(TEXT.card.body, "text-xs sm:text-sm text-slate-600 mb-3 sm:mb-4 leading-relaxed")}>
                       {method.description}
                     </p>
 
-                    <div className="px-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-xl mb-3 transition-colors duration-200 hover:bg-primary hover:border-primary group">
-                      <p className={cn(TEXT.card.badge, "break-all font-bold text-slate-700 group-hover:text-white")}>
+                    <div className="px-3 sm:px-4 py-2 sm:py-3 bg-slate-50 border-2 border-slate-200 rounded-xl mb-2 sm:mb-3 transition-colors duration-200 hover:bg-primary hover:border-primary group">
+                      <p className={cn("text-xs sm:text-sm break-all font-bold text-slate-700 group-hover:text-white")}>
                         {method.contact}
                       </p>
                     </div>
 
-                    <div className="px-3 py-2 bg-slate-100 rounded-lg">
-                      <p className={cn(TEXT.card.meta, "text-slate-600 font-medium")}>
+                    <div className="px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-100 rounded-full">
+                      <p className={cn("text-[10px] sm:text-xs text-slate-600 font-medium")}>
                         {method.availability}
                       </p>
                     </div>

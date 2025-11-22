@@ -51,52 +51,52 @@ export function RecommendationsSection() {
             subtitle="What colleagues and mentors say"
           />
 
-          <div className="w-full">
+          <div className="w-full px-4 sm:px-0">
             <div className={classes.grid}>
               {RECOMMENDATIONS.map((recommendation, index) => (
                 <div key={index} className={classes.card}>
 
                   {/* Icon */}
-                  <div className={cn(COMPONENTS.icon.md, "mb-2 text-center")}>
+                  <div className={cn("text-3xl sm:text-4xl mb-2 text-center")}>
                     {recommendation.icon}
                   </div>
 
                   {/* Header */}
-                  <div className="text-center mb-2">
-                    <h3 className={cn(TEXT.card.title, "text-foreground mb-0.5")}>
+                  <div className="text-center mb-2 px-2">
+                    <h3 className={cn("text-base sm:text-lg font-bold text-foreground mb-0.5")}>
                       {recommendation.name}
                     </h3>
 
-                    <p className={cn(TEXT.card.subtitle, "text-primary mb-0.5")}>
+                    <p className={cn("text-xs sm:text-sm font-semibold text-primary mb-0.5")}>
                       {recommendation.title}
                     </p>
 
-                    <p className={cn(TEXT.card.meta, "text-muted-foreground mb-1")}>
+                    <p className={cn("text-[10px] sm:text-xs text-muted-foreground mb-1")}>
                       {recommendation.role}
                     </p>
 
-                    <div className={cn(COMPONENTS.badge.primary, "inline-flex items-center mb-0.5")}>
+                    <div className={cn("inline-flex items-center px-2 py-0.5 bg-primary text-white rounded-full text-[10px] sm:text-xs font-semibold mb-0.5")}>
                       {recommendation.relationship}
                     </div>
 
-                    <p className={cn(TEXT.card.meta, "text-muted-foreground italic")}>
+                    <p className={cn("text-[10px] sm:text-xs text-muted-foreground italic")}>
                       {recommendation.date}
                     </p>
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1 mb-2">
-                    <p className={cn(TEXT.card.body, "text-muted-foreground leading-relaxed line-clamp-6")}>
+                  <div className="flex-1 mb-2 px-2">
+                    <p className={cn("text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-6")}>
                       {recommendation.content}
                     </p>
                   </div>
 
                   {/* Highlights */}
-                  <div className={cn("flex flex-wrap", SPACING.gap.xs)}>
+                  <div className={cn("flex flex-wrap gap-1 sm:gap-1.5 px-2")}>
                     {recommendation.highlights.map((highlight, i) => (
                       <span
                         key={i}
-                        className={COMPONENTS.badge.secondary}
+                        className="px-2 py-0.5 bg-secondary/10 text-secondary border border-secondary/20 rounded-full text-[10px] sm:text-xs font-medium"
                       >
                         {highlight}
                       </span>

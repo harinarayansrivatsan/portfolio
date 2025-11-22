@@ -37,8 +37,8 @@ export function LeadershipSection() {
             subtitle="Building communities and driving initiatives"
           />
 
-          <div className="w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="w-full px-4 sm:px-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               {LEADERSHIP_ROLES.map((item, index) => (
                 <div
                   key={index}
@@ -48,31 +48,31 @@ export function LeadershipSection() {
                   <div className="glass-card h-full flex flex-col text-center hover:shadow-xl transition-all duration-300">
 
                     {/* Icon */}
-                    <div className="text-6xl mb-6">
+                    <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">
                       {item.icon}
                     </div>
 
                     {/* Header */}
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
+                    <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 px-2">
                       {item.title}
                     </h3>
 
-                    <p className="text-base font-semibold text-primary mb-2">
+                    <p className="text-sm sm:text-base font-semibold text-primary mb-2 px-2">
                       {item.subtitle}
                     </p>
 
-                    <p className="text-sm text-muted-foreground mb-6">
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">
                       {item.timeframe}
                     </p>
 
                     {/* Description */}
-                    <p className="text-base text-muted-foreground leading-relaxed mb-6 flex-1">
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6 flex-1 px-2">
                       {item.description}
                     </p>
 
                     {/* Metric */}
-                    <div className="px-4 py-3 bg-primary/5 border border-primary/10 rounded-xl">
-                      <p className="text-sm font-semibold text-primary">
+                    <div className="px-3 sm:px-4 py-2 sm:py-3 bg-primary/5 border border-primary/10 rounded-full mx-2">
+                      <p className="text-xs sm:text-sm font-semibold text-primary">
                         {item.metric}
                       </p>
                     </div>
