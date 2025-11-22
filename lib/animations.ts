@@ -1,7 +1,10 @@
 /**
- * Professional Animation System
- * Centralized animation configurations for consistent, professional animations across the portfolio
+ * Enhanced Professional Animation System
+ * Centralized animation configurations with Framer Motion support
+ * Version 2.0 - Modern UI/UX with advanced animations
  */
+
+import { Variants } from 'framer-motion'
 
 // Animation timing constants - Professional durations
 export const ANIMATION_DURATION = {
@@ -10,6 +13,7 @@ export const ANIMATION_DURATION = {
   normal: 300,
   slow: 400,
   slower: 600,
+  slowest: 800,
 } as const
 
 // Professional easing functions
@@ -118,4 +122,156 @@ export function getTransition(
   return properties
     .map(prop => `${prop} ${duration}ms ${easing}`)
     .join(', ')
+}
+
+// =============================================================================
+// FRAMER MOTION VARIANTS
+// =============================================================================
+
+/**
+ * Fade In Animation
+ */
+export const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+  },
+}
+
+/**
+ * Fade In Up Animation
+ */
+export const fadeInUpVariant: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+  },
+}
+
+/**
+ * Scale In Animation
+ */
+export const scaleIn: Variants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+  },
+}
+
+/**
+ * Slide In from Left
+ */
+export const slideInLeft: Variants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+  },
+}
+
+/**
+ * Slide In from Right
+ */
+export const slideInRight: Variants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+  },
+}
+
+/**
+ * Stagger Container - For lists and grids
+ */
+export const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+/**
+ * Stagger Item - Child elements
+ */
+export const staggerItem: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+  },
+}
+
+/**
+ * Card Hover Animation
+ */
+export const cardHoverVariant = {
+  rest: { scale: 1, y: 0 },
+  hover: {
+    scale: 1.02,
+    y: -8,
+    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+  },
+}
+
+/**
+ * Button Tap Animation
+ */
+export const buttonTap = {
+  whileHover: { scale: 1.05, y: -2 },
+  whileTap: { scale: 0.98 },
+  transition: { duration: 0.2 },
+}
+
+/**
+ * Floating Animation (continuous)
+ */
+export const floating = {
+  y: [0, -10, 0],
+  transition: {
+    duration: 3,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  },
+}
+
+/**
+ * Pulse Animation (continuous)
+ */
+export const pulse = {
+  scale: [1, 1.05, 1],
+  transition: {
+    duration: 2,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  },
+}
+
+/**
+ * Advanced Scroll Reveal Configuration
+ */
+export const scrollRevealConfig = {
+  threshold: 0.1,
+  triggerOnce: true,
+  rootMargin: '-50px 0px',
+}
+
+/**
+ * Page Transition
+ */
+export const pageTransition: Variants = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
 }
