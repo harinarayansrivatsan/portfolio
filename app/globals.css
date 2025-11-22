@@ -4,43 +4,44 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Enhanced 4-color palette with premium variants: White, Gray, Black, Aggie Maroon */
+  /* Modern 2025 Design System - Professional 2-Color Theme */
   --background: #ffffff; /* Pure white background */
-  --foreground: #1a1a1a; /* Rich black text */
-  --card: #fafafa; /* Ultra-light gray card background */
-  --card-foreground: #1a1a1a; /* Rich black text on cards */
+  --background-alt: #f8fafc; /* Subtle off-white for alternating sections */
+  --foreground: #1e293b; /* Slate for text */
+  --card: #ffffff; /* White card background */
+  --card-foreground: #1e293b; /* Slate text on cards */
   --popover: #ffffff; /* White popover background */
-  --popover-foreground: #1a1a1a; /* Rich black text on popovers */
-  --primary: #500000; /* Aggie Maroon primary */
+  --popover-foreground: #1e293b; /* Slate text on popovers */
+  --primary: #1e3a8a; /* Navy Blue - Primary */
   --primary-foreground: #ffffff; /* White text on primary */
-  --primary-light: #750000; /* Lighter Aggie Maroon for hover states */
-  --primary-dark: #3a0000; /* Darker Aggie Maroon for active states */
-  --secondary: #6b7280; /* Professional gray secondary */
+  --primary-light: #3b82f6; /* Lighter Blue for hover states */
+  --primary-dark: #1e40af; /* Darker Blue for active states */
+  --secondary: #f59e0b; /* Amber - Secondary/Accent */
   --secondary-foreground: #ffffff; /* White text on secondary */
-  --secondary-light: #9ca3af; /* Lighter gray for hover */
-  --muted: #f8fafc; /* Premium light gray muted background */
-  --muted-foreground: #64748b; /* Refined gray muted text */
-  --accent: #500000; /* Aggie Maroon accent */
+  --secondary-light: #fbbf24; /* Lighter amber for hover */
+  --muted: #f1f5f9; /* Light slate muted background */
+  --muted-foreground: #64748b; /* Slate gray muted text */
+  --accent: #f59e0b; /* Amber accent */
   --accent-foreground: #ffffff; /* White text on accent */
-  --destructive: #dc2626; /* Proper red for destructive actions */
+  --destructive: #ef4444; /* Red for destructive actions */
   --destructive-foreground: #ffffff; /* White text on destructive */
-  --border: #e2e8f0; /* Refined light gray borders */
-  --input: #f8fafc; /* Premium light gray input backgrounds */
-  --ring: rgba(80, 0, 0, 0.2); /* Subtle Aggie Maroon focus rings */
-  --chart-1: #500000; /* Aggie Maroon chart color */
-  --chart-2: #6b7280; /* Gray chart color */
-  --chart-3: #1a1a1a; /* Rich black chart color */
-  --chart-4: #f8fafc; /* Light gray chart color */
+  --border: #e2e8f0; /* Light slate borders */
+  --input: #f8fafc; /* Light input backgrounds */
+  --ring: rgba(30, 58, 138, 0.2); /* Subtle Navy focus rings */
+  --chart-1: #1e3a8a; /* Navy Blue chart color */
+  --chart-2: #f59e0b; /* Amber chart color */
+  --chart-3: #1e293b; /* Slate chart color */
+  --chart-4: #f1f5f9; /* Light slate chart color */
   --chart-5: #ffffff; /* White chart color */
-  --radius: 1rem; /* More generous rounded corners */
+  --radius: 0.75rem; /* Modern rounded corners */
   --sidebar: #ffffff; /* White sidebar */
-  --sidebar-foreground: #1a1a1a; /* Rich black sidebar text */
-  --sidebar-primary: #500000; /* Aggie Maroon sidebar primary */
+  --sidebar-foreground: #1e293b; /* Slate sidebar text */
+  --sidebar-primary: #1e3a8a; /* Navy sidebar primary */
   --sidebar-primary-foreground: #ffffff; /* White text on sidebar primary */
-  --sidebar-accent: #500000; /* Aggie Maroon sidebar accent */
+  --sidebar-accent: #f59e0b; /* Amber sidebar accent */
   --sidebar-accent-foreground: #ffffff; /* White text on sidebar accent */
-  --sidebar-border: #e2e8f0; /* Refined light gray sidebar borders */
-  --sidebar-ring: rgba(80, 0, 0, 0.2); /* Subtle Aggie Maroon sidebar focus rings */
+  --sidebar-border: #e2e8f0; /* Light slate sidebar borders */
+  --sidebar-ring: rgba(30, 58, 138, 0.2); /* Subtle Navy sidebar focus rings */
 
   /* Premium shadows for depth */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -50,25 +51,22 @@
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
   /* Premium gradients */
-  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
-  --gradient-surface: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+  --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  --gradient-secondary: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
 
-  /* Professional Typography System - Optimized for Readability */
-  /* Smaller, more professional font sizes */
-
-  /* Typography scale for professional appearance */
-  --font-size-xs: clamp(0.75rem, 0.7rem + 0.15vw, 0.8rem);
-  --font-size-sm: clamp(0.875rem, 0.8rem + 0.2vw, 0.9rem);
-  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.05rem);
-  --font-size-lg: clamp(1.125rem, 1.05rem + 0.3vw, 1.15rem);
-  --font-size-xl: clamp(1.25rem, 1.15rem + 0.4vw, 1.3rem);
-  --font-size-2xl: clamp(1.5rem, 1.35rem + 0.6vw, 1.65rem);
-  --font-size-3xl: clamp(1.875rem, 1.7rem + 0.8vw, 2.1rem);
-  --font-size-4xl: clamp(2.25rem, 2rem + 1vw, 2.5rem);
-  --font-size-5xl: clamp(2.5rem, 2.2rem + 1.2vw, 2.8rem);
-  --font-size-6xl: clamp(3rem, 2.6rem + 1.5vw, 3.2rem);
-  --font-size-7xl: clamp(3.5rem, 3rem + 2vw, 3.8rem);
+  /* Modern Typography System - Compact & Readable */
+  --font-size-xs: clamp(0.65rem, 0.6rem + 0.1vw, 0.7rem);
+  --font-size-sm: clamp(0.75rem, 0.7rem + 0.15vw, 0.8rem);
+  --font-size-base: clamp(0.8rem, 0.75rem + 0.2vw, 0.875rem);
+  --font-size-lg: clamp(0.9rem, 0.85rem + 0.25vw, 0.95rem);
+  --font-size-xl: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+  --font-size-2xl: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+  --font-size-3xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --font-size-4xl: clamp(1.5rem, 1.35rem + 0.75vw, 1.875rem);
+  --font-size-5xl: clamp(1.75rem, 1.5rem + 1vw, 2rem);
+  --font-size-6xl: clamp(2rem, 1.75rem + 1.25vw, 2.25rem);
+  --font-size-7xl: clamp(2.25rem, 1.95rem + 1.5vw, 2.5rem);
 
   /* Fluid line heights */
   --line-height-tight: 1.1;
@@ -77,14 +75,14 @@
   --line-height-relaxed: 1.6;
   --line-height-loose: 1.8;
 
-  /* Fluid spacing scale */
-  --space-xs: clamp(0.25rem, 0.2rem + 0.2vw, 0.375rem);
-  --space-sm: clamp(0.5rem, 0.4rem + 0.4vw, 0.75rem);
-  --space-base: clamp(1rem, 0.8rem + 0.8vw, 1.5rem);
-  --space-lg: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
-  --space-xl: clamp(2rem, 1.6rem + 1.6vw, 3rem);
-  --space-2xl: clamp(3rem, 2.4rem + 2.4vw, 4.5rem);
-  --space-3xl: clamp(4rem, 3.2rem + 3.2vw, 6rem);
+  /* Fluid spacing scale - Compact */
+  --space-xs: clamp(0.25rem, 0.2rem + 0.15vw, 0.375rem);
+  --space-sm: clamp(0.5rem, 0.4rem + 0.3vw, 0.75rem);
+  --space-base: clamp(0.75rem, 0.65rem + 0.5vw, 1rem);
+  --space-lg: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+  --space-xl: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  --space-2xl: clamp(2rem, 1.65rem + 1.5vw, 3rem);
+  --space-3xl: clamp(2.5rem, 2rem + 2vw, 4rem);
 }
 
 @theme inline {
@@ -153,6 +151,10 @@
   html {
     margin: 0;
     padding: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
     height: 100%;
   }
 
@@ -160,16 +162,16 @@
     @apply bg-background text-foreground font-sans;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   /* Premium section styling with enhanced design system */
   .section-container {
     @apply flex flex-col relative overflow-hidden;
     background: #fafafa;
-    min-height: 100%;
+    min-height: fit-content;
     margin: 0;
     padding: 0;
   }
@@ -187,22 +189,19 @@
   }
 
   .content-wrapper {
-    @apply container mx-auto relative z-10 flex-1 flex flex-col;
-    padding: clamp(1.5rem, 3vh, 2rem) clamp(1rem, 3vw, 1.5rem) clamp(1rem, 2vh, 1.5rem);
-    max-width: min(95vw, 1200px);
-    min-height: calc(100vh - 200px);
+    @apply container mx-auto relative z-10;
+    padding: clamp(1.5rem, 4vh, 3rem) clamp(1rem, 4vw, 2rem);
+    max-width: min(100%, 1400px);
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .section-content {
-    @apply flex-1 flex flex-col items-center;
-    justify-content: flex-start;
-    padding-top: clamp(1.5rem, 6vh, 3rem);
-    min-height: calc(100vh - 140px); /* Account for header (~80px) + footer (~60px) */
+    @apply flex flex-col items-center justify-center;
+    padding: clamp(0.75rem, 2vh, 1.25rem) clamp(0.5rem, 2vw, 1rem);
     width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: clamp(1rem, 2vh, 1.5rem);
     max-width: 100%;
     overflow-x: hidden;
   }
@@ -210,20 +209,20 @@
 
   .section-title {
     @apply text-foreground text-center;
-    font-size: var(--font-size-2xl);
-    line-height: var(--line-height-snug);
-    letter-spacing: -0.01em;
-    font-weight: 600;
-    margin-bottom: clamp(0.5rem, 1.5vh, 0.75rem);
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
   }
 
   .section-subtitle {
     @apply text-muted-foreground text-center mx-auto;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     line-height: var(--line-height-relaxed);
     font-weight: 400;
-    max-width: 42rem;
-    margin-bottom: 0;
+    max-width: 48rem;
+    margin-bottom: clamp(1.25rem, 3vh, 2rem);
   }
 
 
@@ -332,33 +331,34 @@
   /* 📱 Small Mobile Phones (320px - 400px) */
   @media (max-width: 400px) {
     :root {
-      --font-size-xs: clamp(0.7rem, 0.65rem + 0.1vw, 0.75rem);
-      --font-size-sm: clamp(0.8rem, 0.75rem + 0.15vw, 0.85rem);
-      --font-size-base: clamp(0.9rem, 0.85rem + 0.2vw, 0.95rem);
-      --font-size-lg: clamp(1rem, 0.9rem + 0.25vw, 1.05rem);
-      --font-size-xl: clamp(1.1rem, 1rem + 0.3vw, 1.15rem);
-      --font-size-2xl: clamp(1.25rem, 1.1rem + 0.5vw, 1.4rem);
-      --font-size-3xl: clamp(1.5rem, 1.25rem + 0.8vw, 1.8rem);
-      --font-size-4xl: clamp(1.875rem, 1.5rem + 1.2vw, 2.2rem);
+      --font-size-xs: clamp(0.65rem, 0.6rem + 0.1vw, 0.7rem);
+      --font-size-sm: clamp(0.75rem, 0.7rem + 0.15vw, 0.8rem);
+      --font-size-base: clamp(0.825rem, 0.775rem + 0.2vw, 0.875rem);
+      --font-size-lg: clamp(0.9rem, 0.825rem + 0.25vw, 0.95rem);
+      --font-size-xl: clamp(1rem, 0.925rem + 0.3vw, 1.05rem);
+      --font-size-2xl: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+      --font-size-3xl: clamp(1.35rem, 1.15rem + 0.8vw, 1.6rem);
+      --font-size-4xl: clamp(1.625rem, 1.35rem + 1.2vw, 1.9rem);
     }
     .content-wrapper { padding: clamp(0.75rem, 2vh, 1rem) clamp(0.75rem, 3vw, 1rem) 0; }
     .content-wrapper { max-width: 95vw; }
-    .glass-card { padding: clamp(0.5rem, 1.5vh, 0.75rem); }
-    .section-footer { height: clamp(3rem, 6vh, 4rem); }
+    .glass-card { padding: clamp(1rem, 2vh, 1.25rem); }
+    .section-content { padding: clamp(2rem, 6vh, 3rem) clamp(1rem, 3vw, 1.5rem) clamp(1.5rem, 3vh, 2rem); }
   }
 
   @media (min-width: 401px) and (max-width: 768px) {
     :root {
-      --font-size-xs: clamp(0.75rem, 0.7rem + 0.1vw, 0.8rem);
-      --font-size-sm: clamp(0.85rem, 0.8rem + 0.15vw, 0.9rem);
-      --font-size-base: clamp(0.95rem, 0.9rem + 0.2vw, 1rem);
-      --font-size-lg: clamp(1.05rem, 1rem + 0.25vw, 1.1rem);
-      --font-size-xl: clamp(1.15rem, 1.05rem + 0.3vw, 1.25rem);
-      --font-size-2xl: clamp(1.375rem, 1.2rem + 0.6vw, 1.55rem);
-      --font-size-3xl: clamp(1.625rem, 1.375rem + 1vw, 2rem);
-      --font-size-4xl: clamp(2rem, 1.625rem + 1.5vw, 2.4rem);
+      --font-size-xs: clamp(0.7rem, 0.65rem + 0.1vw, 0.75rem);
+      --font-size-sm: clamp(0.8rem, 0.75rem + 0.15vw, 0.85rem);
+      --font-size-base: clamp(0.875rem, 0.825rem + 0.2vw, 0.925rem);
+      --font-size-lg: clamp(0.975rem, 0.9rem + 0.25vw, 1.025rem);
+      --font-size-xl: clamp(1.075rem, 1rem + 0.3vw, 1.15rem);
+      --font-size-2xl: clamp(1.225rem, 1.1rem + 0.6vw, 1.4rem);
+      --font-size-3xl: clamp(1.45rem, 1.25rem + 1vw, 1.75rem);
+      --font-size-4xl: clamp(1.75rem, 1.45rem + 1.5vw, 2.1rem);
     }
     .content-wrapper { max-width: 92vw; }
+    .section-content { padding: clamp(2rem, 6vh, 3.5rem) clamp(1rem, 3vw, 1.5rem) clamp(1.5rem, 3vh, 2.5rem); }
   }
 
   @media (min-width: 769px) and (max-width: 1024px) {
@@ -367,8 +367,8 @@
 
   @media (min-width: 1200px) {
     :root {
-      --font-size-4xl: clamp(2.5rem, 2rem + 2.5vw, 3.25rem);
-      --font-size-3xl: clamp(2.125rem, 1.75rem + 1.8vw, 2.75rem);
+      --font-size-4xl: clamp(2.125rem, 1.75rem + 1.875vw, 2.625rem);
+      --font-size-3xl: clamp(1.75rem, 1.5rem + 1.25vw, 2.125rem);
     }
     .content-wrapper { max-width: 1200px; }
   }
@@ -376,8 +376,8 @@
   /* 🖥️ Large Desktop Screens (1600px - 1920px) */
   @media (min-width: 1600px) {
     :root {
-      --font-size-4xl: clamp(2.75rem, 2.25rem + 3vw, 3.75rem);
-      --font-size-3xl: clamp(2.375rem, 1.875rem + 2.5vw, 3.125rem);
+      --font-size-4xl: clamp(2.25rem, 1.875rem + 1.875vw, 2.75rem);
+      --font-size-3xl: clamp(1.875rem, 1.625rem + 1.25vw, 2.375rem);
     }
     .content-wrapper { padding: calc(var(--space-xl) * 1.2) var(--space-lg) 0; }
     .content-wrapper { max-width: 1500px; }
@@ -386,8 +386,8 @@
   /* 🖥️ Extra Large Monitors (1920px - 2560px) */
   @media (min-width: 1920px) {
     :root {
-      --font-size-4xl: clamp(3rem, 2.5rem + 3.5vw, 4rem);
-      --font-size-3xl: clamp(2.5rem, 2rem + 3vw, 3.5rem);
+      --font-size-4xl: clamp(2.375rem, 2rem + 1.875vw, 2.875rem);
+      --font-size-3xl: clamp(2rem, 1.75rem + 1.25vw, 2.5rem);
     }
     .content-wrapper { max-width: 1600px; }
     .glass-card { padding: clamp(1.5rem, 3vh, 2rem); }
@@ -396,8 +396,8 @@
   /* 🖥️ Ultra Wide Monitors & Small TVs (2560px - 3440px) */
   @media (min-width: 2560px) {
     :root {
-      --font-size-4xl: clamp(3.5rem, 3rem + 4vw, 4.5rem);
-      --font-size-3xl: clamp(3rem, 2.5rem + 3.5vw, 4rem);
+      --font-size-4xl: clamp(2.5rem, 2.125rem + 1.875vw, 3rem);
+      --font-size-3xl: clamp(2.125rem, 1.875rem + 1.25vw, 2.625rem);
     }
     .content-wrapper {
       max-width: 1800px;
@@ -408,8 +408,8 @@
   /* 📺 Large TVs & Ultra High Resolution (3440px+) */
   @media (min-width: 3440px) {
     :root {
-      --font-size-4xl: clamp(4rem, 3.5rem + 4.5vw, 5rem);
-      --font-size-3xl: clamp(3.5rem, 3rem + 4vw, 4.5rem);
+      --font-size-4xl: clamp(2.625rem, 2.25rem + 1.875vw, 3.125rem);
+      --font-size-3xl: clamp(2.25rem, 1.875rem + 1.875vw, 2.75rem);
     }
     .content-wrapper {
       max-width: 2000px;
@@ -461,32 +461,35 @@
   .fluid-text-6xl { font-size: var(--font-size-6xl); }
   .fluid-text-7xl { font-size: var(--font-size-7xl); }
 
-  /* Premium card styling with enhanced visual hierarchy */
+  /* Modern card styling with smooth interactions and depth */
   .glass-card {
-    @apply bg-card backdrop-blur-xl border border-border;
+    @apply bg-white border border-border/40;
     padding: clamp(1rem, 2.5vh, 1.5rem);
-    border-radius: var(--radius-lg);
-    background: var(--gradient-surface);
-    box-shadow: var(--shadow-md);
+    border-radius: 1.25rem;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.03),
+      0 2px 6px -1px rgba(0, 0, 0, 0.04),
+      0 4px 8px -2px rgba(0, 0, 0, 0.02);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
     height: fit-content;
     width: 100%;
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
   }
 
   /* Standardized card grid spacing */
   .card-grid {
     display: grid;
-    gap: clamp(1rem, 3vh, 1.5rem);
+    gap: clamp(1.25rem, 3vh, 2rem);
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
   }
 
   .card-grid-1 { grid-template-columns: 1fr; }
-  .card-grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-  .card-grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .card-grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .card-grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 
   .glass-card::before {
     content: '';
@@ -494,20 +497,27 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(80, 0, 0, 0.1) 50%, transparent 100%);
+    height: 3px;
+    background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 50%, #f59e0b 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glass-card:hover::before {
+    opacity: 1;
   }
 
   .glass-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: var(--shadow-2xl);
-    border-color: rgba(80, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow:
+      0 8px 16px -4px rgba(30, 58, 138, 0.15),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-color: rgba(30, 58, 138, 0.2);
   }
 
   @media (min-width: 768px) {
     .glass-card:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow: var(--shadow-2xl);
+      transform: translateY(-3px);
     }
   }
 
@@ -520,89 +530,63 @@
     }
   }
 
-  /* Premium button styling with enhanced interactions */
+  /* Clean button styling - Professional & Simple */
   .btn-primary {
-    @apply text-primary-foreground rounded-xl font-semibold;
-    @apply relative overflow-hidden transition-all duration-400;
+    @apply text-primary-foreground rounded-lg font-semibold;
     padding: var(--space-sm) var(--space-lg);
     font-size: var(--font-size-base);
     line-height: var(--line-height-normal);
-    background: var(--gradient-primary);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--primary-dark);
-    position: relative;
-  }
-
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-    transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .btn-primary:hover::before {
-    left: 100%;
+    background: var(--primary);
+    box-shadow: 0 1px 3px rgba(30, 58, 138, 0.2);
+    border: none;
+    transition: all 0.2s ease;
   }
 
   .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
     background: var(--primary-light);
+    box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(30, 58, 138, 0.2);
   }
 
   .btn-secondary {
-    @apply text-secondary-foreground rounded-xl font-semibold;
-    @apply relative overflow-hidden transition-all duration-400;
+    @apply text-secondary-foreground rounded-lg font-semibold;
     padding: var(--space-sm) var(--space-lg);
     font-size: var(--font-size-base);
     line-height: var(--line-height-normal);
-    background: var(--gradient-secondary);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--secondary);
+    background: var(--secondary);
+    box-shadow: 0 1px 3px rgba(245, 158, 11, 0.2);
+    border: none;
+    transition: all 0.2s ease;
   }
 
   .btn-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
     background: var(--secondary-light);
+    box-shadow: 0 4px 6px rgba(245, 158, 11, 0.25);
+    transform: translateY(-2px);
   }
 
   .btn-outline {
-    @apply border-2 border-primary text-primary rounded-xl font-semibold;
-    @apply bg-transparent backdrop-blur-sm transition-all duration-400;
+    @apply border-2 border-primary text-primary rounded-lg font-semibold bg-white;
     padding: var(--space-sm) var(--space-lg);
     font-size: var(--font-size-base);
     line-height: var(--line-height-normal);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-outline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--gradient-primary);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: -1;
-  }
-
-  .btn-outline:hover::before {
-    transform: scaleX(1);
+    transition: all 0.2s ease;
   }
 
   .btn-outline:hover {
-    @apply text-primary-foreground border-primary;
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-outline:active {
+    transform: translateY(0);
   }
 
   @media (min-width: 768px) {
