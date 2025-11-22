@@ -8,7 +8,7 @@ A sophisticated, responsive portfolio website showcasing the professional journe
 
 - **Email**: harinarayan.professional@gmail.com
 - **Location**: College Station, TX (Open to relocation)
-- **LinkedIn**: [Professional Profile](https://linkedin.com/in/harinarayan-srivatsan)
+- **LinkedIn**: [Professional Profile](https://linkedin.com/in/harinarayansrivatsan)
 
 ## 🚀 Technology Stack
 
