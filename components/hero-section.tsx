@@ -31,7 +31,7 @@ export function HeroSection() {
 
   return (
     <SectionLayout id="home">
-      <div ref={ref} className={LAYOUT.section.wrapper}>
+      <div ref={ref} className={cn(LAYOUT.section.wrapper, "flex items-center justify-center min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4rem)]")}>
         <div className="w-full max-w-6xl mx-auto flex flex-col">
 
           {/* Profile Image */}
@@ -71,7 +71,7 @@ export function HeroSection() {
               Hari Narayan Srivatsan
             </h1>
 
-            <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-50 to-amber-50 border-2 border-primary/20 rounded-lg">
+            <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-50 to-amber-50 border-2 border-primary/20 rounded-full">
               <p className={cn(TEXT.hero.badge, "text-foreground font-semibold")}>
                 MS in MIS • Texas A&M University • Class of 2026
               </p>
@@ -100,12 +100,12 @@ export function HeroSection() {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
             transition={{ duration: 0.4, delay: 0.3 }}
           >
-            <div className={cn(LAYOUT.grid.three, SPACING.gap.sm)}>
+            <div className={cn("grid grid-cols-3 gap-2 sm:gap-3 md:gap-4")}>
               {STATS.map((stat, index) => (
                 <div
                   key={index}
                   className={cn(
-                    "text-center py-4 px-3 rounded-lg bg-white border-2 border-slate-200",
+                    "text-center py-3 sm:py-4 px-2 sm:px-3 rounded-lg bg-white border-2 border-slate-200",
                     "transition-all duration-200 hover:border-primary hover:shadow-md hover:-translate-y-1"
                   )}
                 >
@@ -122,7 +122,7 @@ export function HeroSection() {
 
           {/* Primary CTA */}
           <motion.div
-            className={cn("flex flex-col sm:flex-row justify-center items-center", SPACING.gap.sm)}
+            className={cn("flex flex-col sm:flex-row justify-center items-center gap-3")}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.4, delay: 0.4 }}
@@ -141,6 +141,16 @@ export function HeroSection() {
               onClick={() => handleNavigation('projects')}
             >
               View My Work
+            </Button>
+
+            <Button
+              variant="outline"
+              size="default"
+              asChild
+            >
+              <a href="/resume/Hari Narayan Srivatsan_TAMU_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                Download Resume
+              </a>
             </Button>
           </motion.div>
 
