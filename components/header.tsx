@@ -8,7 +8,6 @@ const SCROLL_THRESHOLD = 50
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
-  { id: "about", label: "About" },
   { id: "journey", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },

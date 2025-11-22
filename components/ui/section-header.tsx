@@ -19,10 +19,10 @@ export function SectionHeader({
   subtitleClassName = ""
 }: SectionHeaderProps) {
   return (
-    <div className={cn("text-center mb-6 sm:mb-8", className)}>
+    <div className={cn("text-center mb-8", className)}>
       <h1 className={cn(
         TEXT.section.title,
-        "text-foreground mb-1.5",
+        "text-foreground mb-2",
         titleClassName
       )}>
         {title}
@@ -31,7 +31,7 @@ export function SectionHeader({
       {subtitle && (
         <p className={cn(
           TEXT.section.subtitle,
-          "text-muted-foreground max-w-2xl mx-auto mb-4 sm:mb-6",
+          "text-muted-foreground max-w-2xl mx-auto mb-6",
           subtitleClassName
         )}>
           {subtitle}

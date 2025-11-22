@@ -21,15 +21,11 @@ export function PageLayout({ children, className = "" }: PageLayoutProps) {
     previous?: { path: string; label: string };
   }> = {
     '/': {
-      next: { path: '/about', label: 'About Me' }
-    },
-    '/about': {
-      next: { path: '/journey', label: 'View Experience' },
-      previous: { path: '/', label: 'Back to Home' }
+      next: { path: '/journey', label: 'View Experience' }
     },
     '/journey': {
       next: { path: '/projects', label: 'View Projects' },
-      previous: { path: '/about', label: 'Back to About' }
+      previous: { path: '/', label: 'Back to Home' }
     },
     '/projects': {
       next: { path: '/skills', label: 'View Skills' },
@@ -53,7 +49,7 @@ export function PageLayout({ children, className = "" }: PageLayoutProps) {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className={`relative z-10 pt-20 ${className}`}>
+      <main className={`relative z-10 pt-14 sm:pt-16 ${className}`}>
         {children}
       </main>
       <Footer />

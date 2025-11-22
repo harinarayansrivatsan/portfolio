@@ -52,9 +52,9 @@ export const TEXT = {
 export const LAYOUT = {
   // Section Containers
   section: {
-    default: 'relative w-full min-h-[100vh] max-h-[100vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 overflow-y-auto',
-    compact: 'relative w-full min-h-fit max-h-[100vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 overflow-y-auto',
-    journey: 'relative w-full min-h-fit flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8',
+    default: 'relative w-full min-h-[100vh] max-h-[100vh] flex items-start justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 overflow-y-auto',
+    compact: 'relative w-full min-h-fit max-h-[100vh] flex items-start justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 overflow-y-auto',
+    journey: 'relative w-full min-h-fit flex items-start justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8',
     wrapper: 'w-full max-w-7xl mx-auto',
   },
 
@@ -181,8 +181,8 @@ export function getSectionClasses(section: keyof typeof SECTION_CONFIGS) {
   return {
     container: config.layout === 'compact' ? LAYOUT.section.compact : LAYOUT.section.default,
     wrapper: LAYOUT.section.wrapper,
-    grid: config.grid ? `grid ${config.grid} ${SPACING.gap.md}` : '',
-    card: `${COMPONENTS.card.interactive} ${config.cardPadding || SPACING.padding.card.md}`,
+    grid: ('grid' in config && config.grid) ? `grid ${config.grid} ${SPACING.gap.md}` : '',
+    card: `${COMPONENTS.card.interactive} ${('cardPadding' in config && config.cardPadding) || SPACING.padding.card.md}`,
   }
 }
 
@@ -193,10 +193,10 @@ export function getSectionTypography(section: keyof typeof SECTION_CONFIGS) {
   const config = SECTION_CONFIGS[section]
 
   return {
-    title: config.titleSize,
-    subtitle: config.subtitleSize,
-    body: config.bodySize,
-    icon: config.iconSize,
+    title: ('titleSize' in config && config.titleSize) || '',
+    subtitle: ('subtitleSize' in config && config.subtitleSize) || '',
+    body: ('bodySize' in config && config.bodySize) || '',
+    icon: ('iconSize' in config && config.iconSize) || '',
   }
 }
 

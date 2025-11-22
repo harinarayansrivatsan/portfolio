@@ -30,54 +30,56 @@ const LEADERSHIP_ROLES = [
 export function LeadershipSection() {
   return (
     <SectionLayout id="leadership">
-      <div className="section-content">
-        <SectionHeader
-          title="Leadership Experience"
-          subtitle="Building communities and driving initiatives"
-        />
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto">
+          <SectionHeader
+            title="Leadership Experience"
+            subtitle="Building communities and driving initiatives"
+          />
 
-        <div className="w-full max-w-4xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {LEADERSHIP_ROLES.map((item, index) => (
-              <div
-                key={index}
-                className="animate-fade-in-up"
-                style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
-              >
-                <div className="glass-card h-full flex flex-col text-center hover:shadow-xl transition-all duration-300">
-                  
-                  {/* Icon */}
-                  <div className="text-6xl mb-6">
-                    {item.icon}
-                  </div>
+          <div className="w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {LEADERSHIP_ROLES.map((item, index) => (
+                <div
+                  key={index}
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
+                >
+                  <div className="glass-card h-full flex flex-col text-center hover:shadow-xl transition-all duration-300">
 
-                  {/* Header */}
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
-                    {item.title}
-                  </h3>
-                  
-                  <p className="text-base font-semibold text-primary mb-2">
-                    {item.subtitle}
-                  </p>
-                  
-                  <p className="text-sm text-muted-foreground mb-6">
-                    {item.timeframe}
-                  </p>
+                    {/* Icon */}
+                    <div className="text-6xl mb-6">
+                      {item.icon}
+                    </div>
 
-                  {/* Description */}
-                  <p className="text-base text-muted-foreground leading-relaxed mb-6 flex-1">
-                    {item.description}
-                  </p>
+                    {/* Header */}
+                    <h3 className="text-2xl font-bold text-foreground mb-2">
+                      {item.title}
+                    </h3>
 
-                  {/* Metric */}
-                  <div className="px-4 py-3 bg-primary/5 border border-primary/10 rounded-xl">
-                    <p className="text-sm font-semibold text-primary">
-                      {item.metric}
+                    <p className="text-base font-semibold text-primary mb-2">
+                      {item.subtitle}
                     </p>
+
+                    <p className="text-sm text-muted-foreground mb-6">
+                      {item.timeframe}
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-base text-muted-foreground leading-relaxed mb-6 flex-1">
+                      {item.description}
+                    </p>
+
+                    {/* Metric */}
+                    <div className="px-4 py-3 bg-primary/5 border border-primary/10 rounded-xl">
+                      <p className="text-sm font-semibold text-primary">
+                        {item.metric}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -38,10 +38,10 @@ export function SectionLayout({
       id={id}
       className={cn(
         layoutClass,
-        "scroll-mt-16",
+        "scroll-mt-14 sm:scroll-mt-16",
         "transition-all duration-700 ease-out",
-        // Add top padding for all sections to account for fixed header
-        isFirstSection ? "pt-16 sm:pt-20" : "",
+        // Add top padding for first section to account for fixed header
+        isFirstSection ? "pt-14 sm:pt-16" : "",
         variant === "alternate" && "bg-[#f8f9fb]",
         isFirstSection || isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
         className

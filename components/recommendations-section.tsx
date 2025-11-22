@@ -45,7 +45,7 @@ export function RecommendationsSection() {
   return (
     <SectionLayout id="recommendations" variant="alternate">
       <div className={classes.wrapper}>
-        <div className="w-full max-w-7xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto">
           <SectionHeader
             title="Recommendations"
             subtitle="What colleagues and mentors say"

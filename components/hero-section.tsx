@@ -32,7 +32,7 @@ export function HeroSection() {
   return (
     <SectionLayout id="home">
       <div ref={ref} className={LAYOUT.section.wrapper}>
-        <div className={cn(LAYOUT.container.md, "mx-auto flex flex-col justify-center")}>
+        <div className="w-full max-w-6xl mx-auto flex flex-col">
 
           {/* Profile Image */}
           <motion.div
@@ -130,7 +130,6 @@ export function HeroSection() {
             <Button
               variant="primary"
               size="default"
-              className="w-full sm:w-auto min-w-[160px]"
               onClick={() => handleNavigation('contact')}
             >
               Let's Connect
@@ -139,7 +138,6 @@ export function HeroSection() {
             <Button
               variant="outline"
               size="default"
-              className="w-full sm:w-auto min-w-[160px]"
               onClick={() => handleNavigation('projects')}
             >
               View My Work

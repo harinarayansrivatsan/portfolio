@@ -202,7 +202,7 @@ export function JourneySection() {
             subtitle="Career milestones and experiences"
           />
 
-          <div className="w-full mt-6 md:mt-8">
+          <div className="w-full">
             {[...TIMELINE_ITEMS].reverse().map((item, index) => (
               <TimelineItem
                 key={index}

@@ -47,7 +47,7 @@ export function SkillsSection() {
   return (
     <SectionLayout id="skills">
       <div ref={ref} className={classes.wrapper}>
-        <div className="w-full max-w-7xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto">
           <SectionHeader
             title="Technical Skills"
             subtitle="Technologies, tools, and certifications I work with"

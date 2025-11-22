@@ -61,14 +61,14 @@ export function AboutSection() {
   return (
     <SectionLayout id="about" variant="alternate">
       <div ref={ref} className={classes.wrapper}>
-        <div className={cn(LAYOUT.container.lg, "mx-auto")}>
+        <div className="w-full max-w-6xl mx-auto">
           <SectionHeader
             title="About Me"
             subtitle="Leadership experience and personal interests that shape my perspective"
           />
 
           {/* Leadership Experience */}
-          <div className="w-full mb-6 sm:mb-8">
+          <div className="w-full mb-8">
             <h2 className={cn(TEXT.card.title, "text-foreground mb-4 text-center font-bold")}>
               Leadership Experience
             </h2>

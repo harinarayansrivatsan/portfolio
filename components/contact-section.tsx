@@ -39,8 +39,8 @@ export function ContactSection() {
 
   return (
     <SectionLayout id="contact">
-      <div ref={ref} className={cn(classes.wrapper, "h-full items-center justify-center")}>
-        <div className="w-full max-w-4xl mx-auto">
+      <div ref={ref} className={classes.wrapper}>
+        <div className="w-full max-w-6xl mx-auto">
           <SectionHeader
             title="Get in Touch"
             subtitle="Let's connect and explore opportunities"
