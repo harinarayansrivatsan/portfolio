@@ -53,14 +53,6 @@ export function ProjectsSection() {
     duration: 30
   })
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev()
-  }, [emblaApi])
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext()
-  }, [emblaApi])
-
   const scrollTo = useCallback((index: number) => {
     if (emblaApi) emblaApi.scrollTo(index)
   }, [emblaApi])
@@ -87,7 +79,7 @@ export function ProjectsSection() {
 
     const autoplay = setInterval(() => {
       emblaApi.scrollNext()
-    }, 5000) // Change slide every 5 seconds
+    }, 7000) // Change slide every 7 seconds
 
     return () => clearInterval(autoplay)
   }, [emblaApi])
@@ -100,6 +92,19 @@ export function ProjectsSection() {
             title="Featured Projects"
             subtitle="Real-world solutions deployed at leading organizations"
           />
+          
+          {/* Swipe Instructions */}
+          <div className="text-center mb-6">
+            <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+              </svg>
+              <span>Swipe to view more projects</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </p>
+          </div>
 
           <div className="relative w-full">
             {/* Carousel Container */}
@@ -170,27 +175,6 @@ export function ProjectsSection() {
                 ))}
               </div>
             </div>
-
-            {/* Navigation Buttons */}
-            <button
-              onClick={scrollPrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-2 border-primary shadow-lg hover:bg-primary hover:text-white transition-all duration-200 flex items-center justify-center group"
-              aria-label="Previous project"
-            >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            <button
-              onClick={scrollNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-2 border-primary shadow-lg hover:bg-primary hover:text-white transition-all duration-200 flex items-center justify-center group"
-              aria-label="Next project"
-            >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
 
             {/* Slide Indicators */}
             <div className="flex justify-center gap-2 mt-6">
