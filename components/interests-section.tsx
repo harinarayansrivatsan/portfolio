@@ -44,64 +44,57 @@ export function InterestsSection() {
     <SectionLayout id="interests">
       <div className="section-content">
         <SectionHeader
-          title="What I do beyond work"
-          subtitle="Strategic focus areas that complement and enhance professional expertise."
+          title="Beyond Work"
+          subtitle="Interests and activities that drive personal growth"
         />
 
-        <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch max-w-none mx-auto px-4">
-          {INTERESTS.map((interest, index) => (
-            <div
-              key={index}
-              className="w-full max-w-80 mx-auto md:mx-0 animate-fade-in-up"
-              style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
-            >
-              {/* Card - Matching Other Sections Design */}
-              <div className="relative w-full min-h-[480px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${interest.color} opacity-10`} />
+        <div className="w-full max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {INTERESTS.map((interest, index) => (
+              <div
+                key={index}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${index * ANIMATION_DELAYS.FAST}ms` }}
+              >
+                <div className="glass-card h-full flex flex-col text-center hover:shadow-xl transition-all duration-300">
+                  
+                  {/* Icon */}
+                  <div className="text-5xl mb-4">
+                    {interest.icon}
+                  </div>
 
-                {/* Icon Section */}
-                <div className="w-full h-24 relative overflow-hidden flex items-center justify-center bg-white">
-                  <div className="text-5xl leading-none flex items-center justify-center w-full h-full">{interest.icon}</div>
-                </div>
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-foreground mb-3">
+                    {interest.title}
+                  </h3>
 
-                {/* Content */}
-                <div className="px-4 pb-4 pt-3 flex-1 flex flex-col">
-                  {/* Header Section */}
-                  <div className="text-center mb-4">
-                    <h3 className="text-sm font-bold text-primary mb-2 leading-tight">
-                      {interest.title}
-                    </h3>
-                    <div className="bg-primary/10 rounded px-2 py-1 border border-primary/20 mb-3">
-                      <p className="text-xs font-medium text-primary text-center">
-                        {interest.focus}
-                      </p>
-                    </div>
+                  {/* Focus Badge */}
+                  <div className="px-3 py-2 bg-primary/5 border border-primary/10 rounded-lg mb-4">
+                    <p className="text-xs font-semibold text-primary">
+                      {interest.focus}
+                    </p>
                   </div>
 
                   {/* Description */}
-                  <p className="text-xs text-foreground/80 leading-relaxed text-center mb-4 flex-1">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                     {interest.description}
                   </p>
 
-                  {/* Activities Pills */}
-                  <div className="grid grid-cols-1 gap-1">
+                  {/* Activities */}
+                  <div className="flex flex-col gap-2">
                     {interest.activities.map((activity, i) => (
                       <div
                         key={i}
-                        className="px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded-lg text-xs font-medium text-center cursor-pointer transition-all duration-200 hover:bg-red-800 hover:text-white hover:scale-105 hover:shadow-lg hover:border-red-800"
+                        className="px-3 py-2 bg-primary/5 text-primary border border-primary/10 rounded-lg text-sm font-medium hover:bg-primary hover:text-white transition-all duration-200 cursor-default"
                       >
                         {activity}
                       </div>
                     ))}
                   </div>
                 </div>
-
-                {/* Bottom Accent */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r ${interest.color}`} />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </SectionLayout>

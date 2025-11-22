@@ -32,63 +32,54 @@ export function LeadershipSection() {
     <SectionLayout id="leadership">
       <div className="section-content">
         <SectionHeader
-          title="Positions I've held"
-          subtitle="Building communities and driving initiatives forward"
+          title="Leadership Experience"
+          subtitle="Building communities and driving initiatives"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 justify-items-center max-w-6xl mx-auto">
-          {LEADERSHIP_ROLES.map((item, index) => (
-            <div
-              key={index}
-              className="relative w-full max-w-80 animate-fade-in-up"
-              style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
-            >
-              {/* Card - Matching Journey/Skills Design */}
-              <div className="relative w-full min-h-[400px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-10`} />
-
-                {/* Icon Section */}
-                <div className="w-full h-24 relative overflow-hidden flex items-center justify-center bg-white">
-                  <div className="text-5xl leading-none flex items-center justify-center w-full h-full">{item.icon}</div>
-                </div>
-
-                {/* Content */}
-                <div className="px-5 pb-5 pt-3 flex-1 flex flex-col">
-                  {/* Header Section */}
-                  <div className="text-center mb-4">
-                    <h3 className="text-base font-bold text-primary mb-2 leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm font-semibold text-muted-foreground mb-1">
-                      {item.subtitle}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {item.timeframe}
-                    </p>
+        <div className="w-full max-w-4xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {LEADERSHIP_ROLES.map((item, index) => (
+              <div
+                key={index}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
+              >
+                <div className="glass-card h-full flex flex-col text-center hover:shadow-xl transition-all duration-300">
+                  
+                  {/* Icon */}
+                  <div className="text-6xl mb-6">
+                    {item.icon}
                   </div>
 
+                  {/* Header */}
+                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                    {item.title}
+                  </h3>
+                  
+                  <p className="text-base font-semibold text-primary mb-2">
+                    {item.subtitle}
+                  </p>
+                  
+                  <p className="text-sm text-muted-foreground mb-6">
+                    {item.timeframe}
+                  </p>
+
                   {/* Description */}
-                  <p className="text-xs text-foreground/80 leading-relaxed text-center mb-4 flex-1">
+                  <p className="text-base text-muted-foreground leading-relaxed mb-6 flex-1">
                     {item.description}
                   </p>
 
-                  {/* Metric Badge */}
-                  <div className="bg-primary/10 rounded-lg px-3 py-2 border border-primary/20 text-center cursor-pointer transition-all duration-200 hover:bg-red-800 hover:scale-105 hover:shadow-lg hover:border-red-800 group">
-                    <p className="text-xs font-medium text-primary group-hover:text-white">
+                  {/* Metric */}
+                  <div className="px-4 py-3 bg-primary/5 border border-primary/10 rounded-xl">
+                    <p className="text-sm font-semibold text-primary">
                       {item.metric}
                     </p>
                   </div>
                 </div>
-
-                {/* Bottom Accent */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r ${item.color}`} />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-
-
       </div>
     </SectionLayout>
   )

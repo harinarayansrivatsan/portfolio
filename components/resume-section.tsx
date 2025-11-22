@@ -39,42 +39,28 @@ export function ResumeSection() {
           title="Resume"
         />
 
-        {/* Info Pills - Flex Row */}
+        {/* Availability Info - More Professional */}
         <div className="flex flex-wrap gap-3 items-center justify-center mb-8 px-4 animate-fade-in-up" style={{ animationDelay: `${ANIMATION_DELAYS.NORMAL}ms` }}>
-          {/* Availability Info */}
-          <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg">
-            <span className="text-xs sm:text-sm font-semibold text-primary whitespace-nowrap">
-              Seeking FTE starting May 2026
+          <div className="px-5 py-3 bg-primary text-white rounded-xl shadow-md">
+            <span className="text-sm sm:text-base font-bold whitespace-nowrap">
+              Available for Full-Time Roles: May 2026
             </span>
           </div>
 
           <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg">
             <span className="text-xs sm:text-sm font-semibold text-primary whitespace-nowrap">
-              Open to relocation
-            </span>
-          </div>
-
-          {/* Work Authorization Info */}
-          <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg">
-            <span className="text-xs sm:text-sm font-semibold text-primary whitespace-nowrap">
-              Current: F-1 OPT + STEM Extension (36 months)
-            </span>
-          </div>
-
-          <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg">
-            <span className="text-xs sm:text-sm font-semibold text-primary whitespace-nowrap">
-              Future: Requires H1B Sponsorship (Without 100k fee)
+              Open to Relocation
             </span>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap gap-3 sm:gap-4 justify-center mb-8 animate-fade-in-up" style={{ animationDelay: `${ANIMATION_DELAYS.SLOW}ms` }}>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 animate-fade-in-up max-w-md mx-auto" style={{ animationDelay: `${ANIMATION_DELAYS.SLOW}ms` }}>
           <Button
             onClick={handleDownload}
             variant="primary"
             size="lg"
-            className="group min-w-[160px]"
+            className="group w-full sm:w-auto"
           >
             <svg
               className="w-5 h-5 mr-2 group-hover:animate-bounce"
@@ -96,7 +82,7 @@ export function ResumeSection() {
             onClick={handleOpenNew}
             variant="outline"
             size="lg"
-            className="group min-w-[160px]"
+            className="group w-full sm:w-auto"
           >
             <svg
               className="w-5 h-5 mr-2"
@@ -119,48 +105,31 @@ export function ResumeSection() {
         <div className="w-full mx-auto px-4 sm:px-8 lg:px-16 xl:px-20 animate-fade-in-up" style={{ animationDelay: `${ANIMATION_DELAYS.SLOW + 50}ms` }}>
           <div className="max-w-5xl mx-auto">
             {isMobile ? (
-              // Mobile: Show download card matching the portfolio card style
-              <div className="relative w-full max-w-96 mx-auto">
-                <div className="relative w-full min-h-[400px] rounded-3xl overflow-hidden bg-background border border-border/50 shadow-sm flex flex-col">
-                  {/* Background Gradient - Aggie Maroon */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 opacity-50" />
-
-                  {/* Icon Section */}
-                  <div className="w-full h-24 relative overflow-hidden flex items-center justify-center bg-white">
-                    <svg
-                      className="text-5xl w-16 h-16 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Content */}
-                  <div className="px-5 pb-5 pt-3 flex-1 flex flex-col justify-center">
-                    <div className="text-center">
-                      <h3 className="text-base font-bold text-primary mb-2 leading-tight">
-                        Resume Preview
-                      </h3>
-                      <p className="text-xs text-foreground/80 leading-relaxed">
-                        PDF preview is not available on mobile devices. Please use the download or open buttons above to view your resume.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Bottom Accent - Aggie Maroon */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary to-primary-light" />
-                </div>
+              // Mobile: Show download card
+              <div className="glass-card max-w-md mx-auto text-center">
+                <svg
+                  className="w-20 h-20 text-primary mx-auto mb-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  Resume Preview
+                </h3>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  PDF preview is not available on mobile devices. Please use the download or open buttons above to view the resume.
+                </p>
               </div>
             ) : (
-              // Desktop: Embed PDF with portfolio styling
-              <div className="relative w-full rounded-3xl overflow-hidden bg-white border border-border/50 shadow-sm">
+              // Desktop: Embed PDF
+              <div className="glass-card overflow-hidden">
                 <div className="relative w-full" style={{ height: 'calc(100vh - 400px)', minHeight: '600px' }}>
                   <iframe
                     src={RESUME_PATH}
