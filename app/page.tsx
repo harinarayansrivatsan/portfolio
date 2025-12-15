@@ -7,16 +7,13 @@ import { SkillsSection } from "@/components/skills-section"
 import { LeadershipSection } from "@/components/leadership-section"
 import { InterestsSection } from "@/components/interests-section"
 import { RecommendationsSection } from "@/components/recommendations-section"
-import { ContactSection } from "@/components/contact-section"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { ScrollToTopButton } from "@/components/scroll-to-top-button"
+
+import { PageLayout } from "@/components/layout/page-layout"
 
 export default function HomePage() {
   return (
-    <div className="scroll-smooth overflow-x-hidden">
-      <Header />
-      <main className="w-full">
+    <PageLayout className="pt-0 sm:pt-0">
+      <div className="scroll-smooth overflow-x-hidden w-full">
         <HeroSection />
         <JourneySection />
         <ProjectsSection />
@@ -24,10 +21,7 @@ export default function HomePage() {
         <LeadershipSection />
         <InterestsSection />
         <RecommendationsSection />
-        <ContactSection />
-      </main>
-      <Footer />
-      <ScrollToTopButton />
-    </div>
+      </div>
+    </PageLayout>
   )
 }

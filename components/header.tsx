@@ -1,215 +1,162 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
-import { usePathname, useRouter } from "next/navigation"
-import { TEXT, COMPONENTS, SPACING, cn } from "@/lib/design-system"
-
-const SCROLL_THRESHOLD = 50
+import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
+import { motion, AnimatePresence } from "framer-motion"
+import { cn } from "@/lib/utils"
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
-  { id: "journey", label: "Experience" },
+  { id: "journey", label: "Journey" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "leadership", label: "Leadership" },
-  { id: "interests", label: "Interests" },
-  { id: "recommendations", label: "Testimonials" },
-  { id: "contact", label: "Contact" },
-]
-
-const EXTERNAL_NAV_ITEMS = [
-  { href: "/resume", label: "Resume" },
+  { id: "recommendations", label: "Recommendations" },
 ]
 
 export function Header() {
   const pathname = usePathname()
-  const router = useRouter()
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   const isHomePage = pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > SCROLL_THRESHOLD)
+      setIsScrolled(window.scrollY > 20)
     }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   useEffect(() => {
-    // Only observe sections if we're on the homepage
-    if (!isHomePage) return
+    const handleIntersection = () => {
+      const sections = NAV_ITEMS.map(item => item.id)
 
-    const observerOptions = {
-      root: null,
-      rootMargin: "-50% 0px -30% 0px",
-      threshold: 0,
-    }
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id)
+      // Basic scroll spy
+      for (const id of sections.reverse()) {
+        const element = document.getElementById(id)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          if (rect.top <= 200) {
+            setActiveSection(id)
+            return
+          }
         }
-      })
+      }
     }
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions)
-
-    NAV_ITEMS.forEach((item) => {
-      const element = document.getElementById(item.id)
-      if (element) {
-        observer.observe(element)
-      }
-    })
-
-    return () => {
-      observer.disconnect()
+    if (isHomePage) {
+      window.addEventListener("scroll", handleIntersection)
+      return () => window.removeEventListener("scroll", handleIntersection)
     }
   }, [isHomePage])
 
-  const handleNavClick = useCallback((sectionId: string) => {
-    // If we're not on the homepage, navigate to homepage with hash
+  const scrollToSection = (id: string) => {
     if (!isHomePage) {
-      router.push(`/#${sectionId}`)
-      setIsMobileMenuOpen(false)
+      window.location.href = `/#${id}`
       return
     }
-
-    // If we're on the homepage, scroll to section
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" })
+      // scroll with offset
+      const y = element.getBoundingClientRect().top + window.scrollY - 80
+      window.scrollTo({ top: y, behavior: 'smooth' })
+      setActiveSection(id)
+      setMobileMenuOpen(false)
     }
-    setIsMobileMenuOpen(false)
-  }, [isHomePage, router])
+  }
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        "h-14 sm:h-16",
-        isScrolled
-          ? "bg-white/98 backdrop-blur-md shadow-md border-b border-border/30"
-          : "bg-white/80 backdrop-blur-sm"
-      )}
-    >
-      <div className={cn("container mx-auto px-4 sm:px-6 h-full")}>
-        <div className="flex items-center justify-between h-full">
+    <>
+      <motion.header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 transition-all duration-300",
+          isScrolled ? "pt-2" : "pt-6"
+        )}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className={cn(
+          "relative flex items-center justify-between px-6 py-3 gap-4 rounded-full transition-all duration-300",
+          isScrolled
+            ? "bg-background/80 backdrop-blur-xl border border-white/10 shadow-lg w-[90%] sm:w-auto sm:min-w-[500px]"
+            : "bg-transparent w-full max-w-7xl"
+        )}>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-1 bg-background/50 backdrop-blur-sm p-1 rounded-full border border-white/5 mx-auto">
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={cn(
+                  "px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 relative",
+                  activeSection === item.id
+                    ? "text-white"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                {activeSection === item.id && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-primary/20 border border-primary/50 rounded-full"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+                {item.label}
+              </button>
+            ))}
+          </nav>
 
-          {/* Logo/Name */}
-          <button
-            className={cn(TEXT.nav.logo, "font-bold text-foreground hover:text-primary transition-colors duration-200")}
-            onClick={() => handleNavClick("home")}
+          {/* Resume Button & Mobile Toggle */}
+          <div className={cn("flex items-center gap-4", !isScrolled && "absolute right-6")}>
+            <a
+              href="/resume"
+              className="hidden md:inline-flex items-center justify-center px-6 py-2 text-sm font-semibold text-white transition-all duration-200 bg-primary hover:bg-primary/80 shadow-[0_0_20px_-5px_var(--color-primary)] rounded-full hover:scale-105"
+            >
+              Resume
+            </a>
+
+            <button
+              className="md:hidden p-2 text-foreground relative z-50"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </motion.header>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-3xl pt-24 px-6 md:hidden"
           >
-            <span className="hidden sm:inline">Hari Narayan Srivatsan</span>
-            <span className="sm:hidden">HNS</span>
-          </button>
-
-          {/* Desktop Navigation */}
-          <nav className={cn("hidden md:flex items-center", SPACING.gap.xs)}>
-            {NAV_ITEMS.map((item) => {
-              const isActive = isHomePage && activeSection === item.id
-              return (
+            <div className="flex flex-col space-y-4">
+              {NAV_ITEMS.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={cn(
-                    "px-3 py-1.5 rounded-full transition-all duration-200",
-                    TEXT.nav.link,
-                    isActive
-                      ? "bg-primary text-white shadow-sm"
-                      : "text-muted-foreground hover:text-primary hover:bg-muted/50"
-                  )}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-2xl font-bold text-left text-foreground py-2 border-b border-white/5"
                 >
                   {item.label}
                 </button>
-              )
-            })}
-            {EXTERNAL_NAV_ITEMS.map((item) => {
-              const isActive = pathname === item.href
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "px-3 py-1.5 rounded-full transition-all duration-200",
-                    TEXT.nav.link,
-                    isActive
-                      ? "bg-primary text-white shadow-sm"
-                      : "text-muted-foreground hover:text-primary hover:bg-muted/50"
-                  )}
-                >
-                  {item.label}
-                </a>
-              )
-            })}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-foreground hover:text-primary hover:bg-muted rounded-lg transition-all duration-200"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full right-4 mt-2 bg-white rounded-lg shadow-xl border border-border/30 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200 min-w-[200px]">
-            <nav className={cn("flex flex-col p-2", SPACING.gap.xs)}>
-              {NAV_ITEMS.map((item) => {
-                const isActive = isHomePage && activeSection === item.id
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => handleNavClick(item.id)}
-                    className={cn(
-                      "px-4 py-2 rounded-full transition-all duration-200 text-right whitespace-nowrap",
-                      TEXT.nav.link,
-                      isActive
-                        ? "bg-primary text-white"
-                        : "text-muted-foreground hover:text-white hover:bg-primary"
-                    )}
-                  >
-                    {item.label}
-                  </button>
-                )
-              })}
-              {EXTERNAL_NAV_ITEMS.map((item) => {
-                const isActive = pathname === item.href
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      "px-4 py-2 rounded-full transition-all duration-200 text-right whitespace-nowrap",
-                      TEXT.nav.link,
-                      isActive
-                        ? "bg-primary text-white"
-                        : "text-muted-foreground hover:text-white hover:bg-primary"
-                    )}
-                  >
-                    {item.label}
-                  </a>
-                )
-              })}
-            </nav>
-          </div>
+              ))}
+              <a href="/resume" className="text-2xl font-bold text-left text-primary py-4">
+                Download Resume
+              </a>
+            </div>
+          </motion.div>
         )}
-      </div>
-    </header>
+      </AnimatePresence>
+    </>
   )
 }

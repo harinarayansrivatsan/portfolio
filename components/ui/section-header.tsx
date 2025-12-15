@@ -1,13 +1,11 @@
 import { ReactNode } from "react"
-import { TEXT, cn } from "@/lib/design-system"
+import { cn } from "@/lib/utils"
 
 interface SectionHeaderProps {
   title: string
   subtitle?: string
   description?: ReactNode
   className?: string
-  titleClassName?: string
-  subtitleClassName?: string
 }
 
 export function SectionHeader({
@@ -15,31 +13,24 @@ export function SectionHeader({
   subtitle,
   description,
   className = "",
-  titleClassName = "",
-  subtitleClassName = ""
 }: SectionHeaderProps) {
   return (
-    <div className={cn("text-center mb-4 sm:mb-6", className)}>
-      <h1 className={cn(
-        TEXT.section.title,
-        "text-foreground mb-1 sm:mb-2",
-        titleClassName
-      )}>
-        {title}
-      </h1>
+    <div className={cn("text-center mb-16 space-y-4", className)}>
+      <div className="inline-block relative">
+        <h2 className="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-primary-foreground to-white/70 pb-2">
+          {title}
+        </h2>
+        <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50 blur-sm mix-blend-screen" />
+      </div>
 
       {subtitle && (
-        <p className={cn(
-          TEXT.section.subtitle,
-          "text-muted-foreground max-w-2xl mx-auto",
-          subtitleClassName
-        )}>
+        <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
           {subtitle}
         </p>
       )}
 
       {description && (
-        <div className="mt-2 max-w-3xl mx-auto">
+        <div className="mt-4 max-w-3xl mx-auto text-muted-foreground">
           {description}
         </div>
       )}

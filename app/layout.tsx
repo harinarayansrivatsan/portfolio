@@ -1,29 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Open_Sans, Montserrat, JetBrains_Mono } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-open-sans",
-  weight: ["300", "400", "500", "600", "700"],
-})
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-montserrat",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-})
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-jetbrains-mono",
-  weight: ["300", "400", "500", "600", "700"],
-})
 
 export const metadata: Metadata = {
   title: "Hari Narayan Srivatsan",
@@ -39,11 +19,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${openSans.variable} ${montserrat.variable} ${jetbrainsMono.variable} antialiased`} suppressHydrationWarning>
-      <body className="font-sans bg-background text-foreground m-0 p-0">
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} antialiased`} suppressHydrationWarning>
+      <body className="font-sans bg-background text-foreground m-0 p-0 selection:bg-primary/30 selection:text-primary-foreground">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

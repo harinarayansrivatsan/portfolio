@@ -1,88 +1,102 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@plugin "tailwindcss-animate";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Modern 2025 Design System - Professional 2-Color Theme */
-  --background: #ffffff; /* Pure white background */
-  --background-alt: #f8fafc; /* Subtle off-white for alternating sections */
-  --foreground: #1e293b; /* Slate for text */
-  --card: #ffffff; /* White card background */
-  --card-foreground: #1e293b; /* Slate text on cards */
-  --popover: #ffffff; /* White popover background */
-  --popover-foreground: #1e293b; /* Slate text on popovers */
-  --primary: #1e3a8a; /* Navy Blue - Primary */
-  --primary-foreground: #ffffff; /* White text on primary */
-  --primary-light: #3b82f6; /* Lighter Blue for hover states */
-  --primary-dark: #1e40af; /* Darker Blue for active states */
-  --secondary: #f59e0b; /* Amber - Secondary/Accent */
-  --secondary-foreground: #ffffff; /* White text on secondary */
-  --secondary-light: #fbbf24; /* Lighter amber for hover */
-  --muted: #f1f5f9; /* Light slate muted background */
-  --muted-foreground: #64748b; /* Slate gray muted text */
-  --accent: #f59e0b; /* Amber accent */
-  --accent-foreground: #ffffff; /* White text on accent */
-  --destructive: #ef4444; /* Red for destructive actions */
-  --destructive-foreground: #ffffff; /* White text on destructive */
-  --border: #e2e8f0; /* Light slate borders */
-  --input: #f8fafc; /* Light input backgrounds */
-  --ring: rgba(30, 58, 138, 0.2); /* Subtle Navy focus rings */
-  --chart-1: #1e3a8a; /* Navy Blue chart color */
-  --chart-2: #f59e0b; /* Amber chart color */
-  --chart-3: #1e293b; /* Slate chart color */
-  --chart-4: #f1f5f9; /* Light slate chart color */
-  --chart-5: #ffffff; /* White chart color */
-  --radius: 0.75rem; /* Modern rounded corners */
-  --sidebar: #ffffff; /* White sidebar */
-  --sidebar-foreground: #1e293b; /* Slate sidebar text */
-  --sidebar-primary: #1e3a8a; /* Navy sidebar primary */
-  --sidebar-primary-foreground: #ffffff; /* White text on sidebar primary */
-  --sidebar-accent: #f59e0b; /* Amber sidebar accent */
-  --sidebar-accent-foreground: #ffffff; /* White text on sidebar accent */
-  --sidebar-border: #e2e8f0; /* Light slate sidebar borders */
-  --sidebar-ring: rgba(30, 58, 138, 0.2); /* Subtle Navy sidebar focus rings */
+  /* 
+   * PREMIUM DARK MODE PALETTE
+   * Deep, rich backgrounds with vibrant, electric accents.
+   */
+  --background: hsl(224, 71%, 4%);
+  /* Deep Navy Black */
+  --foreground: hsl(210, 40%, 98%);
+  /* Crisp White */
 
-  /* Premium shadows for depth */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --card: hsl(222, 47%, 11%);
+  /* Slightly lighter navy for cards */
+  --card-foreground: hsl(210, 40%, 98%);
 
-  /* Premium gradients */
-  --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-  --gradient-secondary: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-  --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  --popover: hsl(222, 47%, 11%);
+  --popover-foreground: hsl(210, 40%, 98%);
 
-  /* Modern Typography System - Compact & Readable */
-  --font-size-xs: clamp(0.65rem, 0.6rem + 0.1vw, 0.7rem);
-  --font-size-sm: clamp(0.75rem, 0.7rem + 0.15vw, 0.8rem);
-  --font-size-base: clamp(0.8rem, 0.75rem + 0.2vw, 0.875rem);
-  --font-size-lg: clamp(0.9rem, 0.85rem + 0.25vw, 0.95rem);
-  --font-size-xl: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
-  --font-size-2xl: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
-  --font-size-3xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
-  --font-size-4xl: clamp(1.5rem, 1.35rem + 0.75vw, 1.875rem);
-  --font-size-5xl: clamp(1.75rem, 1.5rem + 1vw, 2rem);
-  --font-size-6xl: clamp(2rem, 1.75rem + 1.25vw, 2.25rem);
-  --font-size-7xl: clamp(2.25rem, 1.95rem + 1.5vw, 2.5rem);
+  /* Primary: Electric Violet/Indigo */
+  --primary: hsl(252, 100%, 67%);
+  --primary-foreground: hsl(210, 40%, 98%);
 
-  /* Fluid line heights */
-  --line-height-tight: 1.1;
-  --line-height-snug: 1.2;
-  --line-height-normal: 1.4;
-  --line-height-relaxed: 1.6;
-  --line-height-loose: 1.8;
+  /* Secondary: Vibrant Cyan/Teal (Cyberpunk accent) */
+  --secondary: hsl(180, 100%, 50%);
+  --secondary-foreground: hsl(222.2, 47.4%, 11.2%);
 
-  /* Fluid spacing scale - Compact */
-  --space-xs: clamp(0.25rem, 0.2rem + 0.15vw, 0.375rem);
-  --space-sm: clamp(0.5rem, 0.4rem + 0.3vw, 0.75rem);
-  --space-base: clamp(0.75rem, 0.65rem + 0.5vw, 1rem);
-  --space-lg: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
-  --space-xl: clamp(1.5rem, 1.25rem + 1vw, 2rem);
-  --space-2xl: clamp(2rem, 1.65rem + 1.5vw, 3rem);
-  --space-3xl: clamp(2.5rem, 2rem + 2vw, 4rem);
+  --muted: hsl(217, 33%, 17%);
+  --muted-foreground: hsl(215, 20.2%, 65.1%);
+
+  --accent: hsl(217, 33%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
+
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+
+  --border: hsl(217, 33%, 17%);
+  --input: hsl(217, 33%, 17%);
+  --ring: hsl(252, 100%, 67%);
+  /* Match Primary */
+
+  --radius: 0.75rem;
+
+  /* Chart colors for data viz */
+  --chart-1: hsl(252, 100%, 67%);
+  --chart-2: hsl(180, 100%, 50%);
+  --chart-3: hsl(300, 100%, 50%);
+  --chart-4: hsl(45, 100%, 50%);
+  --chart-5: hsl(0, 100%, 65%);
+
+  /* Typography Scale (Clamp) */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.8rem + 0.2vw, 1rem);
+  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+  --font-size-2xl: clamp(1.5rem, 1.4rem + 0.6vw, 1.875rem);
+  --font-size-3xl: clamp(1.875rem, 1.75rem + 1vw, 2.5rem);
+  --font-size-4xl: clamp(2.25rem, 2rem + 1.5vw, 3rem);
+  --font-size-5xl: clamp(3rem, 2.5rem + 2vw, 4rem);
+
+  /* Spacing */
+  --spacing-container: clamp(1rem, 5vw, 3rem);
+}
+
+.dark {
+  /* Ensure these match the root since we are dark-first now */
+  --background: hsl(224, 71%, 4%);
+  --foreground: hsl(210, 40%, 98%);
+
+  --card: hsl(222, 47%, 11%);
+  --card-foreground: hsl(210, 40%, 98%);
+
+  --popover: hsl(222, 47%, 11%);
+  --popover-foreground: hsl(210, 40%, 98%);
+
+  --primary: hsl(252, 100%, 67%);
+  --primary-foreground: hsl(210, 40%, 98%);
+
+  --secondary: hsl(180, 100%, 50%);
+  --secondary-foreground: hsl(222.2, 47.4%, 11.2%);
+
+  --muted: hsl(217, 33%, 17%);
+  --muted-foreground: hsl(215, 20.2%, 65.1%);
+
+  --accent: hsl(217, 33%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
+
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+
+  --border: hsl(217, 33%, 17%);
+  --input: hsl(217, 33%, 17%);
+  --ring: hsl(252, 100%, 67%);
 }
 
 @theme inline {
@@ -94,11 +108,8 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-primary-light: var(--primary-light);
-  --color-primary-dark: var(--primary-dark);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary-light: var(--secondary-light);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
@@ -113,707 +124,74 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 6px);
-  --radius-md: calc(var(--radius) - 3px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 6px);
-  --radius-2xl: calc(var(--radius) + 12px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
 
-  /* Custom responsive text size utilities */
-  --text-xs: var(--font-size-xs);
-  --text-sm: var(--font-size-sm);
-  --text-base: var(--font-size-base);
-  --text-lg: var(--font-size-lg);
-  --text-xl: var(--font-size-xl);
-  --text-2xl: var(--font-size-2xl);
-  --text-3xl: var(--font-size-3xl);
-  --text-4xl: var(--font-size-4xl);
-  --text-5xl: var(--font-size-5xl);
-  --text-6xl: var(--font-size-6xl);
-  --text-7xl: var(--font-size-7xl);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Helper for gradients */
+  --image-glow: conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg);
+
+  /* Animations */
+  --animate-shimmer: shimmer 5s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    box-sizing: border-box;
-  }
-
-  html {
-    margin: 0;
-    padding: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    scroll-padding-top: 4rem;
-    height: 100%;
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
   }
 
-  /* Premium section styling with enhanced design system */
-  .section-container {
-    @apply flex flex-col relative overflow-hidden;
-    background: #fafafa;
-    min-height: fit-content;
-    margin: 0;
-    padding: 0;
-  }
-
-  .section-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: transparent;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .content-wrapper {
-    @apply container mx-auto relative z-10;
-    padding: clamp(1.5rem, 4vh, 3rem) clamp(1rem, 4vw, 2rem);
-    max-width: min(100%, 1400px);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .section-content {
-    @apply flex flex-col items-center justify-center;
-    padding: clamp(0.75rem, 2vh, 1.25rem) clamp(0.5rem, 2vw, 1rem);
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-
-  .section-title {
-    @apply text-foreground text-center;
-    font-size: var(--font-size-3xl);
-    line-height: var(--line-height-tight);
-    letter-spacing: -0.02em;
-    font-weight: 700;
-    margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
-  }
-
-  .section-subtitle {
-    @apply text-muted-foreground text-center mx-auto;
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-relaxed);
-    font-weight: 400;
-    max-width: 48rem;
-    margin-bottom: clamp(1.25rem, 3vh, 2rem);
-  }
-
-
-  /* Professional Typography Classes - Compact & Clean */
-  .text-display {
-    font-size: var(--font-size-3xl);
-    line-height: var(--line-height-tight);
-    letter-spacing: -0.02em;
-    font-weight: 700;
-  }
-
-  .text-heading-1 {
-    font-size: var(--font-size-2xl);
-    line-height: var(--line-height-tight);
-    letter-spacing: -0.015em;
-    font-weight: 600;
-  }
-
-  .text-heading-2 {
-    font-size: var(--font-size-xl);
-    line-height: var(--line-height-snug);
-    letter-spacing: -0.01em;
-    font-weight: 600;
-  }
-
-  .text-heading-3 {
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-snug);
-    letter-spacing: -0.005em;
-    font-weight: 600;
-  }
-
-  .text-heading-4 {
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-normal);
-    font-weight: 600;
-  }
-
-  .text-heading-5 {
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-normal);
-    font-weight: 600;
-  }
-
-  .text-body-xl {
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-relaxed);
-    font-weight: 400;
-  }
-
-  .text-body-lg {
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-relaxed);
-    font-weight: 400;
-  }
-
-  .text-body {
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-relaxed);
-    font-weight: 400;
-  }
-
-  .text-body-sm {
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-relaxed);
-    font-weight: 400;
-  }
-
-  .text-caption {
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-normal);
-    font-weight: 400;
-  }
-
-  /* Responsive utility classes */
-  .responsive-text {
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-relaxed);
-  }
-
-  /* UNIVERSAL RESPONSIVE DESIGN - Adapts to ALL Screen Sizes */
-  /* From 320px phones to 3840px+ TVs and everything in between */
-
-  /* Base styles optimized for smallest devices first */
-  .universal-container {
-    width: 100%;
-    max-width: 100vw;
-    padding-left: clamp(0.75rem, 2vw, 2rem);
-    padding-right: clamp(0.75rem, 2vw, 2rem);
-    margin: 0 auto;
-  }
-
-  .universal-grid {
-    display: grid;
-    gap: clamp(0.5rem, 1.5vw, 2rem);
-    width: 100%;
-  }
-
-  .universal-text {
-    font-size: clamp(0.875rem, 1.8vw, 1.1rem);
-    line-height: 1.5;
-  }
-
-  /* COMPREHENSIVE DEVICE BREAKPOINTS */
-
-  /* 📱 Small Mobile Phones (320px - 400px) */
-  @media (max-width: 400px) {
-    :root {
-      --font-size-xs: clamp(0.65rem, 0.6rem + 0.1vw, 0.7rem);
-      --font-size-sm: clamp(0.75rem, 0.7rem + 0.15vw, 0.8rem);
-      --font-size-base: clamp(0.825rem, 0.775rem + 0.2vw, 0.875rem);
-      --font-size-lg: clamp(0.9rem, 0.825rem + 0.25vw, 0.95rem);
-      --font-size-xl: clamp(1rem, 0.925rem + 0.3vw, 1.05rem);
-      --font-size-2xl: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
-      --font-size-3xl: clamp(1.35rem, 1.15rem + 0.8vw, 1.6rem);
-      --font-size-4xl: clamp(1.625rem, 1.35rem + 1.2vw, 1.9rem);
-    }
-    .content-wrapper { padding: clamp(0.75rem, 2vh, 1rem) clamp(0.75rem, 3vw, 1rem) 0; }
-    .content-wrapper { max-width: 95vw; }
-    .glass-card { padding: clamp(1rem, 2vh, 1.25rem); }
-    .section-content { padding: clamp(2rem, 6vh, 3rem) clamp(1rem, 3vw, 1.5rem) clamp(1.5rem, 3vh, 2rem); }
-  }
-
-  @media (min-width: 401px) and (max-width: 768px) {
-    :root {
-      --font-size-xs: clamp(0.7rem, 0.65rem + 0.1vw, 0.75rem);
-      --font-size-sm: clamp(0.8rem, 0.75rem + 0.15vw, 0.85rem);
-      --font-size-base: clamp(0.875rem, 0.825rem + 0.2vw, 0.925rem);
-      --font-size-lg: clamp(0.975rem, 0.9rem + 0.25vw, 1.025rem);
-      --font-size-xl: clamp(1.075rem, 1rem + 0.3vw, 1.15rem);
-      --font-size-2xl: clamp(1.225rem, 1.1rem + 0.6vw, 1.4rem);
-      --font-size-3xl: clamp(1.45rem, 1.25rem + 1vw, 1.75rem);
-      --font-size-4xl: clamp(1.75rem, 1.45rem + 1.5vw, 2.1rem);
-    }
-    .content-wrapper { max-width: 92vw; }
-    .section-content { padding: clamp(2rem, 6vh, 3.5rem) clamp(1rem, 3vw, 1.5rem) clamp(1.5rem, 3vh, 2.5rem); }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .content-wrapper { max-width: 85vw; }
-  }
-
-  @media (min-width: 1200px) {
-    :root {
-      --font-size-4xl: clamp(2.125rem, 1.75rem + 1.875vw, 2.625rem);
-      --font-size-3xl: clamp(1.75rem, 1.5rem + 1.25vw, 2.125rem);
-    }
-    .content-wrapper { max-width: 1200px; }
-  }
-
-  /* 🖥️ Large Desktop Screens (1600px - 1920px) */
-  @media (min-width: 1600px) {
-    :root {
-      --font-size-4xl: clamp(2.25rem, 1.875rem + 1.875vw, 2.75rem);
-      --font-size-3xl: clamp(1.875rem, 1.625rem + 1.25vw, 2.375rem);
-    }
-    .content-wrapper { padding: calc(var(--space-xl) * 1.2) var(--space-lg) 0; }
-    .content-wrapper { max-width: 1500px; }
-  }
-
-  /* 🖥️ Extra Large Monitors (1920px - 2560px) */
-  @media (min-width: 1920px) {
-    :root {
-      --font-size-4xl: clamp(2.375rem, 2rem + 1.875vw, 2.875rem);
-      --font-size-3xl: clamp(2rem, 1.75rem + 1.25vw, 2.5rem);
-    }
-    .content-wrapper { max-width: 1600px; }
-    .glass-card { padding: clamp(1.5rem, 3vh, 2rem); }
-  }
-
-  /* 🖥️ Ultra Wide Monitors & Small TVs (2560px - 3440px) */
-  @media (min-width: 2560px) {
-    :root {
-      --font-size-4xl: clamp(2.5rem, 2.125rem + 1.875vw, 3rem);
-      --font-size-3xl: clamp(2.125rem, 1.875rem + 1.25vw, 2.625rem);
-    }
-    .content-wrapper {
-      max-width: 1800px;
-      padding: clamp(2rem, 4vh, 3rem) clamp(2rem, 3vw, 4rem) 0;
-    }
-  }
-
-  /* 📺 Large TVs & Ultra High Resolution (3440px+) */
-  @media (min-width: 3440px) {
-    :root {
-      --font-size-4xl: clamp(2.625rem, 2.25rem + 1.875vw, 3.125rem);
-      --font-size-3xl: clamp(2.25rem, 1.875rem + 1.875vw, 2.75rem);
-    }
-    .content-wrapper {
-      max-width: 2000px;
-      padding: clamp(2.5rem, 5vh, 4rem) clamp(3rem, 4vw, 5rem) 0;
-    }
-    .glass-card { padding: clamp(2rem, 4vh, 3rem); }
-  }
-
-  /* 🔥 UNIVERSAL GRID SYSTEM - Adapts to ANY screen size */
-  .responsive-columns-1 { grid-template-columns: 1fr; }
-
-  @media (min-width: 480px) {
-    .responsive-columns-auto { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-  }
-
-  @media (min-width: 768px) {
-    .responsive-columns-2 { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (min-width: 1024px) {
-    .responsive-columns-3 { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  @media (min-width: 1440px) {
-    .responsive-columns-4 { grid-template-columns: repeat(4, 1fr); }
-  }
-
-  @media (min-width: 1920px) {
-    .responsive-columns-5 { grid-template-columns: repeat(5, 1fr); }
-  }
-
-  /* High-resolution display optimizations */
-  @media (min-resolution: 2dppx) {
-    .glass-card {
-      backdrop-filter: blur(20px);
-    }
-  }
-
-  /* Ultra-responsive text scaling for any screen size */
-  .fluid-text-xs { font-size: var(--font-size-xs); }
-  .fluid-text-sm { font-size: var(--font-size-sm); }
-  .fluid-text-base { font-size: var(--font-size-base); }
-  .fluid-text-lg { font-size: var(--font-size-lg); }
-  .fluid-text-xl { font-size: var(--font-size-xl); }
-  .fluid-text-2xl { font-size: var(--font-size-2xl); }
-  .fluid-text-3xl { font-size: var(--font-size-3xl); }
-  .fluid-text-4xl { font-size: var(--font-size-4xl); }
-  .fluid-text-5xl { font-size: var(--font-size-5xl); }
-  .fluid-text-6xl { font-size: var(--font-size-6xl); }
-  .fluid-text-7xl { font-size: var(--font-size-7xl); }
-
-  /* Modern card styling with smooth interactions and depth */
   .glass-card {
-    @apply bg-white border border-border/40;
-    padding: clamp(1rem, 2.5vh, 1.5rem);
-    border-radius: 1.25rem;
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.03),
-      0 2px 6px -1px rgba(0, 0, 0, 0.04),
-      0 4px 8px -2px rgba(0, 0, 0, 0.02);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
-    height: fit-content;
-    width: 100%;
-    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+    @apply bg-card/40 backdrop-blur-md border border-white/5 rounded-xl shadow-xl transition-all duration-300 hover:bg-card/60 hover:border-primary/20 hover:shadow-2xl hover:-translate-y-1;
   }
 
-  /* Standardized card grid spacing */
-  .card-grid {
-    display: grid;
-    gap: clamp(1.25rem, 3vh, 2rem);
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-primary-foreground to-white animate-shimmer;
+    background-size: 300%;
   }
 
-  .card-grid-1 { grid-template-columns: 1fr; }
-  .card-grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-  .card-grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-
-  .glass-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 50%, #f59e0b 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .glass-card:hover::before {
-    opacity: 1;
-  }
-
-  .glass-card:hover {
-    transform: translateY(-3px);
-    box-shadow:
-      0 8px 16px -4px rgba(30, 58, 138, 0.15),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    border-color: rgba(30, 58, 138, 0.2);
-  }
-
-  @media (min-width: 768px) {
-    .glass-card:hover {
-      transform: translateY(-3px);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .glass-card {
-      transition: none;
-    }
-    .glass-card:hover {
-      transform: none;
-    }
-  }
-
-  /* Clean button styling - Professional & Simple */
-  .btn-primary {
-    @apply text-primary-foreground rounded-lg font-semibold;
-    padding: var(--space-sm) var(--space-lg);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-normal);
-    background: var(--primary);
-    box-shadow: 0 1px 3px rgba(30, 58, 138, 0.2);
-    border: none;
-    transition: all 0.2s ease;
-  }
-
-  .btn-primary:hover {
-    background: var(--primary-light);
-    box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
-    transform: translateY(-2px);
-  }
-
-  .btn-primary:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(30, 58, 138, 0.2);
-  }
-
-  .btn-secondary {
-    @apply text-secondary-foreground rounded-lg font-semibold;
-    padding: var(--space-sm) var(--space-lg);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-normal);
-    background: var(--secondary);
-    box-shadow: 0 1px 3px rgba(245, 158, 11, 0.2);
-    border: none;
-    transition: all 0.2s ease;
-  }
-
-  .btn-secondary:hover {
-    background: var(--secondary-light);
-    box-shadow: 0 4px 6px rgba(245, 158, 11, 0.25);
-    transform: translateY(-2px);
-  }
-
-  .btn-outline {
-    @apply border-2 border-primary text-primary rounded-lg font-semibold bg-white;
-    padding: var(--space-sm) var(--space-lg);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-normal);
-    transition: all 0.2s ease;
-  }
-
-  .btn-outline:hover {
-    background: var(--primary);
-    color: white;
-    box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
-    transform: translateY(-2px);
-  }
-
-  .btn-outline:active {
-    transform: translateY(0);
-  }
-
-  @media (min-width: 768px) {
-    .btn-primary:hover,
-    .btn-secondary:hover,
-    .btn-outline:hover {
-      @apply scale-105;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .btn-primary,
-    .btn-secondary,
-    .btn-outline {
-      transition: none;
-    }
-    .btn-primary::before,
-    .btn-outline::before {
-      transition: none;
-    }
-    .btn-primary:hover,
-    .btn-secondary:hover,
-    .btn-outline:hover {
-      transform: none;
-    }
-  }
-
-  /* Premium animations and micro-interactions */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .animate-shimmer {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.2) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite;
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-
-  /* Scroll reveal animations */
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .scroll-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Timeline animations */
-  @keyframes slide-in-from-bottom {
-    from {
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-
-  @keyframes popover-appear {
-    from {
-      opacity: 0;
-      transform: translateY(10px) scale(0.95);
-      filter: blur(2px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      filter: blur(0);
-    }
-  }
-
-  @keyframes milestone-glow {
-    0% {
-      box-shadow: 0 0 0 0 rgba(80, 0, 0, 0.4);
-    }
-    70% {
-      box-shadow: 0 0 0 10px rgba(80, 0, 0, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(80, 0, 0, 0);
-    }
-  }
-
-  .animate-in {
-    animation: slide-in-from-bottom 0.3s ease-out forwards;
-  }
-
-  .slide-in-from-bottom-2 {
-    animation: popover-appear 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .milestone-glow {
-    animation: milestone-glow 2s infinite;
-  }
-
-  /* Horizontal Timeline Scrolling */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Smooth horizontal scrolling */
-  .overflow-x-auto {
-    scroll-behavior: smooth;
-  }
-
-  /* Enhanced focus states for accessibility */
-  *:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-    border-radius: 6px;
-  }
-
-  /* Professional Animation System */
-
-  /* Fade in animation */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 0.4s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-    opacity: 0;
-  }
-
-  /* Slide in animation for home page */
-  .animate-slide-in {
-    animation: fadeInUp 0.6s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-    opacity: 0;
-  }
-
-  .animate-slide-in:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-
-  .animate-slide-in:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .animate-slide-in:nth-child(3) {
-    animation-delay: 0.3s;
-  }
-
-  .animate-slide-in:nth-child(4) {
-    animation-delay: 0.4s;
-  }
-
-  /* Fade in up animation */
-  .animate-fade-in-up {
-    animation: fadeInUp 0.5s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-    opacity: 0;
-  }
-
-  /* Card entrance animation with stagger support */
-  .card-entrance {
-    animation: fadeInUp 0.5s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-    opacity: 0;
-  }
-
-  /* Respect user motion preferences */
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-
-    .animate-slide-in,
-    .animate-fade-in,
-    .animate-fade-in-up,
-    .card-entrance {
-      animation: none !important;
-      opacity: 1 !important;
-    }
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-400 to-secondary;
   }
 }
