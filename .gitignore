@@ -18,9 +18,6 @@ yarn-error.log*
 # env files
 .env*
 
-# vercel
-.vercel
-
 # typescript
 *.tsbuildinfo
 
@@ -42,3 +39,7 @@ package-lock.json
 
 # Resume docx
 public/resume/resume.docx
+
+# Cloudflare OpenNext artifacts
+.open-next
+.wrangler
