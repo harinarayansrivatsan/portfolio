@@ -2,84 +2,65 @@
 
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
-import { ANIMATION_DELAYS, GRADIENTS } from "@/lib/constants"
+import { motion } from "framer-motion"
+import { Users, Rocket } from "lucide-react"
 
 const LEADERSHIP_ROLES = [
-    {
-      title: "President",
-      subtitle: "Business Information Technology Students @ TAMU",
-      timeframe: "2024 - Present",
-      description:
-        "Partnered with 3+ local businesses in College Station TX and sourced candidates for technology transformation & web development volunteering opportunities",
-      metric: "Active partnerships with 3+ local businesses",
-      icon: "👥",
-      color: GRADIENTS.RED_DARK,
-    },
-    {
-      title: "Co-Founder",
-      subtitle: "ACM Student Chapter - SASTRA University",
-      timeframe: "2018 - 2020",
-      description:
-        "Co-founded ACM student chapter at SASTRA University, hosted online coding competitions, conducted in-person workshops and conducted classes on programming concepts",
-      metric: "200+ students participated in events",
-      icon: "🚀",
-      color: GRADIENTS.RED_MEDIUM,
-    },
-  ] as const
+  {
+    title: "President",
+    subtitle: "Business Information Technology Students @ TAMU",
+    timeframe: "2024 - Present",
+    description: "Partnered with 3+ local businesses in College Station TX and sourced candidates for technology transformation & web development volunteering opportunities",
+    metric: "Active partnerships with 3+ local businesses",
+    icon: Users,
+    color: "text-red-500",
+  },
+  {
+    title: "Co-Founder",
+    subtitle: "ACM Student Chapter - SASTRA University",
+    timeframe: "2018 - 2020",
+    description: "Co-founded ACM student chapter at SASTRA University, hosted online coding competitions, conducted in-person workshops and conducted classes on programming concepts",
+    metric: "200+ students participated in events",
+    icon: Rocket,
+    color: "text-orange-500",
+  },
+]
 
 export function LeadershipSection() {
   return (
-    <SectionLayout id="leadership">
-      <div className="w-full max-w-6xl mx-auto flex flex-col">
-        <SectionHeader
-          title="Leadership Experience"
-          subtitle="Building communities and driving initiatives"
-        />
+    <SectionLayout id="leadership" className="bg-transparent">
+      <SectionHeader
+        title="Leadership"
+        subtitle="Driving initiatives and building communities."
+      />
 
-        <div className="w-full px-3 sm:px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-            {LEADERSHIP_ROLES.map((item, index) => (
-              <div
-                key={index}
-                className="animate-fade-in-up"
-                style={{ animationDelay: `${index * ANIMATION_DELAYS.NORMAL}ms` }}
-              >
-                <div className="bg-white rounded-xl border-2 border-slate-200 p-3 sm:p-4 h-full flex flex-col text-center hover:shadow-xl hover:border-primary hover:-translate-y-1 transition-all duration-300">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mx-auto">
+        {LEADERSHIP_ROLES.map((role, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+            viewport={{ once: true }}
+            className="glass-card p-8 flex flex-col items-center text-center hover:bg-white/5 transition-colors group"
+          >
+            <div className={`p-4 rounded-full bg-white/5 border border-white/10 ${role.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <role.icon size={32} />
+            </div>
 
-                  {/* Icon */}
-                  <div className="text-2xl sm:text-3xl mb-2">
-                    {item.icon}
-                  </div>
+            <h3 className="text-2xl font-bold text-foreground mb-2">{role.title}</h3>
+            <p className="text-primary font-medium mb-1">{role.subtitle}</p>
+            <p className="text-xs text-muted-foreground uppercase tracking-widest mb-6">{role.timeframe}</p>
 
-                  {/* Header */}
-                  <h3 className="text-sm sm:text-base font-bold text-foreground mb-1">
-                    {item.title}
-                  </h3>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              {role.description}
+            </p>
 
-                  <p className="text-xs font-semibold text-primary mb-1">
-                    {item.subtitle}
-                  </p>
-
-                  <p className="text-[10px] sm:text-xs text-muted-foreground mb-2">
-                    {item.timeframe}
-                  </p>
-
-                  {/* Description */}
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-2 flex-1">
-                    {item.description}
-                  </p>
-
-                  {/* Metric */}
-                  <div className="px-2 py-1.5 bg-primary/5 border border-primary/10 rounded-full">
-                    <p className="text-[10px] sm:text-xs font-semibold text-primary">
-                      {item.metric}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+            <div className="mt-auto px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold">
+              {role.metric}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </SectionLayout>
   )

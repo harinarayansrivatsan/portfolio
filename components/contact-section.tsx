@@ -3,94 +3,67 @@
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
 import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { TEXT, COMPONENTS, cn, getSectionClasses } from "@/lib/design-system"
-import { SECTION_CONFIGS } from "@/lib/design-tokens"
-
-const CONFIG = SECTION_CONFIGS.contact
-const classes = getSectionClasses('contact')
+import { Linkedin, Mail, ArrowRight } from "lucide-react"
 
 const CONTACT_METHODS = [
   {
     title: "LinkedIn",
-    subtitle: "Professional Networking",
-    description: "Connect for networking, industry insights, quick updates, and professional relationship building. Open to relocation for the right opportunity.",
+    subtitle: "Let's connect professionally",
+    description: "I'm always open to discussing new opportunities, sharing insights, and expanding my network.",
     contact: "linkedin.com/in/harinarayansrivatsan",
     href: "https://linkedin.com/in/harinarayansrivatsan",
-    icon: "💼",
-    availability: "Active daily",
+    icon: Linkedin,
+    color: "bg-[#0077b5]"
   },
   {
     title: "Email",
-    subtitle: "Professional Communication",
-    description: "Best for formal inquiries, job opportunities, and detailed discussions about projects or collaborations. Open to full-time opportunities starting May 2026.",
+    subtitle: "Drop me a line directly",
+    description: "Whether you have a question, a project proposal, or just want to say hi, my inbox is open.",
     contact: "harinarayan.professional@gmail.com",
     href: "mailto:harinarayan.professional@gmail.com",
-    icon: "📧",
-    availability: "Response within 24 hours",
+    icon: Mail,
+    color: "bg-red-500"
   }
-] as const
+]
 
 export function ContactSection() {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  })
-
   return (
-    <SectionLayout id="contact">
-      <div ref={ref} className="w-full max-w-6xl mx-auto flex flex-col">
-        <SectionHeader
-          title="Get in Touch"
-          subtitle="Let's connect and explore opportunities"
-        />
+    <SectionLayout id="contact" className="bg-transparent">
+      <SectionHeader
+        title="Get In Touch"
+        subtitle="Ready to start the next big project? Let's talk."
+      />
 
-        <div className="w-full px-3 sm:px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 max-w-4xl mx-auto">
-            {CONTACT_METHODS.map((method, index) => (
-              <motion.a
-                key={index}
-                href={method.href}
-                target={method.href.includes('linkedin') ? '_blank' : undefined}
-                rel={method.href.includes('linkedin') ? 'noopener noreferrer' : undefined}
-                className="block"
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <div className="bg-white rounded-xl border-2 border-slate-200 p-3 sm:p-4 text-center transition-all duration-200 hover:border-primary hover:shadow-lg hover:-translate-y-1 h-full flex flex-col">
-                  <div className="text-2xl sm:text-3xl mb-2">
-                    {method.icon}
-                  </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+        {CONTACT_METHODS.map((method, index) => (
+          <motion.a
+            key={index}
+            href={method.href}
+            target={method.href.includes('linkedin') ? '_blank' : undefined}
+            rel={method.href.includes('linkedin') ? 'noopener noreferrer' : undefined}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className="glass-card p-8 flex flex-col items-center text-center hover:bg-white/5 transition-colors group relative overflow-hidden"
+          >
+            <div className={`p-4 rounded-full ${method.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+              <method.icon size={32} />
+            </div>
 
-                  <h3 className="text-base sm:text-lg text-foreground mb-1 font-bold">
-                    {method.title}
-                  </h3>
+            <h3 className="text-2xl font-bold text-foreground mb-2">{method.title}</h3>
+            <p className="text-primary font-medium mb-4">{method.subtitle}</p>
 
-                  <p className="text-xs sm:text-sm text-primary mb-2 font-semibold">
-                    {method.subtitle}
-                  </p>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              {method.description}
+            </p>
 
-                  <p className="text-xs text-slate-600 mb-2 leading-relaxed flex-1">
-                    {method.description}
-                  </p>
-
-                  <div className="px-2 py-1.5 bg-slate-50 border-2 border-slate-200 rounded-xl mb-1.5 transition-colors duration-200 hover:bg-primary hover:border-primary group">
-                    <p className="text-xs break-all font-bold text-slate-700 group-hover:text-white">
-                      {method.contact}
-                    </p>
-                  </div>
-
-                  <div className="px-2 py-1 bg-slate-100 rounded-full">
-                    <p className="text-[10px] sm:text-xs text-slate-600 font-medium">
-                      {method.availability}
-                    </p>
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
+            <div className="mt-auto flex items-center gap-2 text-sm font-bold text-white group-hover:text-primary transition-colors">
+              <span>Connect Now</span>
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </div>
+          </motion.a>
+        ))}
       </div>
     </SectionLayout>
   )

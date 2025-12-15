@@ -2,10 +2,9 @@
 
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
-import { Button } from "./ui/button"
-import { TEXT, cn } from "@/lib/design-system"
 import { useState, useEffect, useCallback } from "react"
-import { ANIMATION_DELAYS } from "@/lib/constants"
+import { motion } from "framer-motion"
+import { Download, ExternalLink, FileText } from "lucide-react"
 
 const RESUME_PATH = "/resume/Hari Narayan Srivatsan_TAMU_Resume.pdf"
 const MOBILE_BREAKPOINT = 768
@@ -34,115 +33,87 @@ export function ResumeSection() {
   }, [])
 
   return (
-    <SectionLayout id="resume">
-      <div className="section-content">
-        <SectionHeader
-          title="Resume"
-        />
+    <SectionLayout id="resume" className="bg-transparent">
+      <SectionHeader
+        title="Resume"
+        subtitle="A detailed overview of my professional experience and skills."
+      />
 
-        {/* Availability Info - More Professional */}
-        <div className="flex flex-wrap gap-3 items-center justify-center mb-8 px-4 animate-fade-in-up" style={{ animationDelay: `${ANIMATION_DELAYS.NORMAL}ms` }}>
-          <div className="px-5 py-3 bg-primary text-white rounded-xl shadow-md">
-            <span className={cn(TEXT.card.subtitle, "whitespace-nowrap")}>
-              Available for Full-Time Roles: May 2026
-            </span>
-          </div>
-
-          <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg">
-            <span className={cn(TEXT.card.body, "text-primary whitespace-nowrap")}>
-              Open to Relocation
-            </span>
-          </div>
+      {/* Availability Info */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex flex-wrap gap-4 items-center justify-center mb-12 px-4"
+      >
+        <div className="px-5 py-2 bg-primary/20 border border-primary/30 rounded-full shadow-[0_0_15px_-5px_var(--color-primary)]">
+          <span className="text-sm font-semibold text-primary-foreground whitespace-nowrap">
+            Available for Full-Time Roles: May 2026
+          </span>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 animate-fade-in-up max-w-md mx-auto" style={{ animationDelay: `${ANIMATION_DELAYS.SLOW}ms` }}>
-          <Button
-            onClick={handleDownload}
-            variant="primary"
-            size="lg"
-            className="group w-full sm:w-auto"
-          >
-            <svg
-              className="w-5 h-5 mr-2 group-hover:animate-bounce"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
-            Download PDF
-          </Button>
-
-          <Button
-            onClick={handleOpenNew}
-            variant="outline"
-            size="lg"
-            className="group w-full sm:w-auto"
-          >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              />
-            </svg>
-            Open in New Tab
-          </Button>
+        <div className="px-5 py-2 glass-card rounded-full hover:bg-white/10 transition-colors">
+          <span className="text-sm font-medium text-white/80 whitespace-nowrap">
+            Open to Relocation
+          </span>
         </div>
+      </motion.div>
 
-        {/* Resume Preview */}
-        <div className="w-full mx-auto px-4 sm:px-8 lg:px-16 xl:px-20 animate-fade-in-up" style={{ animationDelay: `${ANIMATION_DELAYS.SLOW + 50}ms` }}>
-          <div className="max-w-5xl mx-auto">
-            {isMobile ? (
-              // Mobile: Show download card
-              <div className="glass-card max-w-md mx-auto text-center">
-                <svg
-                  className="w-16 sm:w-20 h-16 sm:h-20 text-primary mx-auto mb-4 sm:mb-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-                <h3 className={cn(TEXT.card.title, "text-foreground mb-2 sm:mb-3 px-2")}>
-                  Resume Preview
-                </h3>
-                <p className={cn(TEXT.card.body, "text-muted-foreground px-4")}>
-                  PDF preview is not available on mobile devices. Please use the download or open buttons above to view the resume.
-                </p>
-              </div>
-            ) : (
-              // Desktop: Embed PDF
-              <div className="glass-card overflow-hidden">
-                <div className="relative w-full" style={{ height: 'calc(100vh - 400px)', minHeight: '600px' }}>
-                  <iframe
-                    src={RESUME_PATH}
-                    className="w-full h-full border-0"
-                    title="Resume Preview"
-                  />
-                </div>
-              </div>
-            )}
+      {/* Action Buttons */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        viewport={{ once: true }}
+        className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+      >
+        <button
+          onClick={handleDownload}
+          className="group flex items-center justify-center gap-2 px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary-light transition-all duration-300 shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
+        >
+          <Download size={20} className="group-hover:animate-bounce" />
+          <span className="font-semibold">Download PDF</span>
+        </button>
+
+        <button
+          onClick={handleOpenNew}
+          className="group flex items-center justify-center gap-2 px-8 py-3 bg-transparent border border-white/20 text-white rounded-lg hover:bg-white/5 transition-all duration-300 hover:-translate-y-1"
+        >
+          <ExternalLink size={20} />
+          <span className="font-semibold">Open in New Tab</span>
+        </button>
+      </motion.div>
+
+      {/* Resume Preview */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        viewport={{ once: true }}
+        className="w-full max-w-5xl mx-auto px-4"
+      >
+        {isMobile ? (
+          // Mobile: Show download card
+          <div className="glass-card p-8 text-center max-w-md mx-auto">
+            <FileText size={48} className="text-primary mx-auto mb-6" />
+            <h3 className="text-xl font-bold text-foreground mb-3">
+              Resume Preview
+            </h3>
+            <p className="text-muted-foreground">
+              PDF preview is not available on mobile devices. Please use the download or open buttons above to view the resume.
+            </p>
           </div>
-        </div>
-      </div>
+        ) : (
+          // Desktop: Embed PDF
+          <div className="glass-card p-1 overflow-hidden h-[800px]">
+            <iframe
+              src={`${RESUME_PATH}#view=FitH`}
+              className="w-full h-full rounded-lg bg-white"
+              title="Resume Preview"
+            />
+          </div>
+        )}
+      </motion.div>
     </SectionLayout>
   )
 }
