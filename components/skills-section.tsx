@@ -2,94 +2,143 @@
 
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { TEXT, COMPONENTS, cn, getSectionClasses } from "@/lib/design-system"
-import { SECTION_CONFIGS } from "@/lib/design-tokens"
-
-const CONFIG = SECTION_CONFIGS.skills
-const classes = getSectionClasses('skills')
+import { cn } from "@/lib/design-system"
 
 const SKILL_CATEGORIES = [
   {
     title: "Programming",
     icon: "💻",
-    skills: ["Python", "C++", "SQL", "JavaScript"]
+    skills: [
+      { name: "Python", level: 90 },
+      { name: "C++", level: 75 },
+      { name: "SQL", level: 85 },
+      { name: "JavaScript", level: 80 }
+    ],
+    isPrimary: true
   },
   {
     title: "AI Tools",
     icon: "🤖",
-    skills: ["Claude Code", "Cursor", "Deep Research", "Perplexity Comet"]
+    skills: [
+      { name: "Claude Code", level: 95 },
+      { name: "Cursor", level: 90 },
+      { name: "Deep Research", level: 85 },
+      { name: "Perplexity Comet", level: 80 }
+    ],
+    isPrimary: false
   },
   {
     title: "Cloud & DevOps",
     icon: "☁️",
-    skills: ["Git", "Docker", "AWS", "CI/CD"]
+    skills: [
+      { name: "Git", level: 90 },
+      { name: "Docker", level: 85 },
+      { name: "AWS", level: 80 },
+      { name: "CI/CD", level: 75 }
+    ],
+    isPrimary: true
   },
   {
     title: "Web Frameworks",
     icon: "🌐",
-    skills: ["FastAPI", "LangChain", "React", "Streamlit"]
+    skills: [
+      { name: "FastAPI", level: 85 },
+      { name: "LangChain", level: 80 },
+      { name: "React", level: 75 },
+      { name: "Streamlit", level: 85 }
+    ],
+    isPrimary: false
   },
   {
     title: "Certifications",
     icon: "🏆",
-    skills: ["AWS Solutions Architect", "CCSK v4", "PSPO-1", "ISC2 CC"]
+    skills: [
+      { name: "AWS Solutions Architect", level: 100 },
+      { name: "CCSK v4", level: 100 },
+      { name: "PSPO-1", level: 100 },
+      { name: "ISC2 CC", level: 100 }
+    ],
+    isPrimary: true
   },
 ] as const
 
 export function SkillsSection() {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  })
-
   return (
     <SectionLayout id="skills">
-      <div ref={ref} className={classes.wrapper}>
-        <div className="w-full max-w-6xl mx-auto">
-          <SectionHeader
-            title="Technical Skills"
-            subtitle="Technologies, tools, and certifications I work with"
-          />
+      <div className="w-full max-w-7xl mx-auto flex flex-col">
+        <SectionHeader
+          title="Technical Skills"
+          subtitle="Technologies, tools, and certifications I work with"
+        />
 
-          <div className="w-full">
-            <div className={classes.grid}>
-              {SKILL_CATEGORIES.map((category, index) => (
-                <motion.div
-                  key={index}
-                  className={cn(
-                    "bg-white rounded-xl border-2 border-slate-200 p-5 text-center",
-                    "transition-all duration-200 hover:border-primary hover:shadow-md hover:-translate-y-1"
-                  )}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                >
-                  <div className={cn(COMPONENTS.icon.md, "mb-3 text-4xl")}>
+        <div className="w-full px-3 sm:px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SKILL_CATEGORIES.map((category, categoryIndex) => (
+              <div
+                key={categoryIndex}
+                className="group relative bg-white rounded-2xl border-2 border-slate-200 p-6 shadow-lg hover:shadow-2xl hover:border-primary hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+              >
+                {/* Top Accent Bar */}
+                <div className={cn(
+                  "absolute top-0 left-0 right-0 h-1",
+                  category.isPrimary ? "bg-primary" : "bg-secondary"
+                )} />
+
+                {/* Header */}
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={cn(
+                    "text-4xl p-3 rounded-xl transform group-hover:scale-110 transition-transform duration-300",
+                    category.isPrimary ? "bg-primary/10" : "bg-secondary/10"
+                  )}>
                     {category.icon}
                   </div>
-
-                  <h3 className={cn(TEXT.card.title, "text-foreground mb-3 font-bold")}>
+                  <h3 className="text-xl font-bold text-foreground">
                     {category.title}
                   </h3>
+                </div>
 
-                  <div className="flex flex-col gap-2 flex-1">
-                    {category.skills.map((skill, i) => (
-                      <div
-                        key={i}
-                        className={cn(
-                          "px-3 py-2 bg-slate-100 border border-slate-200 rounded-lg text-slate-700 font-medium text-sm",
-                          "transition-all duration-150 hover:bg-primary hover:text-white hover:border-primary"
-                        )}
-                      >
-                        {skill}
+                {/* Skills with Progress Bars */}
+                <div className="space-y-4">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skillIndex}>
+                      {/* Skill Name and Percentage */}
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-semibold text-slate-700">
+                          {skill.name}
+                        </span>
+                        <span className={cn(
+                          "text-xs font-bold px-2 py-0.5 rounded-full",
+                          category.isPrimary 
+                            ? "bg-primary/10 text-primary" 
+                            : "bg-secondary/10 text-secondary"
+                        )}>
+                          {skill.level}%
+                        </span>
                       </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                      
+                      {/* Progress Bar */}
+                      <div className="relative h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                        <div
+                          className={cn(
+                            "h-full rounded-full transition-all duration-500",
+                            category.isPrimary 
+                              ? "bg-gradient-to-r from-primary to-primary-light" 
+                              : "bg-gradient-to-r from-secondary to-secondary-light"
+                          )}
+                          style={{ width: `${skill.level}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Decorative Circle */}
+                <div className={cn(
+                  "absolute -bottom-6 -right-6 w-24 h-24 rounded-full",
+                  category.isPrimary ? "bg-primary/5" : "bg-secondary/5"
+                )} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

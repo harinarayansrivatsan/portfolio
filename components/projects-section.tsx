@@ -4,12 +4,8 @@ import { useCallback, useEffect, useState } from "react"
 import useEmblaCarousel from "embla-carousel-react"
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
-import { TEXT, COMPONENTS, SPACING, cn, getSectionClasses } from "@/lib/design-system"
-import { SECTION_CONFIGS } from "@/lib/design-tokens"
-import { motion, AnimatePresence } from "framer-motion"
-
-const CONFIG = SECTION_CONFIGS.projects
-const classes = getSectionClasses('projects')
+import { TEXT, cn } from "@/lib/design-system"
+import { motion } from "framer-motion"
 
 const PROJECTS = [
   {
@@ -86,115 +82,110 @@ export function ProjectsSection() {
 
   return (
     <SectionLayout id="projects" variant="alternate">
-      <div className={classes.wrapper}>
-        <div className="w-full max-w-6xl mx-auto">
-          <SectionHeader
-            title="Featured Projects"
-            subtitle="Real-world solutions deployed at leading organizations"
-          />
-          
-          {/* Swipe Instructions */}
-          <div className="text-center mb-6">
-            <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-              </svg>
-              <span>Swipe to view more projects</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </p>
-          </div>
+      <div className="w-full max-w-6xl mx-auto flex flex-col">
+        <SectionHeader
+          title="Featured Projects"
+          subtitle="Real-world solutions deployed at leading organizations"
+        />
+        
+        {/* Swipe Instructions */}
+        <div className="text-center mb-2 sm:mb-3">
+          <p className={cn(TEXT.card.body, "text-muted-foreground flex items-center justify-center gap-2")}>
+            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            <span>Swipe to view more projects</span>
+            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </p>
+        </div>
 
-          <div className="relative w-full">
-            {/* Carousel Container */}
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex">
-                {PROJECTS.map((project, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex-[0_0_100%] min-w-0 px-2 sm:px-4"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <div className={cn("group overflow-hidden mx-auto max-w-4xl bg-white rounded-2xl shadow-lg border border-slate-200 hover:shadow-xl transition-shadow duration-300")}>
-                      <div className="flex flex-col md:flex-row">
-                        {/* Project Image - No padding */}
-                        <div className={cn(
-                          "relative w-full md:w-1/2 overflow-hidden bg-slate-50",
-                          "aspect-video md:aspect-square"
-                        )}>
-                          <img
-                            src={project.image}
-                            alt={project.imageAlt}
-                            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                          />
-                          <div className="absolute top-3 right-3 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-full text-xs font-bold text-primary shadow-md">
-                            {project.timeframe}
+        <div className="relative w-full px-2 sm:px-4">
+          {/* Carousel Container */}
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {PROJECTS.map((project, index) => (
+                <motion.div
+                  key={index}
+                  className="flex-[0_0_100%] min-w-0 px-1 sm:px-2"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="group overflow-hidden mx-auto max-w-4xl bg-white rounded-xl sm:rounded-2xl shadow-lg border border-slate-200 hover:shadow-xl transition-shadow duration-300">
+                    <div className="flex flex-col md:flex-row">
+                      {/* Project Image */}
+                      <div className="relative w-full md:w-1/2 overflow-hidden bg-slate-50 aspect-video md:aspect-square">
+                        <img
+                          src={project.image}
+                          alt={project.imageAlt}
+                          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className={cn("absolute top-2 right-2 sm:top-3 sm:right-3 px-2 py-1 sm:px-3 sm:py-1.5 bg-white/95 backdrop-blur-sm rounded-full text-primary shadow-md", TEXT.card.badge)}>
+                          {project.timeframe}
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-1 p-3 sm:p-4 md:p-5 flex flex-col justify-center">
+                        <div className="mb-2 sm:mb-3">
+                          <h3 className={cn(TEXT.card.title, "text-foreground mb-1 sm:mb-2")}>
+                            {project.title}
+                          </h3>
+
+                          <p className={cn(TEXT.card.subtitle, "text-primary mb-1 sm:mb-2")}>
+                            {project.organization}
+                          </p>
+
+                          <div className={cn("inline-flex items-center gap-1 sm:gap-1.5 px-2 py-1 sm:px-3 sm:py-1.5 bg-green-50 text-green-700 border border-green-200 rounded-full", TEXT.card.badge)}>
+                            <span>✓</span>
+                            <span>{project.impact}</span>
                           </div>
                         </div>
 
-                        {/* Content */}
-                        <div className="flex-1 p-4 sm:p-6 flex flex-col justify-center">
-                          <div className="mb-3">
-                            <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
-                              {project.title}
-                            </h3>
+                        <p className={cn(TEXT.card.body, "text-muted-foreground mb-2 sm:mb-3")}>
+                          {project.description}
+                        </p>
 
-                            <p className="text-sm sm:text-base text-primary font-semibold mb-2">
-                              {project.organization}
-                            </p>
-
-                            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 border border-green-200 rounded-full text-xs font-semibold">
-                              <span>✓</span>
-                              <span>{project.impact}</span>
-                            </div>
-                          </div>
-
-                          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
-                            {project.description}
-                          </p>
-
-                          {/* Technology Badges */}
-                          <div className="flex flex-wrap gap-2">
-                            {project.badges.map((badge, i) => (
-                              <span
-                                key={i}
-                                className="px-3 py-1.5 bg-secondary/10 text-secondary border border-secondary/20 rounded-full text-xs font-medium hover:bg-secondary hover:text-white transition-all duration-200 cursor-default"
-                              >
-                                {badge}
-                              </span>
-                            ))}
-                          </div>
+                        {/* Technology Badges */}
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                          {project.badges.map((badge, i) => (
+                            <span
+                              key={i}
+                              className={cn("px-2 py-1 sm:px-3 sm:py-1.5 bg-secondary/10 text-secondary border border-secondary/20 rounded-full hover:bg-secondary hover:text-white transition-all duration-200 cursor-default", TEXT.card.badge)}
+                            >
+                              {badge}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Slide Indicators */}
-            <div className="flex justify-center gap-2 mt-6">
-              {PROJECTS.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollTo(index)}
-                  className={cn(
-                    "h-2 rounded-full transition-all duration-300",
-                    "hover:scale-125",
-                    selectedIndex === index ? "w-8 opacity-100" : "w-2 opacity-30"
-                  )}
-                  style={{
-                    backgroundColor: 'var(--primary)'
-                  }}
-                  aria-label={`Go to project ${index + 1}`}
-                  aria-current={selectedIndex === index ? 'true' : 'false'}
-                />
+                  </div>
+                </motion.div>
               ))}
             </div>
+          </div>
+
+          {/* Slide Indicators */}
+          <div className="flex justify-center gap-2 mt-2 sm:mt-3">
+            {PROJECTS.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                className={cn(
+                  "h-2 rounded-full transition-all duration-300",
+                  "hover:scale-125",
+                  selectedIndex === index ? "w-8 opacity-100" : "w-2 opacity-30"
+                )}
+                style={{
+                  backgroundColor: 'var(--primary)'
+                }}
+                aria-label={`Go to project ${index + 1}`}
+                aria-current={selectedIndex === index ? 'true' : 'false'}
+              />
+            ))}
           </div>
         </div>
       </div>

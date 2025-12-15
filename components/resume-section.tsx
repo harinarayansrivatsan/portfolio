@@ -3,6 +3,7 @@
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
 import { Button } from "./ui/button"
+import { TEXT, cn } from "@/lib/design-system"
 import { useState, useEffect, useCallback } from "react"
 import { ANIMATION_DELAYS } from "@/lib/constants"
 
@@ -42,13 +43,13 @@ export function ResumeSection() {
         {/* Availability Info - More Professional */}
         <div className="flex flex-wrap gap-3 items-center justify-center mb-8 px-4 animate-fade-in-up" style={{ animationDelay: `${ANIMATION_DELAYS.NORMAL}ms` }}>
           <div className="px-5 py-3 bg-primary text-white rounded-xl shadow-md">
-            <span className="text-sm sm:text-base font-bold whitespace-nowrap">
+            <span className={cn(TEXT.card.subtitle, "whitespace-nowrap")}>
               Available for Full-Time Roles: May 2026
             </span>
           </div>
 
           <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg">
-            <span className="text-xs sm:text-sm font-semibold text-primary whitespace-nowrap">
+            <span className={cn(TEXT.card.body, "text-primary whitespace-nowrap")}>
               Open to Relocation
             </span>
           </div>
@@ -120,10 +121,10 @@ export function ResumeSection() {
                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                   />
                 </svg>
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3 px-2">
+                <h3 className={cn(TEXT.card.title, "text-foreground mb-2 sm:mb-3 px-2")}>
                   Resume Preview
                 </h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed px-4">
+                <p className={cn(TEXT.card.body, "text-muted-foreground px-4")}>
                   PDF preview is not available on mobile devices. Please use the download or open buttons above to view the resume.
                 </p>
               </div>

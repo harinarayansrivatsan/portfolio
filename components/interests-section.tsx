@@ -2,7 +2,8 @@
 
 import { SectionLayout } from "./layout/section-layout"
 import { SectionHeader } from "./ui/section-header"
-import { ANIMATION_DELAYS, GRADIENTS } from "@/lib/constants"
+import { cn } from "@/lib/design-system"
+import { ANIMATION_DELAYS } from "@/lib/constants"
 
 const INTERESTS = [
     {
@@ -11,7 +12,8 @@ const INTERESTS = [
       focus: "Balanced lifestyle approach",
       activities: ["Strength Training", "Endurance Running", "Mindfulness", "Outdoor Activities"],
       icon: "💪",
-      color: GRADIENTS.RED_DARK,
+      isPrimary: true,
+      size: "large"
     },
     {
       title: "Cultural Exploration",
@@ -19,7 +21,8 @@ const INTERESTS = [
       focus: "Global perspective building",
       activities: ["Cultural Immersion", "Culinary Arts", "Travel Photography", "Language Learning"],
       icon: "🌍",
-      color: GRADIENTS.RED_DARK,
+      isPrimary: false,
+      size: "medium"
     },
     {
       title: "Continuous Learning",
@@ -27,7 +30,8 @@ const INTERESTS = [
       focus: "Lifelong education commitment",
       activities: ["Industry Research", "Professional Development", "Thought Leadership", "Skill Certification"],
       icon: "📚",
-      color: GRADIENTS.RED_MEDIUM,
+      isPrimary: true,
+      size: "medium"
     },
     {
       title: "Technology Innovation",
@@ -35,67 +39,76 @@ const INTERESTS = [
       focus: "Future-focused development",
       activities: ["Vibe Coding", "Open Source", "Cloud Solutions", "Security Research"],
       icon: "🚀",
-      color: GRADIENTS.RED_MEDIUM,
+      isPrimary: false,
+      size: "large"
     },
   ] as const
 
 export function InterestsSection() {
   return (
     <SectionLayout id="interests">
-      <div className="w-full max-w-7xl mx-auto">
-        <div className="w-full max-w-6xl mx-auto">
-          <SectionHeader
-            title="Beyond Work"
-            subtitle="Interests and activities that drive personal growth"
-          />
+      <div className="w-full max-w-7xl mx-auto flex flex-col">
+        <SectionHeader
+          title="Beyond Work"
+          subtitle="Interests and activities that drive personal growth"
+        />
 
-          <div className="w-full px-4 sm:px-0">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {INTERESTS.map((interest, index) => (
+        <div className="w-full px-3 sm:px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {INTERESTS.map((interest, index) => (
+              <div
+                key={index}
+                className={cn(
+                  "group relative bg-white rounded-xl border-2 border-slate-200 p-3.5 flex flex-col hover:shadow-2xl hover:border-primary hover:-translate-y-2 transition-all duration-300",
+                  interest.size === "large" ? "lg:col-span-2" : "lg:col-span-1"
+                )}
+                style={{ animationDelay: `${index * ANIMATION_DELAYS.FAST}ms` }}
+              >
+                {/* Icon */}
                 <div
-                  key={index}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${index * ANIMATION_DELAYS.FAST}ms` }}
+                  className={cn(
+                    "text-2xl w-9 h-9 flex items-center justify-center rounded-lg mb-2 transform group-hover:scale-110 transition-transform duration-300",
+                    interest.isPrimary ? "bg-primary/10" : "bg-secondary/10"
+                  )}
                 >
-                  <div className="glass-card h-full flex flex-col text-center hover:shadow-xl transition-all duration-300">
-
-                    {/* Icon */}
-                    <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">
-                      {interest.icon}
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3 px-2">
-                      {interest.title}
-                    </h3>
-
-                    {/* Focus Badge */}
-                    <div className="px-2 sm:px-3 py-1.5 sm:py-2 bg-primary/5 border border-primary/10 rounded-full mb-3 sm:mb-4 mx-2">
-                      <p className="text-[10px] sm:text-xs font-semibold text-primary">
-                        {interest.focus}
-                      </p>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-3 sm:mb-4 flex-1 px-2">
-                      {interest.description}
-                    </p>
-
-                    {/* Activities */}
-                    <div className="flex flex-col gap-1.5 sm:gap-2 px-2">
-                      {interest.activities.map((activity, i) => (
-                        <div
-                          key={i}
-                          className="px-2 sm:px-3 py-1.5 sm:py-2 bg-primary/5 text-primary border border-primary/10 rounded-full text-xs sm:text-sm font-medium hover:bg-primary hover:text-white transition-all duration-200 cursor-default"
-                        >
-                          {activity}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  {interest.icon}
                 </div>
-              ))}
-            </div>
+
+                {/* Title */}
+                <h3 className="text-base font-bold text-foreground mb-1.5">
+                  {interest.title}
+                </h3>
+
+                {/* Focus Badge */}
+                <div
+                  className={cn(
+                    "inline-flex items-center px-2 py-0.5 rounded-full mb-2 text-xs font-semibold w-fit",
+                    interest.isPrimary
+                      ? "bg-primary/10 text-primary border border-primary/20"
+                      : "bg-secondary/10 text-secondary border border-secondary/20"
+                  )}
+                >
+                  {interest.focus}
+                </div>
+
+                {/* Description */}
+                <p className="text-xs text-muted-foreground mb-2.5 flex-1 leading-relaxed">
+                  {interest.description}
+                </p>
+
+                {/* Activities */}
+                <div className="flex flex-wrap gap-1.5">
+                  {interest.activities.map((activity, i) => (
+                    <span
+                      key={i}
+                      className="px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md text-xs font-medium border border-slate-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 cursor-default"
+                    >
+                      {activity}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

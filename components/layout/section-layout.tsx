@@ -3,7 +3,6 @@
 import { ReactNode } from "react"
 import { cn } from "@/lib/utils"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-import { LAYOUT } from "@/lib/design-system"
 
 interface SectionLayoutProps {
   children: ReactNode
@@ -27,21 +26,22 @@ export function SectionLayout({
     triggerOnce: true,
   })
 
-  // Choose layout based on section type
-  const layoutClass = isJourneySection
-    ? LAYOUT.section.journey
-    : LAYOUT.section.default
+  // Journey section needs scrollable content
+  // All other sections should fit in viewport with top-center alignment
+  const sectionClasses = isJourneySection
+    ? "relative w-full min-h-screen flex items-start justify-center px-3 sm:px-4 lg:px-6"
+    : "relative w-full min-h-screen flex items-start justify-center px-3 sm:px-4 lg:px-6"
 
   return (
     <section
       ref={ref}
       id={id}
       className={cn(
-        layoutClass,
+        sectionClasses,
         "scroll-mt-14 sm:scroll-mt-16",
         "transition-all duration-700 ease-out",
-        // Add top padding for first section to account for fixed header
-        isFirstSection ? "pt-14 sm:pt-16" : "",
+        // Add top padding for all sections to account for fixed header
+        "pt-[calc(3.5rem+1rem)] sm:pt-[calc(4rem+1.5rem)]",
         variant === "alternate" && "bg-[#f8f9fb]",
         isFirstSection || isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
         className
