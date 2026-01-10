@@ -93,7 +93,7 @@ export function HeroSection() {
           >
             <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-[350px] lg:h-[350px] xl:w-[400px] xl:h-[400px] rounded-full sm:rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-muted">
               <Image
-                src="/images/professional-headshot.jpg"
+                src="https://assets.hari-narayan.com/images/professional-headshot.jpg"
                 alt="Hari Narayan Srivatsan"
                 fill
                 className="object-cover object-top scale-105"
