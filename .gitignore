@@ -1,0 +1,21 @@
+# dependencies
+node_modules
+
+# next.js build
+.next
+out
+
+# environment
+.env.local
+
+# typescript build info
+*.tsbuildinfo
+
+# OS files
+.DS_Store
+
+# logs
+npm-debug.log*
+
+# build artifacts
+.open-next
